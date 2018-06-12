@@ -6,4 +6,4 @@ Easily manage your ~~bags of shit~~ valuable digital assets with this amazing we
 
 ## Application Architecture
 
-This is a [nuxt.js](https://nuxtjs.com) app with a [Rails](http://rubyonrails.com) API.
+This is a [nuxt.js](https://nuxtjs.org) app with a [Rails](http://rubyonrails.org) API.
