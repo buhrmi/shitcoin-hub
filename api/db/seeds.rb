@@ -1,14 +1,7 @@
-if testing?
-  assets = [
-    {symbol: 'ETH', protocol: 'eth', decimals: 18, website: 'https://ethereum.org'},
-    {symbol: 'WUB', protocol: 'erc20', decimals: 18, contract_address: '0xc086a7bbf9550ff0d2de99c36494a82f4a673fe1'},
-    {symbol: 'WHS', protocol: 'erc20', decimals: 18, contract_address: '0xb054da89f49d937fa26260e59502a4cd60881a3b'},
-    {symbol: 'JPY', protocol: 'fiat', decimals: 0}
-  ]
-else
-  assets = []
-end
-
-for asset in assets
-  Asset.create(asset)
-end
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)

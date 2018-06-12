@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2018_06_11_075852) do
 
   create_table "users", id: :string, force: :cascade do |t|
     t.string "email"
+    t.string "display_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["id"], name: "sqlite_autoindex_users_1", unique: true

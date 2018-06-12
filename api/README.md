@@ -1,9 +1,24 @@
-# Shitcoin Manager API
+# README
 
-This is a Sinatra app.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-### How to run
+Things you may want to cover:
 
-To initialize the database and run migrations, just do `rake db:migrate`. Afterwards, run `rake db:seed` to load the initial data (from `db/seeds.rb`).
+* Ruby version
 
-You can run the server with `ruby app.rb` or simply `rackup`.
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
