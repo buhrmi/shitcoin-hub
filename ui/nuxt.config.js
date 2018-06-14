@@ -7,6 +7,7 @@ module.exports = {
     '~/plugins/auth.js',
     '~/plugins/filters.js',
     '~/plugins/monkey_patches.js',
+    '~/plugins/web3.js',
     { src: '~/plugins/pusher.js', ssr: false }
   ],
   modules: [
@@ -14,7 +15,7 @@ module.exports = {
     '@nuxtjs/axios',
   ],
   head: {
-    title: 'Shitcoin Manager',
+    title: 'Shitcoin Hub',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' } 
