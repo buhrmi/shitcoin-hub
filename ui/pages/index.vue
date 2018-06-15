@@ -2,22 +2,43 @@
   .page
     .wrapper
       h1 Welcome
+      h2 List of Shitcoins
+      .shitcoin(v-for="shitcoin in shitcoins") {{ shitcoin }}
+
       .create_asset(v-if="$store.state.user")
-        h2 Register Asset
-        select(v-model="new_asset.platform")
-          option(value="STR") Stellar
-          option(value="EOS") EOS
-          option(value="ETH") ETH
-          option(value="Waves") Waves
-          option(value="native") none/native
-        input(v-model="new_asset.website")
-      .unregistered(v-else) Please log in to register your asset
+        h2 Register Shitcoin
+        form(@submit.prevent="handleSubmit")
+          .field
+            label Symbol
+            input(v-model="new_asset.symbol")
+          .field
+            label Platform
+            select(v-model="new_asset.platform")
+              option(value="STR") Stellar
+              option(value="EOS") EOS
+              option(value="ETH") ETH
+              option(value="Waves") Waves
+              option(value="native") none/native
+          .field
+            label Address
+            input(v-model="new_asset.address")
+          .field
+            label
+            button Register
+      .unregistered(v-else) Please log in to register your Shitcoin
 </template>
 
 <script lang="coffee">
 export default
+  asyncData: ({app: {$axios}}) ->
+    shitcoins: await $axios.$get('/assets')
   data: ->
     new_asset:
-      platform: 'STR'
-      website: null
+      platform: 'ETH'
+      symbol: null
+  methods:
+    handleSubmit: ->
+      newAsset = this.$axios.$post('/assets', {asset: this.new_asset})
+
 </script>
+

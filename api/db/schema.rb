@@ -12,15 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2018_06_11_075852) do
 
-  create_table "assets", id: :string, force: :cascade do |t|
-    t.string "manager_id"
-    t.string "protocol"
-    t.integer "decimals"
-    t.string "contract"
-    t.string "website"
+  create_table "assets", force: :cascade do |t|
+    t.string "creator_id"
+    t.string "symbol"
+    t.string "platform"
+    t.string "address"
+    t.string "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id"], name: "sqlite_autoindex_assets_1", unique: true
   end
 
   create_table "authorizations", force: :cascade do |t|
@@ -57,6 +56,8 @@ ActiveRecord::Schema.define(version: 2018_06_11_075852) do
   create_table "users", id: :string, force: :cascade do |t|
     t.string "email"
     t.string "display_name"
+    t.string "eth_key"
+    t.integer "nonce"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["id"], name: "sqlite_autoindex_users_1", unique: true

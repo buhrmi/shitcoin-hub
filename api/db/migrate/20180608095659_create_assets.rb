@@ -1,9 +1,13 @@
 class CreateAssets < ActiveRecord::Migration[5.2]
   def change
-    create_table :assets, id: 'string' do |t|
-      t.string :manager_id
-      t.string :website
-      t.string :data, size: 512
+    create_table :assets do |t|
+      t.string :creator_id
+      
+      t.string :symbol
+      t.string :platform
+      t.string :address
+
+      t.string :details, size: 512
       t.timestamps
     end
   end

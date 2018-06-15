@@ -20,7 +20,7 @@ class ApplicationController < ActionController::API
     @current_user
   end
 
-  def require_user
+  def require_user!
     return false unless current_user
   end
 end
