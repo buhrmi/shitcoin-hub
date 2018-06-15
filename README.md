@@ -4,7 +4,7 @@ This is the source code to buhrmi's shitcoin hub.
 
 ## Introduction
 
-Buhrmi's shitcoin hub is a website to submit information about shitcoins, the people who issue them, and the benefits people can enjoy for holding them.
+Buhrmi's shitcoin hub is a website to submit information about shitcoins, the people who issue them, and the benefits people can enjoy for hodling them.
 
 ## Application Architecture
 
