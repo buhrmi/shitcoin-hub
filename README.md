@@ -1,10 +1,10 @@
 # Buhrmi's Shitcoin Hub
 
-This is the source code to buhrmi's shitcoin hub.
+The goal of this project is to build the wikipedia of shitcoins and to protect the general public from investing into shilled bullshit.
 
 ## Introduction
 
-Buhrmi's shitcoin hub is a website to submit information about shitcoins, the people who issue them, and the benefits people can enjoy for hodling them.
+Buhrmi's shitcoin hub is a website to submit information about shitcoins, the people who issue them, and the benefits people can enjoy for hodling them (if any).
 
 ## Application Architecture
 
