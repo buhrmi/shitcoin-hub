@@ -8,12 +8,17 @@ module.exports = {
     '~/plugins/filters.js',
     '~/plugins/monkey_patches.js',
     '~/plugins/web3.js',
-    { src: '~/plugins/pusher.js', ssr: false }
+    // { src: '~/plugins/pusher.js', ssr: false }
   ],
   modules: [
     '@nuxtjs/font-awesome',
     '@nuxtjs/axios',
   ],
+  build: {
+    vendor: [
+      // '@ckeditor/ckeditor5-build-classic'
+    ],
+  },
   head: {
     title: 'Shitcoin Hub',
     meta: [

@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_11_075852) do
+ActiveRecord::Schema.define(version: 2018_06_18_032643) do
+
+  create_table "asset_translations", force: :cascade do |t|
+    t.integer "asset_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "summary"
+    t.index ["asset_id"], name: "index_asset_translations_on_asset_id"
+    t.index ["locale"], name: "index_asset_translations_on_locale"
+  end
 
   create_table "assets", force: :cascade do |t|
     t.string "creator_id"
@@ -51,6 +61,17 @@ ActiveRecord::Schema.define(version: 2018_06_11_075852) do
     t.index ["quote_asset_id"], name: "index_orders_on_quote_asset_id"
     t.index ["rate"], name: "index_orders_on_rate"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "translations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "locale"
+    t.integer "translatable_id"
+    t.string "translatable_type"
+    t.text "text"
+    t.index ["translatable_type", "translatable_id", "locale"], name: "index2", unique: true
+    t.index ["translatable_type", "translatable_id"], name: "index1"
   end
 
   create_table "users", id: :string, force: :cascade do |t|

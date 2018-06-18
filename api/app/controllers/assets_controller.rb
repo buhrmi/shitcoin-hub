@@ -3,6 +3,7 @@ class AssetsController < ApplicationController
 
   def create
     @asset = Asset.create!(asset_params.merge(creator_id: current_user.id))
+    render :show
   end
 
   def index
@@ -11,7 +12,9 @@ class AssetsController < ApplicationController
   end
 
   def update
-    @asset = Asset.create!(asset_params.merge(creator_id: current_user.id))
+    @asset = Asset.find(params[:id])
+    @asset.update_attributes!(asset_params)
+    render :show
   end
 
   private
@@ -20,6 +23,6 @@ class AssetsController < ApplicationController
   end
   
   def asset_params
-    params.require(:asset).permit(:platform, :symbol, :address)
+    params.require(:asset).permit(:platform, :symbol, :address, *Asset.globalize_attribute_names)
   end
 end

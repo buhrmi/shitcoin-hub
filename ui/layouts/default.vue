@@ -15,6 +15,7 @@
             p Your ETH wallet: {{ $store.state.eth_address }}
             input(v-model="email")
             button(@click="$store.dispatch('authorize_with_email', {email})") Log in
+            p (ADMIN PARTY IS ON: Anybody can log in as anyone and edit anything.)
     nuxt
     .footer
       .wrapper
