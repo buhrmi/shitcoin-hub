@@ -19,6 +19,11 @@
     .footer
       .wrapper
         p Copyright 2018 by buhrmi. All Rights Reserved.
+        p 
+          | Problem? 
+          a(href="mailto:wtf@buhrmi.de") wtf@buhrmi.de
+        p
+          a(href="https://github.com/buhrmi/shitcoinhub") Shitty source code published on GitHub
 </template>
 
 <script lang="coffee">

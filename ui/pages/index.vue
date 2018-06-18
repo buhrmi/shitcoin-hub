@@ -3,10 +3,11 @@
     .wrapper
       h1 Welcome
       h2 List of Shitcoins
-      .shitcoin(v-for="shitcoin in shitcoins") {{ shitcoin }}
+      .shitcoin(v-for="shitcoin in shitcoins")
+        nuxt-link(:to="`/${shitcoin.platform}/${shitcoin.address}`") {{ shitcoin.symbol}} ({{ shitcoin.platform }})
 
+      h2 Register Shitcoin
       .create_asset(v-if="$store.state.user")
-        h2 Register Shitcoin
         form(@submit.prevent="handleSubmit")
           .field
             label Symbol

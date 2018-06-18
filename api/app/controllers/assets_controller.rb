@@ -2,11 +2,16 @@ class AssetsController < ApplicationController
   before_action :require_user!
 
   def create
-    Asset.create(asset_params.merge(creator_id: current_user))
+    @asset = Asset.create!(asset_params.merge(creator_id: current_user.id))
   end
 
   def index
     @assets = Asset.where(search_params)
+    puts @assets
+  end
+
+  def update
+    @asset = Asset.create!(asset_params.merge(creator_id: current_user.id))
   end
 
   private
