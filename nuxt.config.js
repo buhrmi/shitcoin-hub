@@ -16,7 +16,9 @@ module.exports = {
   ],
   build: {
     vendor: [
-      // '@ckeditor/ckeditor5-build-classic'
+      '~/vendor/imperavi/redactor.min.css',
+      '~/vendor/imperavi/redactor.min.js',
+      '~/vendor/imperavi/imagemanager.min.js',
     ],
   },
   head: {
@@ -26,8 +28,10 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' } 
     ],
     script: [
-      {src: 'https://js.pusher.com/4.1/pusher.min.js'},
-      {src: 'https://connect.trezor.io/4/connect.js'}
+      // {src: 'https://js.pusher.com/4.1/pusher.min.js'},
+      // {src: 'https://connect.trezor.io/4/connect.js'},
+      // {src: 'https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js'},
+      {src: 'https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js'}
     ],
     link: [
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Sans' }
