@@ -6,8 +6,8 @@
 <script lang="coffee">
 module.exports =
   props: ['value', 'options']
+  # TODO: clean up on "beforeDestroy" event
   mounted: ->
-    console.log("mounted")
     options =
       focus: true
       plugins: ['imagemanager']
@@ -23,6 +23,4 @@ module.exports =
           this.$emit('input', html)
     Object.assign(options, this.options)
     $R this.$refs.textarea, options
-  beforeDestroy: ->
-    console.log("unmount")
 </script>

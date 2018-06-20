@@ -31,6 +31,7 @@
 
 <script lang="coffee">
 export default
+  layout: 'soon'
   asyncData: ({app: {$axios}}) ->
     shitcoins: await $axios.$get('/assets')
   data: ->
