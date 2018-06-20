@@ -1,7 +1,7 @@
 <template lang="pug">
   .page
     .wrapper
-      h1 Welcome
+      h1 {{ $t('welcome') }}
       h2 List of Shitcoins
       .shitcoin(v-for="shitcoin in shitcoins")
         nuxt-link(:to="`/${shitcoin.platform}/${shitcoin.address}`") {{ shitcoin.symbol}} ({{ shitcoin.platform }})

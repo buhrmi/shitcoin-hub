@@ -8,6 +8,7 @@ module.exports = {
     '~/plugins/filters.js',
     '~/plugins/monkey_patches.js',
     '~/plugins/web3.js',
+    '~/plugins/i18n.js',
     // { src: '~/plugins/pusher.js', ssr: false }
   ],
   modules: [
