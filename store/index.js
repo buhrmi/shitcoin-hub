@@ -18,9 +18,9 @@ export default () => {
         await dispatch('setAuthorization', 'Bearer ' + req.cookies.authorization)
       },
 
-      async authorize_with_email({dispatch}, {email}) {
+      async authorize_with_password({dispatch}, data) {
         // TODO: use different way of get an authorization string instead of just posting email address
-        let authorizationToken = await this.$axios.$post('/authorization', {email}, {withCredentials: true})
+        let authorizationToken = await this.$axios.$post('/authorization', data, {withCredentials: true})
         await dispatch('setAuthorization', 'Bearer ' + authorizationToken)
       },
 

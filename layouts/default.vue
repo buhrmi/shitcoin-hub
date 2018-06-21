@@ -6,41 +6,44 @@
           option(value="en") English
           option(value="ja") 日本語
         .user_area.logged_in(v-if="$store.state.user")
-          p Your ETH wallet: {{ $store.state.eth_address }}
+          // p ETH wallet address: {{ $store.state.eth_address }}
           p Logged in as {{ $store.state.user.email }}
           button(@click="$store.dispatch('logout')") Log out
         .user_area.logged_out(v-else)
-          p Your ETH wallet: {{ $store.state.eth_address }}
-          input(v-model="email")
-          button(@click="$store.dispatch('authorize_with_email', {email})") Log in
+          // p ETH wallet address: {{ $store.state.eth_address }}
+          input(v-model="email" placeholder="email")
+          input(v-model="password" placeholder="password")
+          button(@click="$store.dispatch('authorize_with_password', {email, password})") Log in
 
         nuxt-link.brand(to="/")
           img.logo(src="~/assets/logo.png")
           span.shitcoin shitcoin
           span.hub hub
-        p (ADMIN PARTY IS ON: Anybody can log in as anyone and edit anything.)
-
+        p (PARTY MODE is ON: Anybody can edit anything.)
     nuxt
     .footer
       .wrapper
-        p Copyright 2018 by buhrmi. All Rights Reserved.
+        nuxt-link.right(to="/about") About
+        p Copyright 2018 Shitcoin, Inc. All Rights Reserved.
         p 
           | Problem? 
-          a(href="mailto:wtf@buhrmi.de") wtf@buhrmi.de
+          a(href="mailto:support@shitcoinhub.com") support@shitcoinhub.com
         p
-          a(href="https://github.com/buhrmi/shitcoinhub") Get the shitty source code on GitHub
+          a(href="https://github.com/shitcoinhub") Get the shitty source code on GitHub
 </template>
 
 <script lang="coffee">
 export default
   data: ->
     email: null
+    password: null
     locale: this.$store.state.locale
 </script>
 
 
 <style lang="scss">
 $footer-height: 100px;
+
 * {
   margin: 0;
   padding: 0;
@@ -51,6 +54,15 @@ $footer-height: 100px;
 a {
   color: black;
   text-decoration: none;
+}
+table {
+  width: 100%;
+}
+td {
+  vertical-align: top;
+}
+li, ul {
+  list-style-position: inside;
 }
 .wrapper {
   width: 1070px;
@@ -70,11 +82,18 @@ a {
   padding-top: 10px;
   height: $footer-height;
 }
+.right {
+  float: right;
+}
 @media screen and (max-width: 1090px) {
   .wrapper {
     margin: 0 20px;
   }
 }
+
+
+
+
 .top_bar {
   padding: 16px 0;
   border-bottom: 1px solid #ddd;
