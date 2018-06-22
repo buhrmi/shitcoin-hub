@@ -5,13 +5,16 @@ export default () => {
     state: {
       locale: 'en',
       available_locales: ['en', 'ja'],
+      what: 'hello',
       translations: {},
       eth_address: null,
       user: null,
-      authorization: null
+      authorization: null,
+      accepted_terms_on: null
     },
     actions: {
       async nuxtServerInit ({state, dispatch}, {req}) {
+        if (req.cookies.accepted_terms_on) state.accepted_terms_on = req.cookies.accepted_terms_on
         let locale = (req.cookies.locale || req.headers['accept-language'] || 'en').substr(0, 2)
         if (!state.available_locales.includes(locale)) locale = 'en'
         await dispatch('setLocale', {locale})
@@ -32,14 +35,15 @@ export default () => {
         })
       },
 
+      async acceptTerms({state}) {
+        state.accepted_terms_on = new Date().toUTCString()
+        document.cookie = "accepted_terms_on="+new Date().toUTCString()
+      },
+
       async setLocale({state, dispatch}, {locale}) {
         state.locale = locale
         if (process.env.VUE_ENV == 'client') document.cookie = "locale=" + locale
-        console.log(locale)
-        // TODO: load translations from somewhere
-        state.translations = {
-          'welcome': "Welcome to Shitcoin Hub"
-        }
+        state.translations = await this.$axios.$get('/locales/' + locale)
       },
 
       async logout({state, dispatch}) {

@@ -13,11 +13,29 @@
           redactor(v-for="locale in $store.state.available_locales" :key="locale" v-if="edited_locale == locale" v-model="asset.summary_html[locale]" :options="redactor")
           
           button Save changes
-
+      .create_asset(v-if="$store.state.user")
+        form(@submit.prevent="createAsset")
+          .field
+            label Symbol
+            input(v-model="new_asset.symbol")
+          .field
+            label Platform
+            select(v-model="new_asset.platform")
+              option(value="STR") Stellar
+              option(value="EOS") EOS
+              option(value="ETH") ETH
+              option(value="Waves") Waves
+              option(value="native") none/native
+          .field
+            label Address
+            input(v-model="new_asset.address")
+          .field
+            label
+            button Register
 </template>
 
 <script lang="coffee">
-export default
+module.exports =
   components:
     redactor: require('~/components/redactor').default
   data: ->
@@ -35,11 +53,6 @@ export default
         imageData:
           attachee_id: asset.id
           attachee_type: 'Asset'
-  mounted: ->
-    # TODO: extract this into default options
-    $R.ajax.settings =
-      headers:
-        Authorization: this.$store.state.authorization
   methods:
     edit: ->
       this.editing = true        
