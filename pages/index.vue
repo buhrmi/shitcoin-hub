@@ -10,8 +10,8 @@
       .create_asset(v-if="$store.state.user")
         form(@submit.prevent="createShitcoin")
           .field
-            label Symbol
-            input(v-model="new_shitcoin.symbol")
+            label Name
+            input(v-model="new_shitcoin.name")
           .field
             label
             button Register
@@ -25,7 +25,7 @@ export default
     shitcoins: await $axios.$get('/shitcoins')
   data: ->
     new_shitcoin:
-      symbol: null
+      name: null
   methods:
     createShitcoin: ->
       newShitcoin = await this.$axios.$post('/shitcoins', {shitcoin: this.new_shitcoin})
