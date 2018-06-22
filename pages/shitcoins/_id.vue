@@ -13,7 +13,7 @@
           
           button Save changes
       .create_asset(v-if="$store.state.user")
-        h2 Link asset to {{ shitcoin.symbol }}
+        h2 Link asset to {{ shitcoin.name }}
         form(@submit.prevent="createAsset")
           .field
             label Platform
