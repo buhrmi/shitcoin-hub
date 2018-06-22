@@ -49,14 +49,14 @@ module.exports =
       redactor:
         imageData:
           attachee_id: shitcoin.id
-          attachee_type: 'Asset'
+          attachee_type: 'Shitcoin'
   mounted: ->
     this.editing = true if this.$route.params.edit
   methods:
     edit: ->
       this.editing = true        
-    updateShitcoin: (asset) ->
-      this.asset = await this.$axios.$put('/assets/' + asset.id, {asset})
+    updateShitcoin: (shitcoin) ->
+      this.shitcoin = await this.$axios.$put('/shitcoins/' + shitcoin.id, {shitcoin})
       this.editing = false
 </script>
 
