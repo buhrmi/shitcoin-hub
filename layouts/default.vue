@@ -17,7 +17,7 @@
           // p ETH wallet address: {{ $store.state.eth_address }}
           form(@submit.prevent="$store.dispatch('authorize_with_password', {email, password})")
             input(v-model="email" placeholder="email")
-            input(v-model="password" placeholder="password")
+            input(v-model="password" placeholder="password" type="password")
             button Log in
 
         nuxt-link.brand(to="/")
