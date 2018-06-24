@@ -8,21 +8,17 @@
       .summary(v-else="editing")
         form(@submit.prevent="updateShitcoin(shitcoin)")
           .redactor_tabs
-            .tab(v-for="locale in $store.state.available_locales" @click="edited_locale = locale" :class="{active: edited_locale == locale}") {{ locale }}
+            .tab(v-for="locale in $store.state.available_locales" @click="edited_locale = locale" :class="{active: edited_locale == locale}") {{ $t(locale) }}
           redactor(v-for="locale in $store.state.available_locales" :key="locale" v-if="edited_locale == locale" v-model="shitcoin.summary_html[locale]" :options="redactor")
           
-          button Save changes
+          button {{ $t('save_changes') }}
       .create_asset(v-if="$store.state.user")
         h2 Link asset to {{ shitcoin.name }}
         form(@submit.prevent="createAsset")
           .field
             label Platform
             select(v-model="new_asset.platform")
-              option(value="STR") Stellar
-              option(value="EOS") EOS
-              option(value="ETH") ETH
-              option(value="Waves") Waves
-              option(value="native") none/native
+              option(value="erc20" selected) Ethereum ERC20
           .field
             label Address
             input(v-model="new_asset.address")
