@@ -1,7 +1,6 @@
 <template lang="pug">
   .content
     .wrapper
-      h1 {{ shitcoin.name }}
       .summary(v-if="!editing")
         .html(v-html="shitcoin.summary_html[$store.state.locale]")
         button(@click="edit") Edit
@@ -29,6 +28,9 @@
 
 <script lang="coffee">
 module.exports =
+  head: ->
+    title:
+      "Should you invest into #{this.shitcoin.name}? - Shitcoin Hub"
   components:
     redactor: require('~/components/redactor').default
   data: ->
