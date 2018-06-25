@@ -11,19 +11,26 @@
           redactor(v-for="locale in $store.state.available_locales" :key="locale" v-if="edited_locale == locale" v-model="shitcoin.summary_html[locale]" :options="redactor")
           
           button {{ $t('save_changes') }}
+      h2 Linked asset
+      .assets
+        .asset(v-for="asset in assets")
+          .name {{ asset.details.name }} ({{ asset.details.symbol }})
+      h3 Link asset to {{ shitcoin.name }}
       .create_asset(v-if="$store.state.user")
-        h2 Link asset to {{ shitcoin.name }}
-        form(@submit.prevent="createAsset")
+        form(@submit.prevent="linkAsset(new_asset)")
           .field
             label Platform
             select(v-model="new_asset.platform")
-              option(value="erc20" selected) Ethereum ERC20
+              option(value="erc20") Ethereum ERC20
+              option(value="stellar") Stellar
+              option(value="native") none / native
           .field
             label Address
             input(v-model="new_asset.address")
           .field
             label
             button Link
+      .create_asset(v-else) Log in to link an asset
 </template>
 
 <script lang="coffee">
@@ -38,11 +45,15 @@ module.exports =
     editing: false
   asyncData: ({app: {$axios}, params, error, store}) ->
     shitcoin = await $axios.$get("/shitcoins/#{params.id}")
+    assets = await $axios.$get('/assets', params: {shitcoin_id: params.id})
     if !shitcoin
       error({ statusCode: 404, message: 'Couldnt find your stupid shitcoin. Thats a 404.' })
     return
+      assets: assets
       shitcoin: shitcoin
       new_asset:
+        address: null
+        platform: null
         shitcoin_id: shitcoin.id
       redactor:
         imageData:
@@ -52,7 +63,10 @@ module.exports =
     this.editing = true if this.$route.params.edit
   methods:
     edit: ->
-      this.editing = true        
+      this.editing = true
+    linkAsset: (asset) ->
+      await this.$axios.$post('/assets', {asset})
+      this.assets = assets = await this.$axios.$get('/assets', params: {shitcoin_id: this.shitcoin.id})
     updateShitcoin: (shitcoin) ->
       this.shitcoin = await this.$axios.$put('/shitcoins/' + shitcoin.id, {shitcoin})
       this.editing = false
