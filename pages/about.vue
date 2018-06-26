@@ -29,6 +29,6 @@
       h2 History
       p 2016: Incorporated as IT consulting company with the name Stefan K.K. (ステファン株式会社)
       p 2017: Office moved to Akihabara, into shared DMM.make space
-      p 2018: Official company name changed to <strong>Shitcoin, Inc.</strong> (株式会社シトコイン)
+      p 2018: Official company name changed to <strong>Shitcoin, Inc.</strong> (株式会社シットコイン)
       
 </template>
