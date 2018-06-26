@@ -21,8 +21,6 @@
             td
               ul
                 li Development and operation of crypto-currency exchange
-                li Crypto-token issuance
-                li Compliance auditing
                 li IT consulting
                 li Marketing and PR
                 li Being awesome
