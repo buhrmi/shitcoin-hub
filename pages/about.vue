@@ -21,16 +21,11 @@
             td
               ul
                 li Development and operation of crypto-currency exchange
+                li Operation of virtual currency related news outlets
                 li IT consulting
                 li Marketing and PR
                 li Being awesome
                 li Related activities
-          tr
-            td Licenses &amp; Certificates
-            td 
-              ul
-                li Crypto-currency exchange service provider:<br>Pending application with the Financial Services Agency
-                li Shitcoin Analyst Certification:<br>Received in 2018 from the Shitcoin Authority. License Number 000001
       h2 History
       p 2016: Incorporated as IT consulting company with the name Stefan K.K. (ステファン株式会社)
       p 2017: Office moved to Akihabara, into shared DMM.make space

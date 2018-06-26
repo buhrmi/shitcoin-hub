@@ -29,7 +29,7 @@
     nuxt
     .footer
       .wrapper
-        // nuxt-link.right(to="/about") About
+        nuxt-link.right(to="/about") About
         p Copyright 2018 Shitcoin, Inc. All Rights Reserved.
         p 
           | Problem? 
