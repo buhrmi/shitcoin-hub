@@ -28,7 +28,6 @@ export default () => {
       },
 
       async authorize_with_web3({state, dispatch}) {
-        // TODO: use different way of get an authorization string instead of just posting email address
         web3.personal.sign(web3.fromUtf8('shitcoin hub'), state.eth_address, async (err, signature) => {
           let authorizationToken = await this.$axios.$post('/authorization', {signature}, {withCredentials: true})
           dispatch('setAuthorization', 'Bearer ' + authorizationToken)

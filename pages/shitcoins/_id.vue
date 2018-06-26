@@ -11,6 +11,10 @@
           redactor(v-for="locale in $store.state.available_locales" :key="locale" v-if="edited_locale == locale" v-model="shitcoin.summary_html[locale]" :options="redactor")
           
           button {{ $t('save_changes') }}
+      // h2 Rewards
+      // p
+      //   | Are you currently hodling?
+      //   button(@click="$store.dispatch('authorize_with_web3')") Check rewards
       h2 Linked asset
       .assets
         .asset(v-for="asset in assets")
