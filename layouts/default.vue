@@ -16,14 +16,13 @@
         .user_area.logged_out(v-else)
           // p ETH wallet address: {{ $store.state.eth_address }}
           form(@submit.prevent="$store.dispatch('authorize_with_password', {email, password})")
-            input(v-model="email" placeholder="email")
+            input(v-model="email" placeholder="email" type="email")
             input(v-model="password" placeholder="password" type="password")
             button Log in
 
         nuxt-link.brand(to="/")
           img.logo(src="~/assets/logo.png")
-          span.shitcoin shitcoin
-          span.hub hub
+          img.fontmark(src="~/assets/fontmark.png")
 
         p {{ $t('party_mode') }}
     nuxt
@@ -175,11 +174,10 @@ button, .button {
     vertical-align: middle;
     height: 48px;
   }
-  .shitcoin {
-    font-weight: 700;
-  }
-  .hub {
-    font-weight: 100;
+  .fontmark {
+    vertical-align: middle;
+    height: 36px;
+    margin-left: 10px;
   }
 }
 </style>
