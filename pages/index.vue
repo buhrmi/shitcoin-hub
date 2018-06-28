@@ -2,11 +2,13 @@
   .page
     .wrapper
       h1 {{ $t('welcome') }}
-      h2 List of Shitcoins
-      .shitcoin(v-for="shitcoin in shitcoins")
-        nuxt-link(:to="`/shitcoins/${shitcoin.param}`") {{ shitcoin.name}}
-
-      h2 Register Shitcoin
+      h2 Shitcoin list
+      table.shitcoins
+        tbody
+          tr.shitcoin(v-for="shitcoin in shitcoins")
+            td
+              nuxt-link(:to="`/shitcoins/${shitcoin.param}`") {{ shitcoin.name}}
+      h2 Submit Shitcoin
       .create_asset(v-if="$store.state.user")
         form(@submit.prevent="createShitcoin")
           .field
@@ -14,9 +16,19 @@
             input(v-model="new_shitcoin.name")
           .field
             label
-            button Register
-      .unregistered(v-else) Please log in to register your Shitcoin
+            button Submit
+      .unregistered(v-else) Please log in to submit your Shitcoin
 </template>
+
+<style lang="scss">
+table.shitcoins {
+  td {
+    padding: 8px;
+    border-top: 1px solid #eee;
+  }
+}
+</style>
+
 
 <script lang="coffee">
 export default
