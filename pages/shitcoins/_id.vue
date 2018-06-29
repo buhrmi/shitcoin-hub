@@ -3,7 +3,7 @@
     .wrapper
       .side_col
         .shitcoin_image(:style="`background-image:url(${shitcoin.logo_url})`")
-          dropzone#shitcoin_image(ref="dropzone" :options="dropzone_options" v-if="$store.state.user")
+          dropzone#shitcoin_image(ref="dropzone" :options="dropzone_options" v-show="$store.state.user")
         h2 Linked assets
         .assets
           .asset(v-for="asset in assets")
