@@ -114,6 +114,7 @@ li, ul {
   }
 }
 .footer {
+  clear: both;
   width: 100%;
   border-top: 1px solid #ddd;
   position: absolute;
@@ -154,7 +155,16 @@ button, .button {
     background: #449aef;
   }
 }
-
+.side_col {
+  vertical-align: top;
+  width: 260px;
+  display: inline-block;
+}
+.main_col {
+  vertical-align: top;
+  width: calc(100% - 260px);
+  display: inline-block;
+}
 
 
 .top_bar {

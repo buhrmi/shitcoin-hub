@@ -7,7 +7,11 @@
         tbody
           tr.shitcoin(v-for="shitcoin in shitcoins")
             td
-              nuxt-link(:to="`/shitcoins/${shitcoin.param}`") {{ shitcoin.name}}
+              nuxt-link(:to="`/shitcoins/${shitcoin.param}`")
+                .logo
+                  img.logo_thumb(:src="shitcoin.logo_thumb" v-if="shitcoin.logo_thumb")
+                  .placeholder(v-else)
+                | {{ shitcoin.name}}
       h2 Submit Shitcoin
       .create_asset(v-if="$store.state.user")
         form(@submit.prevent="createShitcoin")
@@ -25,6 +29,18 @@ table.shitcoins {
   td {
     padding: 8px;
     border-top: 1px solid #eee;
+  }
+  .logo {
+    vertical-align: middle;
+    display: inline-block;
+    .placeholder {
+      margin-right: 38px;
+    }
+    .logo_thumb {
+      height: 32px;
+      width: 32px;
+      margin-right: 6px
+    }
   }
 }
 </style>
