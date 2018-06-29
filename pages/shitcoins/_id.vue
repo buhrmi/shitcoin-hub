@@ -47,7 +47,11 @@ require('nuxt-dropzone/dropzone.css')
 module.exports =
   head: ->
     title:
-      "Should you invest into #{this.shitcoin.name}? - Shitcoin Hub"
+      "Should I invest into #{this.shitcoin.name}? - Shitcoin Hub"
+    meta: [
+      { hid: 'og:image', property: 'og:image', content: this.shitcoin.logo_url },
+      { hid: 'og:description', property: 'og:description', content: (this.shitcoin.summary_html[this.$store.state.locale] || '').replace(/(<([^>]+)>)/ig,"") }
+    ]
   components:
     redactor: require('~/components/redactor').default
     dropzone: require('nuxt-dropzone')
