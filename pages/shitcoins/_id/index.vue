@@ -14,8 +14,10 @@
             .field
               label Platform
               select(v-model="new_asset.platform")
-                option(value="erc20") Ethereum ERC20
+                option(value="erc20-etc") ERC20 (classic)
+                option(value="erc20") ERC20 (mainnet)
                 option(value="stellar") Stellar
+                option(value="omni") Omni Protocol
                 option(value="native") none / native
             .field
               label Address
@@ -26,6 +28,7 @@
         .create_asset(v-else) Log in to link an asset
       .main_col
         .summary(v-if="!editing")
+          nuxt-link.button(:to="{name: 'shitcoins-id-wallet', params: {id: shitcoin.id}}") Go to wallet
           .html(v-html="shitcoin.summary_html[$store.state.locale]")
           button(@click="edit" v-if="$store.state.user") Edit
           .login_to_edit(v-else) Log in to edit
@@ -55,10 +58,11 @@ module.exports =
   components:
     redactor: require('~/components/redactor').default
     dropzone: require('nuxt-dropzone')
-  data: ->
   asyncData: ({app: {$axios}, params, error, store}) ->
-    shitcoin = await $axios.$get("/shitcoins/#{params.id}")
-    assets = await $axios.$get('/assets', params: {shitcoin_id: params.id})
+    [shitcoin, assets] = await Promise.all [
+      $axios.$get("/shitcoins/#{params.id}"),
+      $axios.$get('/assets', params: {shitcoin_id: params.id})
+    ]
     if !shitcoin
       error({ statusCode: 404, message: 'Couldnt find your stupid shitcoin. Thats a 404.' })
     return
