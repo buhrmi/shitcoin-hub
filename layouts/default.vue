@@ -22,9 +22,14 @@
 
         nuxt-link.brand(to="/")
           img.logo(src="~/assets/logo.png")
-          img.fontmark(src="~/assets/fontmark.png")
+          img.fontmark(src="~/assets/fontmark.png") 
 
-        p {{ $t('party_mode') }}
+        | because everything is a shitcoin
+    .nav_bar
+      .wrapper
+        nuxt-link(to="/") News
+        nuxt-link(to="/shitcoins") Shitcoins
+        nuxt-link(to="/balances") Balances
     nuxt
     .footer
       .wrapper
@@ -169,13 +174,24 @@ button, .button {
 
 .top_bar {
   padding: 16px 0;
-  border-bottom: 1px solid #ddd;
+  
   .user_area {
     float: right;
     text-align: right;
   }
   .locale {
     float: right;
+  }
+}
+.nav_bar {
+  border-bottom: 1px solid #ddd;
+  a {
+    display: inline-block;
+    padding: 5px 12px;
+    &.nuxt-link-exact-active {
+      font-weight: bold;
+      border-bottom: 3px solid #ddd;
+    }
   }
 }
 .brand {
