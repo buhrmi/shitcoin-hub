@@ -13,12 +13,8 @@
           form(@submit.prevent="linkAsset(new_asset)")
             .field
               label Platform
-              select(v-model="new_asset.platform")
-                option(value="erc20-etc") ERC20 (classic)
-                option(value="erc20") ERC20 (mainnet)
-                option(value="stellar") Stellar
-                option(value="omni") Omni Protocol
-                option(value="native") none / native
+              select(v-model="new_asset.platform_id")
+                option(v-for="platform in platforms" :value="platform.id") {{ platform.name }}
             .field
               label Address
               input(v-model="new_asset.address")
@@ -59,9 +55,10 @@ module.exports =
     redactor: require('~/components/redactor').default
     dropzone: require('nuxt-dropzone')
   asyncData: ({app: {$axios}, params, error, store}) ->
-    [shitcoin, assets] = await Promise.all [
+    [shitcoin, assets, platforms] = await Promise.all [
       $axios.$get("/shitcoins/#{params.id}"),
       $axios.$get('/assets', params: {shitcoin_id: params.id})
+      $axios.$get('/platforms')
     ]
     if !shitcoin
       error({ statusCode: 404, message: 'Couldnt find your stupid shitcoin. Thats a 404.' })
@@ -75,10 +72,11 @@ module.exports =
       edited_locale: store.state.locale
       editing: false
       assets: assets
+      platforms: platforms
       shitcoin: shitcoin
       new_asset:
         address: null
-        platform: null
+        platform_id: null
         shitcoin_id: shitcoin.id
       redactor:
         imageData:

@@ -20,9 +20,10 @@
             td Business Activities
             td
               ul
-                li Blockchain-related information gathering
-                li Operation of digital assets related news outlets
                 li Development and operation of digital assets exchange
+                li Development of blockchain systems
+                li Operation of digital assets related news outlets
+                li Currency exchange services
                 li IT consulting
                 li Marketing and PR
                 li Being awesome
