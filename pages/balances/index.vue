@@ -3,7 +3,8 @@
     .wrapper
       h1 Shitcoin Balances
       .balance(v-for="balance in balances")
-        p {{ balance.asset.name }}: {{ balance.balance }}
+        p {{ balance.asset.shitcoin.name }}: {{ balance.balance }}
+        nuxt-link.button(:to="{name: 'shitcoins-id-wallet', params: {id: balance.asset.shitcoin.id}}") Go to wallet
 </template>
 
 <script lang="coffee">
