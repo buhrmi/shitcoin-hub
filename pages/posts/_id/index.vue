@@ -11,4 +11,9 @@
 module.exports =
   asyncData: ({app: {$axios}, params}) ->
     post: await $axios.$get('/posts/' + params.id)
+  head: ->
+    title: this.post.title['en']
+    meta: [
+      { hid: 'og:description', property: 'og:description', content: (this.post.body_html['en'] || '').replace(/(<([^>]+)>)/ig,"") }
+    ]
 </script>
