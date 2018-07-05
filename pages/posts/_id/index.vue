@@ -1,0 +1,14 @@
+<template lang="pug">
+  .page
+    .wrapper
+      h1 {{ post.title['en'] }}
+      .body(v-html="post.body_html['en']")
+      nuxt-link.button(v-if="$store.state.user" :to="{name: 'posts-id-edit', params: {id: post.id}}") Edit Post
+      nuxt-link(:to="{name: 'posts'}") Home
+</template>
+
+<script lang="coffee">
+module.exports =
+  asyncData: ({app: {$axios}, params}) ->
+    post: await $axios.$get('/posts/' + params.id)
+</script>

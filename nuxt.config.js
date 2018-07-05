@@ -4,6 +4,7 @@ module.exports = {
   serverMiddleware: [require('cookie-parser')()],
   plugins: [
     // Sets "state.authorization" as axios token
+    '~/plugins/components.js',
     '~/plugins/auth.js',
     '~/plugins/filters.js',
     '~/plugins/monkey_patches.js',
@@ -24,6 +25,7 @@ module.exports = {
   },
   head: {
     title: 'Shitcoin Hub',
+    description: 'Read, post and trade Shitcoins on Shitcoin Hub.',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' } 
@@ -39,8 +41,8 @@ module.exports = {
     ]
   },
   axios: {
-    baseURL: 'http://localhost:9292',
-    // browserBaseURL: 'https://api.test.exchange'
+    credentials: true,
+    baseURL: 'http://localhost:9292' // this is being overwritten by API_URL and API_URL_BROWSER env vars
   },
   env: {
 

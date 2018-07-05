@@ -10,12 +10,5 @@ export default async ({store, app: { $axios }}) => {
       this.setRequestHeader('Authorization', store.state.authorization);
       return res;
     }
-
-    // Set authorization header for requests made by redactor wysiwyg editor
-    // $R.ajax.settings = {
-    //   headers: {
-    //     Authorization: store.state.authorization
-    //   }
-    // }
   }
 }

@@ -51,9 +51,6 @@ module.exports =
       { hid: 'og:image', property: 'og:image', content: this.shitcoin.logo_url },
       { hid: 'og:description', property: 'og:description', content: (this.shitcoin.summary_html[this.$store.state.locale] || '').replace(/(<([^>]+)>)/ig,"") }
     ]
-  components:
-    redactor: require('~/components/redactor').default
-    dropzone: require('nuxt-dropzone')
   asyncData: ({app: {$axios}, params, error, store}) ->
     [shitcoin, assets, platforms] = await Promise.all [
       $axios.$get("/shitcoins/#{params.id}"),
@@ -67,7 +64,6 @@ module.exports =
         url: $axios.defaults.baseURL + '/shitcoins/' + shitcoin.id
         method: 'patch'
         paramName: 'shitcoin[logo]'
-        includeStyling: true
         dictDefaultMessage: if shitcoin.logo_url then 'Change Image' else 'Add an Image'
       edited_locale: store.state.locale
       editing: false
