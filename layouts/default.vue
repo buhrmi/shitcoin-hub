@@ -76,6 +76,10 @@ a {
   color: black;
   text-decoration: none;
 }
+p {
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
 table {
   width: 100%;
 }
