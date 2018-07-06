@@ -33,12 +33,16 @@
     nuxt
     .footer
       .wrapper
-        nuxt-link.right(to="/about") About
-        p Copyright 2018 Shitcoin, Inc. All Rights Reserved.
+        .right.links
+          a(target="_blank" href="https://docs.google.com/document/d/18P6Y1LIAkbHJ6pbjrHmLRCNljgPkNRTNVcxD8UTVX-E/edit?usp=sharing") Whitepaper 
+          a(target="_blank" href="https://github.com/shitcoinhub/api") API 
+          nuxt-link(to="/about") About
+      
         p 
+          | Copyright 2018 Shitcoin, Inc. All Rights Reserved. <br>
           | Problem? 
           a(href="mailto:support@shitcoinhub.com") support@shitcoinhub.com
-        p
+          | <br>
           a(href="https://github.com/shitcoinhub") Get the shitty source code on GitHub
 </template>
 
@@ -130,6 +134,9 @@ li, ul {
   bottom: 0;
   padding-top: 10px;
   height: $footer-height;
+  .links a {
+    margin-left: 10px;
+  }
 }
 .right {
   float: right;
