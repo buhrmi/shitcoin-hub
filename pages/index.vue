@@ -6,7 +6,7 @@
         .date {{ post.created_at }}
         h2.title
           nuxt-link(:to="{name: 'posts-id', params: {id: post.id}}") {{ post.title['en'] }}
-        p.preview(v-html="post.body_html['en']")
+        .preview(v-html="post.body_html['en']")
         .creator {{ post.creator.name }}
       nuxt-link.button(v-if="$store.state.user" to="/posts/new") New Post
       p(v-else) Log in to post
