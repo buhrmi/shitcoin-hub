@@ -15,6 +15,7 @@ module.exports = {
   modules: [
     '@nuxtjs/font-awesome',
     '@nuxtjs/axios',
+    '@nuxtjs/toast',
   ],
   build: {
     vendor: [
@@ -43,6 +44,10 @@ module.exports = {
   axios: {
     credentials: true,
     baseURL: 'http://localhost:9292' // this is being overwritten by API_URL and API_URL_BROWSER env vars
+  },
+  toast: {
+    position: 'top-center',
+    iconPack : 'fontawesome'
   },
   env: {
 

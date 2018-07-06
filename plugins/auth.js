@@ -10,5 +10,19 @@ export default async ({store, app: { $axios }}) => {
       this.setRequestHeader('Authorization', store.state.authorization);
       return res;
     }
+    $axios.interceptors.response.use(null, function(error) {
+      if (error) {
+        store.$toast.error(error.response.data.error, {
+          icon: 'exclamation-circle',
+          action: {
+            text: 'Dismiss',
+            onClick : (e, toastObject) => {
+              toastObject.goAway(0);
+            }
+        },
+        })
+      }
+      return Promise.reject(error)
+    });
   }
 }
