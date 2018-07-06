@@ -11,7 +11,9 @@
           option(value="ja") 日本語
         .user_area.logged_in(v-if="$store.state.user")
           // p ETH wallet address: {{ $store.state.eth_address }}
-          p Logged in as {{ $store.state.user.email }}
+          p 
+            | Logged in as {{ $store.state.user.email }} | 
+            nuxt-link(to="/profile") View profile
           button(@click="$store.dispatch('logout')") Log out
         .user_area.logged_out(v-else)
           // p ETH wallet address: {{ $store.state.eth_address }}
