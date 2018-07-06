@@ -23,8 +23,6 @@
         nuxt-link.brand(to="/")
           img.logo(src="~/assets/logo.png")
           img.fontmark(src="~/assets/fontmark.png") 
-
-        | because everything is a shitcoin
     .nav_bar
       .wrapper
         nuxt-link(to="/") News
