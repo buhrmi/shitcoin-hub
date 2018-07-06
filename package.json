@@ -2,6 +2,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.1",
     "@nuxtjs/font-awesome": "^1.0.3",
+    "@nuxtjs/toast": "^3.0.1",
     "cookie-parser": "^1.4.3",
     "dotenv": "^5.0.1",
     "nuxt": "latest",
