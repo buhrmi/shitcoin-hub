@@ -21,7 +21,8 @@
             td
               ul
                 li Development and operation of digital assets exchange
-                li Development of blockchain systems
+                li Development of decentralized applications
+                li Smart Contract development
                 li Operation of digital assets related news outlets
                 li Currency exchange services
                 li IT consulting
