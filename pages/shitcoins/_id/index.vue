@@ -2,8 +2,7 @@
   .content
     .wrapper
       .side_col
-        .shitcoin_image(:style="`background-image:url(${shitcoin.logo_url})`")
-          dropzone#shitcoin_image(ref="dropzone" :options="dropzone_options" v-show="$store.state.user")
+        image-uploader(v-model="shitcoin" field="logo" :path="`/shitcoins/${this.shitcoin.id}`" param="shitcoin[logo]")
         h2 Linked assets
         .assets
           .asset(v-for="asset in assets")
@@ -44,6 +43,8 @@
 require('nuxt-dropzone/dropzone.css')
 
 module.exports =
+  components:
+    imageUploader: require('~/components/image-uploader').default
   head: ->
     title:
       "Should I invest into #{this.shitcoin.name}? - Shitcoin Hub"
@@ -60,11 +61,6 @@ module.exports =
     if !shitcoin
       error({ statusCode: 404, message: 'Couldnt find your stupid shitcoin. Thats a 404.' })
     return
-      dropzone_options:
-        url: $axios.defaults.baseURL + '/shitcoins/' + shitcoin.id
-        method: 'patch'
-        paramName: 'shitcoin[logo]'
-        dictDefaultMessage: if shitcoin.logo_url then 'Change Image' else 'Add an Image'
       edited_locale: store.state.locale
       editing: false
       assets: assets
@@ -80,9 +76,6 @@ module.exports =
           attachee_type: 'Shitcoin'
   mounted: ->
     this.editing = true if this.$route.params.edit
-    this.$refs.dropzone.dropzone.on 'complete', (file) =>
-      this.$refs.dropzone.dropzone.removeFile(file)
-      this.shitcoin = await this.$axios.$get("/shitcoins/#{this.shitcoin.id}")
   methods:
     edit: ->
       this.editing = true
@@ -95,7 +88,7 @@ module.exports =
 </script>
 
 <style lang="scss">
-.shitcoin_image {
+.image-uploader {
   width: 250px;
   height: 250px;
   display: flex;
@@ -107,17 +100,6 @@ module.exports =
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-}
-.vue-dropzone {
-  border: none;
-  background: transparent;
-  height: 100%;
-  color: white;
-  -webkit-transition: background-color 0.2s linear;
-  transition: background-color 0.2s linear;
-  &:hover {
-    background-color: rgba(255,255,255,0.2);
-  }
 }
 .redactor_tabs {
   margin-bottom: -1px;
