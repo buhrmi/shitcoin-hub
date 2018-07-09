@@ -9,7 +9,8 @@
         tbody
           tr
             td Representative Director
-            td Stefan Buhrmester
+            td
+              nuxt-link(to="/profile/f5459c15-638f-4193-9f45-e587284d4463") Stefan Buhrmester
           tr
             td Company Registration Number
             td 0112 - 01 - 019210
