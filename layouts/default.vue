@@ -13,7 +13,7 @@
           // p ETH wallet address: {{ $store.state.eth_address }}
           p 
             | Logged in as {{ $store.state.user.email }} | 
-            nuxt-link(to="/profile") View profile
+            nuxt-link(to="/me") View profile
           button(@click="$store.dispatch('logout')") Log out
         .user_area.logged_out(v-else)
           // p ETH wallet address: {{ $store.state.eth_address }}
@@ -77,8 +77,12 @@ h2 {
   font-size: 26px;
 }
 a {
-  color: black;
+  color: #1a0dab;
+  // font-weight: bold;
   text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 p {
   line-height: 1.5;
@@ -199,6 +203,7 @@ button, .button {
   a {
     display: inline-block;
     padding: 5px 12px;
+    color: black;
     &.nuxt-link-exact-active {
       font-weight: bold;
       border-bottom: 3px solid #ddd;
