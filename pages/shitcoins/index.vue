@@ -2,6 +2,11 @@
   .page
     .wrapper
       table.shitcoins
+        thead
+          tr
+            th Name
+            th Platform
+            th Rating
         tbody
           tr.shitcoin(v-for="shitcoin in shitcoins")
             td
@@ -10,12 +15,19 @@
                   img.logo_thumb(:src="shitcoin.logo_thumb" v-if="shitcoin.logo_thumb")
                   .placeholder(v-else)
                 | {{ shitcoin.name}}
+            td {{ shitcoin.platform }}
+            td Not yet rated
+
       h2 Submit Shitcoin
       .create_asset(v-if="$store.state.user")
         form(@submit.prevent="createShitcoin")
           .field
-            label Name
-            input(v-model="new_shitcoin.name")
+            label Platform
+            select(v-model="new_shitcoin.platform_id")
+              option(v-for="platform in platforms" :value="platform.id") {{ platform.name }}
+          .field
+            label Address
+            input(v-model="new_shitcoin.address")
           .field
             label
             button Submit
@@ -24,7 +36,7 @@
 
 <style lang="scss">
 table.shitcoins {
-  td {
+  td, th {
     padding: 8px;
     border-top: 1px solid #eee;
   }
@@ -49,9 +61,11 @@ export default
   # layout: 'soon'
   asyncData: ({app: {$axios}}) ->
     shitcoins: await $axios.$get('/shitcoins')
+    platforms: await $axios.$get('/platforms')
   data: ->
     new_shitcoin:
-      name: null
+      platform_id: null
+      address: null
   methods:
     createShitcoin: ->
       newShitcoin = await this.$axios.$post('/shitcoins', {shitcoin: this.new_shitcoin})

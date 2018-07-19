@@ -91,6 +91,9 @@ p {
 table {
   width: 100%;
 }
+th {
+  text-align: left;
+}
 td {
   vertical-align: top;
 }
