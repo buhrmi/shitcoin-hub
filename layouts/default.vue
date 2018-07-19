@@ -28,7 +28,7 @@
     .nav_bar
       .wrapper
         nuxt-link(to="/") News
-        nuxt-link(to="/shitcoins") Shitcoins
+        nuxt-link(to="/shitcoins") Rankings
         nuxt-link(to="/balances") Balances
     nuxt
     .footer
