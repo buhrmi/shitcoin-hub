@@ -24,3 +24,26 @@ module.exports =
     Object.assign(options, this.options)
     $R this.$refs.textarea, options
 </script>
+
+<style lang="scss">
+.redactor_tabs {
+  margin-bottom: -1px;
+  z-index: 1;
+  position: relative;
+  .tab {
+    cursor: pointer;
+    padding: 9px 38px;
+    border-bottom: 1px solid transparent;
+    display: inline-block;
+    &:not(.active):hover {
+      background-color: #449aef;
+      color: white;
+    }
+    &.active {
+      border: 1px solid #82b7ec;
+      border-bottom: 1px solid white;
+      font-weight: bold;
+    }
+  }
+}
+</style>

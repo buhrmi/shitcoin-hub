@@ -1,7 +1,7 @@
 <template lang="pug">
   .content
     .wrapper
-      h1 Your {{ shitcoin.name }} Wallet
+      shitcoin-header(:shitcoin="shitcoin")
       p(v-if="deposit_address") Your deposit address: {{ deposit_address.address }}
       p Current balance: {{ balance.balance }}
 </template>

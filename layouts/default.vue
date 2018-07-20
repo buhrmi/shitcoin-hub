@@ -29,6 +29,7 @@
       .wrapper
         nuxt-link(to="/") News
         nuxt-link(to="/shitcoins") Rankings
+        nuxt-link(to="/submit") Submit
         nuxt-link(to="/balances") Balances
     nuxt
     .footer
@@ -207,7 +208,7 @@ button, .button {
     display: inline-block;
     padding: 5px 12px;
     color: black;
-    &.nuxt-link-exact-active {
+    &.active, &.nuxt-link-exact-active {
       font-weight: bold;
       border-bottom: 3px solid #ddd;
     }

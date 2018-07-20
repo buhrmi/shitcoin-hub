@@ -44,39 +44,3 @@ module.exports =
       this.$router.push('/me')
       this.$toast.success("Your profile has been saved.")
 </script>
-
-<style lang="scss">
-.image-uploader {
-  width: 250px;
-  height: 250px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  background: #888;
-  color: white;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.redactor_tabs {
-  margin-bottom: -1px;
-  z-index: 1;
-  position: relative;
-  .tab {
-    cursor: pointer;
-    padding: 9px 38px;
-    border-bottom: 1px solid transparent;
-    display: inline-block;
-    &:not(.active):hover {
-      background-color: #449aef;
-      color: white;
-    }
-    &.active {
-      border: 1px solid #82b7ec;
-      border-bottom: 1px solid white;
-      font-weight: bold;
-    }
-  }
-}
-</style>

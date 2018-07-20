@@ -2,9 +2,13 @@
   .page
     .wrapper
       h1 Shitcoin Balances
-      .balance(v-for="balance in balances")
-        p {{ balance.shitcoin.name }}: {{ balance.balance }}
-        nuxt-link.button(:to="{name: 'shitcoins-id-wallet', params: {id: balance.shitcoin.id}}") Go to wallet
+      table
+        tbody
+          tr.balance(v-for="balance in balances")
+            td {{ balance.shitcoin.name }}
+            td {{ balance.balance }}
+            td 
+              nuxt-link.button(:to="{name: 'shitcoins-id-wallet', params: {id: balance.shitcoin.id}}") Go to wallet
 </template>
 
 <script lang="coffee">
@@ -13,3 +17,12 @@ module.exports =
     balances: await $axios.$get('/balances')
 
 </script>
+
+
+<style lang="scss" scoped>
+.balance {
+  td {
+    vertical-align: middle;
+  }
+}
+</style>

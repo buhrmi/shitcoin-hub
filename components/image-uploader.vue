@@ -1,5 +1,5 @@
 <template lang="pug">
-  .image-uploader(:style="`background-image:url(${this.value[this.field + '_url']})`")
+  .image-uploader(:style="style")
     dropzone#image-uploader(ref="dropzone" :options="dropzone_options")
 </template>
 
@@ -11,6 +11,13 @@ module.exports =
       this.$refs.dropzone.dropzone.removeFile(file)
       newValue = await this.$axios.$get(this.path)
       this.value[this.field + '_url'] = newValue[this.field + '_url']
+  computed:
+    style: ->
+      bgurl = this.value[this.field + '_url']
+      if bgurl
+        "background-image:url(#{bgurl})"
+      else
+        ''
   data: ->
     dropzone_options:
       url: this.$axios.defaults.baseURL + this.path
@@ -31,5 +38,18 @@ module.exports =
   &:hover {
     background-color: rgba(255,255,255,0.2);
   }
+}
+.image-uploader {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background: #888;
+  color: white;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 </style>

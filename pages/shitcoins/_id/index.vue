@@ -1,11 +1,11 @@
 <template lang="pug">
   .content
     .wrapper
+      shitcoin-header(:shitcoin="shitcoin" active="overview")
       .side_col
         image-uploader(v-model="shitcoin" field="logo" :path="`/shitcoins/${this.shitcoin.id}`" param="shitcoin[logo]")
       .main_col
         .summary(v-if="!editing")
-          nuxt-link.button(:to="{name: 'shitcoins-id-wallet', params: {id: shitcoin.id}}") Go to wallet
           .html(v-html="shitcoin.summary_html[$store.state.locale]")
           button(@click="edit" v-if="$store.state.user") Edit
           .login_to_edit(v-else) Log in to edit
@@ -58,38 +58,6 @@ module.exports =
       this.editing = false
 </script>
 
-<style lang="scss">
-.image-uploader {
-  width: 250px;
-  height: 250px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  background: #888;
-  color: white;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.redactor_tabs {
-  margin-bottom: -1px;
-  z-index: 1;
-  position: relative;
-  .tab {
-    cursor: pointer;
-    padding: 9px 38px;
-    border-bottom: 1px solid transparent;
-    display: inline-block;
-    &:not(.active):hover {
-      background-color: #449aef;
-      color: white;
-    }
-    &.active {
-      border: 1px solid #82b7ec;
-      border-bottom: 1px solid white;
-      font-weight: bold;
-    }
-  }
-}
+<style lang="scss" scoped>
+
 </style>
