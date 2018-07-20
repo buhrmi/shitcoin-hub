@@ -11,7 +11,7 @@
 
 <script lang="coffee">
 module.exports =
-  asyncData: ({app:{$axios}, params})->
+  asyncData: ({app:{$axios}, params}) ->
     user: await $axios.$get('/users/' + params.id)
 </script>
 

@@ -21,7 +21,7 @@
             .tab(v-for="locale in $store.state.available_locales" @click="edited_locale = locale" :class="{active: edited_locale == locale}") {{ $t(locale) }}
           redactor(v-for="locale in $store.state.available_locales" :key="locale" v-if="edited_locale == locale" v-model="newProfile.bio_html[locale]")
           button {{ $t('save_changes') }}
-          nuxt-link(to="/profile") Back to profile
+          nuxt-link(to="/me") Back to profile
 </template>
 
 <script lang="coffee">

@@ -9,28 +9,24 @@
         select.locale(@change="$store.dispatch('setLocale', {locale})" v-model="locale")
           option(value="en") English
           option(value="ja") 日本語
-        .user_area.logged_in(v-if="$store.state.user")
-          // p ETH wallet address: {{ $store.state.eth_address }}
-          p 
-            | Logged in as {{ $store.state.user.email }} | 
-            nuxt-link(to="/me") View profile
-          button(@click="$store.dispatch('logout')") Log out
-        .user_area.logged_out(v-else)
-          // p ETH wallet address: {{ $store.state.eth_address }}
-          form(@submit.prevent="$store.dispatch('authorize_with_password', {email, password})")
-            input(v-model="email" placeholder="email" type="email")
-            input(v-model="password" placeholder="password" type="password")
-            button Log in
 
         nuxt-link.brand(to="/")
           img.logo(src="~/assets/logo.png")
           img.fontmark(src="~/assets/fontmark.png") 
     .nav_bar
       .wrapper
+        .user_nav.logged_in(v-if="$store.state.user")
+          // p ETH wallet address: {{ $store.state.eth_address }}
+          nuxt-link(to="/me") {{ $store.state.user.email }}
+          button(@click="$store.dispatch('logout')") Log out
+        .user_nav.logged_out(v-else)
+          form(@submit.prevent="$store.dispatch('authorize_with_password', {email, password})")
+            input(v-model="email" placeholder="email" type="email")
+            input(v-model="password" placeholder="password" type="password")
+            button Log in
         nuxt-link(to="/") News
         nuxt-link(to="/shitcoins") Rankings
         nuxt-link(to="/submit") Submit
-        nuxt-link(to="/balances") Balances
     nuxt
     .footer
       .wrapper
@@ -103,6 +99,7 @@ li, ul {
   list-style-position: inside;
 }
 .wrapper {
+  position: relative;
   width: 1070px;
   max-width: 100%;
   margin: 0 auto;
@@ -205,6 +202,7 @@ button, .button {
 }
 .nav_bar {
   border-bottom: 1px solid #ddd;
+  position: relative;
   a {
     display: inline-block;
     padding: 5px 12px;
@@ -213,6 +211,15 @@ button, .button {
       font-weight: bold;
       border-bottom: 3px solid #ddd;
     }
+  }
+  .user_nav {
+    position: absolute;
+    right: 0;
+  }
+  button {
+    padding: 3px 10px;
+    box-shadow: none;
+    border: 1px solid #ddd;
   }
 }
 .brand {
