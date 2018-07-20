@@ -7,10 +7,14 @@
           .field
             label Platform
             select(v-model="new_shitcoin.platform_id")
+              option(value="") Unspecified
               option(v-for="platform in platforms" :value="platform.id") {{ platform.name }}
-          .field
+          .field(v-if="new_shitcoin.platform_id")
             label Address
             input(v-model="new_shitcoin.address")
+          .field(v-else)
+            label Name
+            input(v-model="new_shitcoin.name")
           .field
             label
             button Submit
@@ -23,8 +27,9 @@ module.exports =
     platforms: await $axios.$get('/platforms')
   data: ->
     new_shitcoin:
-      platform_id: null
+      platform_id: ''
       address: null
+      name: ''
   methods:
     createShitcoin: ->
       newShitcoin = await this.$axios.$post('/shitcoins', {shitcoin: this.new_shitcoin})

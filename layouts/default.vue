@@ -62,6 +62,7 @@ $footer-height: 100px;
 html {
   font-family: 'Noto Sans', sans-serif;
   font-size: 15px;
+  -webkit-font-smoothing: antialiased;
 }
 * {
   font-family: inherit;
