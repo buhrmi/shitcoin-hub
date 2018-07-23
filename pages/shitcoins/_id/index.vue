@@ -4,6 +4,38 @@
       shitcoin-header(:shitcoin="shitcoin" active="overview")
       .side_col
         image-uploader(v-model="shitcoin" field="logo" :path="`/shitcoins/${this.shitcoin.id}`" param="shitcoin[logo]")
+        table.details(v-if="!editing")
+          tbody
+            tr
+              th Platform
+              td
+                a(target="_blank" :href="shitcoin.explorer_url") {{ shitcoin.platform }}
+            tr
+              th Website
+              td {{ shitcoin.details.website }}
+            tr
+              th Telegram
+              td {{ shitcoin.details.telegram }}
+            tr
+              th Twitter
+              td {{ shitcoin.details.twitter }}
+        table.details(v-else)
+          tbody
+            tr
+              th Platform
+              td {{ shitcoin.platform_id }}
+            tr
+              th Website
+              td 
+                input(v-model="shitcoin.details.website")
+            tr
+              th Telegram
+              td 
+                input(v-model="shitcoin.details.telegram")
+            tr
+              th Twitter
+              td 
+                input(v-model="shitcoin.details.twitter")
       .main_col
         .summary(v-if="!editing")
           .html(v-html="shitcoin.summary_html[$store.state.locale]")
@@ -59,5 +91,13 @@ module.exports =
 </script>
 
 <style lang="scss" scoped>
+.details {
+  margin-top: 12px;
+  // border: 1px solid #ddd;
+  width: 250px;
+  th, td {
+    padding: 12px;
+  }
+}
 
 </style>

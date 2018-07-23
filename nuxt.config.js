@@ -26,10 +26,10 @@ module.exports = {
   },
   head: {
     title: 'Shitcoin Hub',
-    description: 'Read, post and trade Shitcoins on Shitcoin Hub.',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' } 
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: "The social shilling platform" }
     ],
     script: [
       // {src: 'https://js.pusher.com/4.1/pusher.min.js'},

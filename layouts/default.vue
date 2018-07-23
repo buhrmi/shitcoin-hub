@@ -60,6 +60,9 @@ html {
   font-size: 15px;
   -webkit-font-smoothing: antialiased;
 }
+img {
+  max-width: 100%;
+}
 * {
   font-family: inherit;
   font-size: inherit;
