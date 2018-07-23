@@ -103,9 +103,11 @@ li, ul {
 }
 .wrapper {
   position: relative;
-  width: 1070px;
-  max-width: 100%;
+  max-width: 1070px;
   margin: 0 auto;
+  @media screen and (max-width: 1090px) {
+    margin: 0 20px;
+  }
 }
 .layout {
   min-height: 100vh;
@@ -150,11 +152,7 @@ li, ul {
 .right {
   float: right;
 }
-@media screen and (max-width: 1090px) {
-  .wrapper {
-    margin: 0 20px;
-  }
-}
+
 button, .button {
   cursor: pointer;
   display: inline-block;
