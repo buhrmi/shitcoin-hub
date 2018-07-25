@@ -27,6 +27,8 @@
         nuxt-link(to="/") News
         nuxt-link(to="/shitcoins") Rankings
         nuxt-link(to="/submit") Submit
+    .wrapper
+      .disclaimer PLEASE NOTE: The purpose of this project is NOT to spread FUD. If you think that this project is about spreading FUD, please read the <a href="https://docs.google.com/document/d/18P6Y1LIAkbHJ6pbjrHmLRCNljgPkNRTNVcxD8UTVX-E/edit?usp=sharing" target="_blank">Whitepaper</a> (it's not even long).
     nuxt
     .footer
       .wrapper
@@ -108,6 +110,13 @@ li, ul {
   @media screen and (max-width: 1090px) {
     margin: 0 20px;
   }
+}
+.disclaimer {
+  margin: 12px 0;
+  border: 1px solid burlywood;
+  background: white;
+  padding: 12px;
+  background: #fafada;
 }
 .layout {
   min-height: 100vh;

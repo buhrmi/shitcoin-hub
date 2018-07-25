@@ -18,7 +18,7 @@
             td Office Address
             td Fujisoft Akihabara 12F<br>Kanda Neribeicho 3, Chiyoda<br>Tokyo 101-0022
           tr
-            td Business Activities
+            td Business Activities<br>(定款改正進行中)
             td
               ul
                 li Development and operation of digital assets exchange
