@@ -26,12 +26,12 @@
                 li Smart Contract development
                 li IT consulting
                 li Marketing and PR
-                li Being awesome
                 li Related activities
-      // h2 History
-      // p 2016: Incorporated as IT consulting company with the name Stefan K.K. (ステファン株式会社)
-      // p 2017: Office moved to Akihabara, into shared DMM.make space
-      // p 2018: Official company name changed to <strong>Shitcoin, Inc.</strong> (株式会社シットコイン)
+      img(src="~/assets/wtfisthis.png" width="500")
+      h2 History
+      p 2016: Incorporated as IT consulting company with the name Stefan K.K. (ステファン株式会社)
+      p 2017: Office moved to Akihabara, into shared DMM.make space
+      p 2018: Official company name change to <strong>Shitcoin, Inc.</strong> (株式会社シットコイン)
       
 </template>
 

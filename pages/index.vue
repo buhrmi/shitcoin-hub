@@ -1,7 +1,7 @@
 <template lang="pug">
   .page.news
     .wrapper
-      h1 Shitty news
+      h1 Shitty News
       .post(v-for="post in posts")
         .date {{ post.created_at }}
         h2.title
