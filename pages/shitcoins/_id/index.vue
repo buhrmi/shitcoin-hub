@@ -19,6 +19,9 @@
             tr
               th Twitter
               td {{ shitcoin.details.twitter }}
+            tr
+              td 
+                button(@click="edit" v-if="$store.state.user") Edit
         table.details(v-else)
           tbody
             tr
@@ -36,17 +39,16 @@
               th Twitter
               td 
                 input(v-model="shitcoin.details.twitter")
+                button(@click="save") {{ $t('save_changes') }}
       .main_col
-        .summary(v-if="!editing")
-          .html(v-html="shitcoin.summary_html[$store.state.locale]")
-          button(@click="edit" v-if="$store.state.user") Edit
-          .login_to_edit(v-else) Log in to edit
-        .summary(v-else="editing")
-          form(@submit.prevent="updateShitcoin(shitcoin)")
-            .redactor_tabs
-              .tab(v-for="locale in $store.state.available_locales" @click="edited_locale = locale" :class="{active: edited_locale == locale}") {{ $t(locale) }}
-            redactor(v-for="locale in $store.state.available_locales" :key="locale" v-if="edited_locale == locale" v-model="shitcoin.summary_html[locale]" :options="redactor")
-            button {{ $t('save_changes') }}
+        .reviews
+          .review(v-for="review in reviews")
+            .author
+              | Review by 
+              nuxt-link(:to="{name: 'profiles-id', params: {id: review.author.id}}") {{ review.author.display_name }}
+            .review_html(v-html="$t(review.html)")
+          nuxt-link.button(:to="{name: 'reviews-new', query: {shitcoin_id: shitcoin.id}}" v-if="$store.state.user") Submit review
+          .login_to_edit(v-else) Log in to submit a review
       // h2 Rewards
       // p
       //   | Are you currently hodling?
@@ -67,8 +69,9 @@ module.exports =
       { hid: 'og:description', property: 'og:description', content: (this.shitcoin.summary_html[this.$store.state.locale] || '').replace(/(<([^>]+)>)/ig,"") }
     ]
   asyncData: ({app: {$axios}, params, error, store}) ->
-    [shitcoin] = await Promise.all [
-      $axios.$get("/shitcoins/#{params.id}")
+    [shitcoin, reviews] = await Promise.all [
+      $axios.$get("/shitcoins/#{params.id}"),
+      $axios.$get("/reviews", params: {shitcoin_id: params.id})
     ]
     if !shitcoin
       error({ statusCode: 404, message: 'Couldnt find your stupid shitcoin. Thats a 404.' })
@@ -76,6 +79,7 @@ module.exports =
       edited_locale: store.state.locale
       editing: false
       shitcoin: shitcoin
+      reviews: reviews
       redactor:
         imageData:
           attachee_id: shitcoin.id
@@ -85,8 +89,8 @@ module.exports =
   methods:
     edit: ->
       this.editing = true
-    updateShitcoin: (shitcoin) ->
-      this.shitcoin = await this.$axios.$put('/shitcoins/' + shitcoin.id, {shitcoin})
+    save: ->
+      this.shitcoin = await this.$axios.$put('/shitcoins/' + this.shitcoin.id, {shitcoin: this.shitcoin})
       this.editing = false
 </script>
 

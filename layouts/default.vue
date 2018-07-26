@@ -28,7 +28,7 @@
         nuxt-link(to="/shitcoins") Rankings
         nuxt-link(to="/submit") Submit
     .wrapper
-      .disclaimer PLEASE NOTE: The purpose of this project is NOT to spread FUD. If you think that this project is about spreading FUD, please read the <a href="https://docs.google.com/document/d/18P6Y1LIAkbHJ6pbjrHmLRCNljgPkNRTNVcxD8UTVX-E/edit?usp=sharing" target="_blank">Whitepaper</a> (it's not even long).
+      .disclaimer PLEASE NOTE: Spreading of unjustified FUD is not allowed. Let common sense prevail. Please read the <a href="https://docs.google.com/document/d/18P6Y1LIAkbHJ6pbjrHmLRCNljgPkNRTNVcxD8UTVX-E/edit?usp=sharing" target="_blank">Whitepaper</a> (it's not long).
     nuxt
     .footer
       .wrapper
