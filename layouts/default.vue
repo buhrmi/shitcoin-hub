@@ -2,7 +2,7 @@
   .layout.default
     .modal_background(v-if="!$store.state.accepted_terms_on")
       .modal_window
-        p {{ $t('simpleterms') }}
+        p The hardcap of $2,425,923,641.63 fake-USD has been reached. Thank you for your support. Now it's time to regulate that shit.
         button(@click="$store.dispatch('acceptTerms')") I agree
     .top_bar
       .wrapper
