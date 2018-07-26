@@ -34,7 +34,7 @@
       .wrapper
         .right.links
           a(target="_blank" href="https://docs.google.com/document/d/18P6Y1LIAkbHJ6pbjrHmLRCNljgPkNRTNVcxD8UTVX-E/edit?usp=sharing") Whitepaper 
-          a(target="_blank" href="https://github.com/shitcoinhub/api") API 
+          // a(target="_blank" href="https://github.com/shitcoinhub/api") API 
           nuxt-link(to="/about") About
       
         p 
