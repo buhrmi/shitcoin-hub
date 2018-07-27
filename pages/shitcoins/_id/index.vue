@@ -63,10 +63,10 @@ module.exports =
     imageUploader: require('~/components/image-uploader').default
   head: ->
     title:
-      "Should I invest into #{this.shitcoin.name}? - Shitcoin Hub"
+      "#{this.shitcoin.name} Reviews - Shitcoin Hub"
     meta: [
       { hid: 'og:image', property: 'og:image', content: this.shitcoin.logo_url },
-      { hid: 'og:description', property: 'og:description', content: (this.shitcoin.summary_html[this.$store.state.locale] || '').replace(/(<([^>]+)>)/ig,"") }
+      { hid: 'og:description', property: 'og:description', content: "Average rating: ⭐⭐ | Get all your #{this.shitcoin.name} news and reviews on Shitcoin Hub" }
     ]
   asyncData: ({app: {$axios}, params, error, store}) ->
     [shitcoin, reviews] = await Promise.all [
