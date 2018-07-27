@@ -2,8 +2,8 @@
   .layout.default
     .modal_background(v-if="!$store.state.accepted_terms_on")
       .modal_window
-        p The hardcap of $2,425,923,641.63 fake-USD has been reached.
-        button(@click="$store.dispatch('acceptTerms')") Nobody cares.
+        p NOTE: This site is still under construction. Spreading of unjustified FUD is not allowed. Token reviews are based on the opinions of the respective reviewers.
+        button(@click="$store.dispatch('acceptTerms')") OK, sure. Whatever, bro.
     .top_bar
       .wrapper
         select.locale(@change="$store.dispatch('setLocale', {locale})" v-model="locale")
@@ -28,7 +28,7 @@
         nuxt-link(to="/shitcoins") Rankings
         nuxt-link(to="/submit") Submit
     .wrapper
-      .disclaimer NOTE: Spreading of unjustified FUD is not allowed. Token reviews are based on the opinions of the respective reviewers. Let common sense prevail. Please read the <a href="https://docs.google.com/document/d/18P6Y1LIAkbHJ6pbjrHmLRCNljgPkNRTNVcxD8UTVX-E/edit?usp=sharing" target="_blank">Whitepaper</a> (it's not long).
+      .disclaimer NOTE: This site is still under construction. Spreading of unjustified FUD is not allowed. Token reviews are based on the opinions of the respective reviewers.
     nuxt
     .footer
       .wrapper
