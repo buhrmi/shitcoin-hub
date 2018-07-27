@@ -28,7 +28,7 @@
         nuxt-link(to="/shitcoins") Rankings
         nuxt-link(to="/submit") Submit
     .wrapper
-      .disclaimer PLEASE NOTE: Spreading of unjustified FUD is not allowed. Let common sense prevail. Please read the <a href="https://docs.google.com/document/d/18P6Y1LIAkbHJ6pbjrHmLRCNljgPkNRTNVcxD8UTVX-E/edit?usp=sharing" target="_blank">Whitepaper</a> (it's not long).
+      .disclaimer NOTE: Spreading of unjustified FUD is not allowed. Token reviews are based on the opinions of the respective reviewers. Let common sense prevail. Please read the <a href="https://docs.google.com/document/d/18P6Y1LIAkbHJ6pbjrHmLRCNljgPkNRTNVcxD8UTVX-E/edit?usp=sharing" target="_blank">Whitepaper</a> (it's not long).
     nuxt
     .footer
       .wrapper
