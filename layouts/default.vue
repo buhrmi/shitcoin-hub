@@ -20,6 +20,7 @@
           nuxt-link(to="/me") {{ $store.state.user.email }}
           button(@click="$store.dispatch('logout')") Log out
         .user_nav.logged_out(v-else)
+          // button.login_with_telegram(@click="$store.dispatch('authorize_with_telegram')") Log In With Telegram
           form(@submit.prevent="$store.dispatch('authorize_with_password', {email, password})")
             input(v-model="email" placeholder="email" type="email")
             input(v-model="password" placeholder="password" type="password")

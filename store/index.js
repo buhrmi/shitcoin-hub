@@ -27,6 +27,14 @@ export default () => {
         await dispatch('setAuthorization', 'Bearer ' + authorizationToken)
       },
 
+      async authorize_with_telegram() {
+        let bot_id = process.env.TELEGRAM_BOT_ID
+        let scope = ['email'] // require nothing... #['personal_details']
+        let public_key = process.env.TELEGRAM_PUBLIC_KEY
+        let payload = '123'
+        Telegram.Passport.auth({bot_id, scope, public_key, payload})
+      },
+
       async authorize_with_web3({state, dispatch}) {
         web3.personal.sign(web3.fromUtf8('shitcoin hub'), state.eth_address, async (err, signature) => {
           let authorizationToken = await this.$axios.$post('/authorization', {signature}, {withCredentials: true})

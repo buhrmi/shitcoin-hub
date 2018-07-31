@@ -22,6 +22,9 @@ module.exports = {
       '~/vendor/imperavi/redactor.min.css',
       '~/vendor/imperavi/redactor.min.js',
       '~/vendor/imperavi/imagemanager.min.js',
+
+      // https://github.com/TelegramMessenger/TGPassportJsSDK/blob/master/telegram-passport.js
+      '~/vendor/telegram-passport.js',
     ],
   },
   head: {
@@ -35,7 +38,7 @@ module.exports = {
       // {src: 'https://js.pusher.com/4.1/pusher.min.js'},
       // {src: 'https://connect.trezor.io/4/connect.js'},
       // {src: 'https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js'},
-      {src: 'https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js'}
+      // {src: 'https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js'}
     ],
     link: [
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Sans' }
@@ -50,6 +53,7 @@ module.exports = {
     iconPack : 'fontawesome'
   },
   env: {
-
+    TELEGRAM_BOT_ID: process.env.TELEGRAM_BOT_ID,
+    TELEGRAM_PUBLIC_KEY: (process.env.TELEGRAM_PUBLIC_KEY || '').replace(/\\n/g,'\n')
   }
 }
