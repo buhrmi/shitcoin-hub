@@ -30,8 +30,8 @@ module.exports =
 <style lang="scss">
 .vue-dropzone {
   border: none;
-  background: transparent;
-  height: 100%;
+  background: transparent !important;
+  height: 100% !important;
   color: white;
   -webkit-transition: background-color 0.2s linear;
   transition: background-color 0.2s linear;
