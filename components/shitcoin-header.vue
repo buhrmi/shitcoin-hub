@@ -1,8 +1,40 @@
 <template lang="pug">
   .shitcoin_header
-    h1.title
-      img.logo_thumb(:src="shitcoin.logo_thumb" v-if="shitcoin.logo_thumb")
-      | {{ shitcoin.name }}
+    .details_bar
+      .image
+        image-uploader(v-model="shitcoin" field="logo" :path="`/shitcoins/${shitcoin.id}`" param="shitcoin[logo]")
+      h1.name {{ shitcoin.name }}
+      .details(v-if="!editing")
+        ul
+          li 
+            | Platform: 
+            a(target="_blank" :href="shitcoin.explorer_url") {{ shitcoin.platform }}
+          li
+            span Website: 
+            | {{ shitcoin.details.website }}
+          li
+            span Telegram: 
+            | {{ shitcoin.details.telegram }}
+          li
+            span Twitter: 
+            | {{ shitcoin.details.twitter }}
+          li
+            button(@click="edit" v-if="$store.state.user") Edit
+      .details(v-else)
+        ul
+          li
+            span Platform: 
+            | {{ shitcoin.platform_id }}
+          li
+            span Website: 
+            input(v-model="shitcoin.details.website")
+          li
+            span Telegram: 
+            input(v-model="shitcoin.details.telegram")
+          li
+            span Twitter: 
+            input(v-model="shitcoin.details.twitter")
+        button(@click="save") {{ $t('save_changes') }}
     .nav_bar
       nuxt-link(:class="{active: active == 'overview'}" :to="{name: 'shitcoins-id', params: {id: shitcoin.id}}") Overview
       // nuxt-link(:class="{active: active == 'wallet'}" :to="{name: 'shitcoins-id-wallet', params: {id: shitcoin.id}}") Wallet
@@ -10,25 +42,54 @@
 
 <script lang="coffee">
 module.exports =
+  components:
+    imageUploader: require('~/components/image-uploader').default
   props: ['shitcoin', 'active']
+  mounted: ->
+    this.editing = true if this.$route.params.edit
+  methods:
+    edit: ->
+      this.editing = true
+    save: ->
+      this.shitcoin = await this.$axios.$put('/shitcoins/' + this.shitcoin.id, {shitcoin: this.shitcoin})
+      this.editing = false
 </script>
 
 <style lang="scss" scoped>
 .nav_bar {
-  margin-bottom: 13px;
-
+  margin-bottom: 12px;
 }
-.title {
-  margin: 12px 0;
-  .logo_thumb {
-    margin-right: 12px;
-    // width: 48px;
-    // height: 48px;
+.details_bar {
+  height: 125px;
+  .image {
+    padding: 2px;
     border: 1px solid #dbdbdb;
     border-radius: 5px;
     background: #fff;
     padding: 5px;
     vertical-align: middle;
+    float: left;
+    margin-right: 16px;
+    margin-bottom: 16px;
   }
+  .name {
+    padding-top: 16px;
+  }
+  .details {
+    li {
+      display: inline-block;
+      margin-right: 32px;
+    }
+  }
+}
+.shitcoin_header {
+  margin-bottom: 12px;
+}
+.image-uploader {
+  width: 96px;
+  height: 96px;
+}
+.title {
+  margin: 12px 0;
 }
 </style>

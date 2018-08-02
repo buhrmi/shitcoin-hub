@@ -27,7 +27,7 @@ module.exports =
       dictDefaultMessage: if this.value[this.field + '_url'] then 'Change Image' else 'Set Image'
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .vue-dropzone {
   border: none;
   background: transparent;

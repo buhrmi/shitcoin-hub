@@ -2,44 +2,6 @@
   .content
     .wrapper
       shitcoin-header(:shitcoin="shitcoin" active="overview")
-      .side_col
-        image-uploader(v-model="shitcoin" field="logo" :path="`/shitcoins/${this.shitcoin.id}`" param="shitcoin[logo]")
-        table.details(v-if="!editing")
-          tbody
-            tr
-              th Platform
-              td
-                a(target="_blank" :href="shitcoin.explorer_url") {{ shitcoin.platform }}
-            tr
-              th Website
-              td {{ shitcoin.details.website }}
-            tr
-              th Telegram
-              td {{ shitcoin.details.telegram }}
-            tr
-              th Twitter
-              td {{ shitcoin.details.twitter }}
-            tr
-              td 
-                button(@click="edit" v-if="$store.state.user") Edit
-        table.details(v-else)
-          tbody
-            tr
-              th Platform
-              td {{ shitcoin.platform_id }}
-            tr
-              th Website
-              td 
-                input(v-model="shitcoin.details.website")
-            tr
-              th Telegram
-              td 
-                input(v-model="shitcoin.details.telegram")
-            tr
-              th Twitter
-              td 
-                input(v-model="shitcoin.details.twitter")
-                button(@click="save") {{ $t('save_changes') }}
       .main_col
         .reviews
           .review(v-for="review in reviews")
@@ -49,6 +11,8 @@
             .review_html(v-html="$t(review.html)")
           nuxt-link.button(:to="{name: 'reviews-new', query: {shitcoin_id: shitcoin.id}}" v-if="$store.state.user") Submit review
           .login_to_edit(v-else) Log in to submit a review
+      .side_col
+        p Related Shitcoins
       // h2 Rewards
       // p
       //   | Are you currently hodling?
@@ -59,8 +23,6 @@
 require('nuxt-dropzone/dropzone.css')
 
 module.exports =
-  components:
-    imageUploader: require('~/components/image-uploader').default
   head: ->
     title:
       "#{this.shitcoin.name} Reviews - Shitcoin Hub"
@@ -84,14 +46,6 @@ module.exports =
         imageData:
           attachee_id: shitcoin.id
           attachee_type: 'Shitcoin'
-  mounted: ->
-    this.editing = true if this.$route.params.edit
-  methods:
-    edit: ->
-      this.editing = true
-    save: ->
-      this.shitcoin = await this.$axios.$put('/shitcoins/' + this.shitcoin.id, {shitcoin: this.shitcoin})
-      this.editing = false
 </script>
 
 <style lang="scss" scoped>
