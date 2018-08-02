@@ -1,6 +1,6 @@
 <template lang="pug">
   .image-uploader(:style="style")
-    dropzone#image-uploader(ref="dropzone" :options="dropzone_options")
+    dropzone#image-uploader(ref="dropzone" :options="dropzone_options" v-if="$store.state.user")
 </template>
 
 <script lang="coffee">
@@ -29,10 +29,12 @@ module.exports =
 
 <style lang="scss">
 .vue-dropzone {
-  border: none;
+  // these 4 !important styles overwrite the default style from vue-dropzone
+  border: none !important;
   background: transparent !important;
   height: 100% !important;
-  color: white;
+  color: white !important;
+
   -webkit-transition: background-color 0.2s linear;
   transition: background-color 0.2s linear;
   &:hover {
