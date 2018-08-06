@@ -5,6 +5,7 @@
         thead
           tr
             th Name
+            th Your Balance
             th Platform
             th Rating
         tbody
@@ -15,6 +16,8 @@
                   img.logo_thumb(:src="shitcoin.logo_thumb" v-if="shitcoin.logo_thumb")
                   .placeholder(v-else)
                 | {{ shitcoin.name}}
+            td(v-if="$store.state.user") 0 (0 available)
+            td(v-else) log in to see balance
             td {{ shitcoin.platform }}
             td Not yet rated
 </template>

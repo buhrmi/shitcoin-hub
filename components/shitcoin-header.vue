@@ -37,7 +37,7 @@
         button(@click="save") {{ $t('save_changes') }}
     .nav_bar
       nuxt-link(:class="{active: active == 'overview'}" :to="{name: 'shitcoins-id', params: {id: shitcoin.id}}") Overview
-      // nuxt-link(:class="{active: active == 'wallet'}" :to="{name: 'shitcoins-id-wallet', params: {id: shitcoin.id}}") Wallet
+      nuxt-link(:class="{active: active == 'wallet'}" :to="{name: 'shitcoins-id-wallet', params: {id: shitcoin.id}}") Wallet
 </template>
 
 <script lang="coffee">
