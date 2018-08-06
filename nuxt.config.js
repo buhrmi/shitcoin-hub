@@ -28,11 +28,11 @@ module.exports = {
     ],
   },
   head: {
-    title: 'Shitcoin Hub',
+    title: 'Shitcoin World',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: "The social shilling platform" }
+      { hid: 'description', name: 'description', content: "Help! The dark Sodler is spreading FUD in Shitcoin World. Can you help your Poo become the greatest Hodler of all time and defeat the army of FUD once and for all?" }
     ],
     script: [
       // {src: 'https://js.pusher.com/4.1/pusher.min.js'},

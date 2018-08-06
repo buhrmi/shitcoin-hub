@@ -5,12 +5,12 @@ export default () => {
     state: {
       locale: 'en',
       available_locales: ['en', 'ja'],
-      what: 'hello',
       translations: {},
       eth_address: null,
       user: null,
       authorization: null,
-      accepted_terms_on: null
+      accepted_terms_on: null,
+      balances: {}
     },
     actions: {
       async nuxtServerInit ({state, dispatch}, {req}) {
@@ -36,7 +36,7 @@ export default () => {
       },
 
       async authorize_with_web3({state, dispatch}) {
-        web3.personal.sign(web3.fromUtf8('shitcoin hub'), state.eth_address, async (err, signature) => {
+        web3.personal.sign(web3.fromUtf8('shitcoin world'), state.eth_address, async (err, signature) => {
           let authorizationToken = await this.$axios.$post('/authorization', {signature}, {withCredentials: true})
           dispatch('setAuthorization', 'Bearer ' + authorizationToken)
         })
@@ -64,6 +64,7 @@ export default () => {
         
         if (authorization) {
           state.user = await this.$axios.$get('/me')
+          state.balances = await this.$axios.$get('/balances')
         }
         else {
           state.user = null

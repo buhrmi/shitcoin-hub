@@ -10,21 +10,18 @@
             | Platform: 
             a(target="_blank" :href="shitcoin.explorer_url") {{ shitcoin.platform }}
           li
-            span Website: 
-            | {{ shitcoin.details.website }}
+            span Website: {{ shitcoin.details.website }}
           li
-            span Telegram: 
-            | {{ shitcoin.details.telegram }}
+            span Telegram: {{ shitcoin.details.telegram }}
           li
-            span Twitter: 
-            | {{ shitcoin.details.twitter }}
+            span Twitter: {{ shitcoin.details.twitter }}
           li
             button(@click="edit" v-if="$store.state.user") Edit
       .details(v-else)
         ul
           li
             span Platform: 
-            | {{ shitcoin.platform_id }}
+            | {{ shitcoin.platform }}
           li
             span Website: 
             input(v-model="shitcoin.details.website")
@@ -45,6 +42,8 @@ module.exports =
   components:
     imageUploader: require('~/components/image-uploader').default
   props: ['shitcoin', 'active']
+  data: ->
+    editing: false
   mounted: ->
     this.editing = true if this.$route.params.edit
   methods:

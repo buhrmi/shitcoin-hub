@@ -34,9 +34,9 @@
         p Copyright 2018 Shitcoin, Inc. All Rights Reserved.
         p 
           | Problem? 
-          a(href="mailto:support@shitcoinhub.com") support@shitcoinhub.com
+          a(href="mailto:support@shitcoinworld.com") support@shitcoinworld.com
         p
-          a(href="https://github.com/shitcoinhub") Get the shitty source code on GitHub
+          a(href="https://github.com/shitcoinworld") Get the shitty source code on GitHub
 </template>
 
 <script lang="coffee">

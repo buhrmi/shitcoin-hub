@@ -1,8 +1,8 @@
 <template lang="pug">
   .page
     .wrapper
-      h1 About Shitcoin Hub
-      p Shitcoin Hub is operated by Shitcoin, Inc.
+      h1 About Shitcoin World
+      p Shitcoin World is operated by Shitcoin, Inc.
       h2 Company details
       p <strong>Shitcoin, Inc</strong> is registered in Japan
       table
@@ -23,6 +23,7 @@
               ul
                 li Development and operation of digital assets exchange
                 li Development of decentralized applications
+                li Game development
                 li Smart Contract development
                 li IT consulting
                 li Marketing and PR

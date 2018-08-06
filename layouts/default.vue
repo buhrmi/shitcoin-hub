@@ -25,8 +25,8 @@
             input(v-model="email" placeholder="email" type="email")
             input(v-model="password" placeholder="password" type="password")
             button Log in
-        nuxt-link(to="/") News
-        nuxt-link(to="/shitcoins") Rankings
+        nuxt-link(to="/") Home
+        nuxt-link(to="/shitcoins") Shitcoins
         nuxt-link(to="/submit") Submit
     .wrapper
       .disclaimer NOTE: This site is still under construction. Spreading of unjustified FUD is not allowed. Token reviews are based on the opinions of the respective reviewers.
@@ -34,16 +34,16 @@
     .footer
       .wrapper
         .right.links
-          a(target="_blank" href="https://docs.google.com/document/d/18P6Y1LIAkbHJ6pbjrHmLRCNljgPkNRTNVcxD8UTVX-E/edit?usp=sharing") Whitepaper 
-          // a(target="_blank" href="https://github.com/shitcoinhub/api") API 
+          // a(target="_blank" href="https://docs.google.com/document/d/18P6Y1LIAkbHJ6pbjrHmLRCNljgPkNRTNVcxD8UTVX-E/edit?usp=sharing") Whitepaper 
+          // a(target="_blank" href="https://github.com/shitcoinworld/api") API 
           nuxt-link(to="/about") About
       
         p 
           | Copyright 2018 Shitcoin, Inc. All Rights Reserved. <br>
           | Problem? 
-          a(href="mailto:support@shitcoinhub.com") support@shitcoinhub.com
+          a(href="mailto:support@shitcoinworld.com") support@shitcoinworld.com
           | <br>
-          a(href="https://github.com/shitcoinhub") Get the shitty source code on GitHub
+          a(href="https://github.com/shitcoinworld") Get the shitty source code on GitHub
 </template>
 
 <script lang="coffee">

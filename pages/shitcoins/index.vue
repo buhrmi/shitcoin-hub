@@ -5,9 +5,10 @@
         thead
           tr
             th Name
-            th Your Balance
+            th Balance
+            th Available
             th Platform
-            th Rating
+            th FOMO Points
         tbody
           tr.shitcoin(v-for="shitcoin in shitcoins")
             td
@@ -16,8 +17,11 @@
                   img.logo_thumb(:src="shitcoin.logo_thumb" v-if="shitcoin.logo_thumb")
                   .placeholder(v-else)
                 | {{ shitcoin.name}}
-            td(v-if="$store.state.user") 0 (0 available)
-            td(v-else) log in to see balance
+            td(v-if="$store.state.user")
+              .balance(v-if="$store.state.balances[shitcoin.id]") {{ $store.state.balances[shitcoin.id].balance }}
+            td(v-if="$store.state.user")
+              .balance(v-if="$store.state.balances[shitcoin.id]") {{ $store.state.balances[shitcoin.id].available }}
+            td(v-else colspan="2") log in to see balance
             td {{ shitcoin.platform }}
             td Not yet rated
 </template>

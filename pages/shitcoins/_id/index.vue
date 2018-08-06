@@ -25,10 +25,10 @@ require('nuxt-dropzone/dropzone.css')
 module.exports =
   head: ->
     title:
-      "#{this.shitcoin.name} Reviews - Shitcoin Hub"
+      "#{this.shitcoin.name} Reviews - Shitcoin World"
     meta: [
       { hid: 'og:image', property: 'og:image', content: this.shitcoin.logo_url },
-      { hid: 'og:description', property: 'og:description', content: "Average rating: ⭐⭐ | Get all your #{this.shitcoin.name} news and reviews on Shitcoin Hub" }
+      { hid: 'og:description', property: 'og:description', content: "Average rating: ⭐⭐ | Get all your #{this.shitcoin.name} news and reviews on Shitcoin World" }
     ]
   asyncData: ({app: {$axios}, params, error, store}) ->
     [shitcoin, reviews] = await Promise.all [
@@ -39,7 +39,6 @@ module.exports =
       error({ statusCode: 404, message: 'Couldnt find your stupid shitcoin. Thats a 404.' })
     return
       edited_locale: store.state.locale
-      editing: false
       shitcoin: shitcoin
       reviews: reviews
       redactor:
