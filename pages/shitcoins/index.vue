@@ -7,7 +7,6 @@
           .address {{ platform.name }}: {{ $store.state.addresses[platform.id] }}
       .deposits(v-else) Please log in to see your deposit addresses.
       h2 All Shitcoins
-      .explanation Shitcoin World supports ALL shitcoins. If you can't find your shitcoin in the list, simply deposit some into your personal deposit address and it will be available here.
       table.shitcoins
         thead
           tr
