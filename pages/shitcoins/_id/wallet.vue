@@ -12,16 +12,10 @@
 <script lang="coffee">
 module.exports =
   asyncData: ({app: {$axios}, params, error, store}) ->
-    [shitcoin, deposit_addresses] = await Promise.all [
+    [shitcoin] = await Promise.all [
       $axios.$get("/shitcoins/#{params.id}")
     ]
 
-    if !shitcoin
-      error({ statusCode: 404, message: 'Couldnt find your stupid shitcoin. Thats a 404.' })
-
-    deposit_address = deposit_addresses[0]
-
     return
       shitcoin: shitcoin
-      deposit_address: deposit_address
 </script>
