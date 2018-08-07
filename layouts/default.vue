@@ -2,7 +2,7 @@
   .layout.default
     .modal_background(v-if="!$store.state.accepted_terms_on")
       .modal_window
-        p NOTE: This site is still under construction. Spreading of unjustified FUD is not allowed. Token reviews are based on the opinions of the respective reviewers.
+        p NOTE: This site is still under construction. Don't spread unjustified FUD. Token reviews are based on the opinions of the respective reviewers.
         button(@click="$store.dispatch('acceptTerms')") OK, sure. Whatever, bro.
     .top_bar
       .wrapper
@@ -29,7 +29,7 @@
         nuxt-link(to="/shitcoins") Shitcoins
         nuxt-link(to="/submit") Submit
     .wrapper
-      .disclaimer NOTE: This site is still under construction. Spreading of unjustified FUD is not allowed. Token reviews are based on the opinions of the respective reviewers.
+      .disclaimer NOTE: This site is still under construction. Don't spread unjustified FUD. Token reviews are based on the opinions of the respective reviewers.
     nuxt
     .footer
       .wrapper

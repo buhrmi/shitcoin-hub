@@ -4,8 +4,10 @@
       h1(v-if="value.id") Edit {{ value.shitcoin.name }} Review
       h1(v-else) New {{ value.shitcoin.name }} Review
       redactor(v-model="value.html['en']")
-      .star.full(v-for="i in value.rating")
-      .star.empty(v-for="i in (5 - value.rating)")
+      .shittiness
+        | Shittiness: 
+        select(v-model="value.rating")
+          option(v-for="i in 5" :value="i") {{ i }}
       button(@click="save") Save Review
       nuxt-link(v-if="value.id" :to="{name: 'reviews-id', params: {id: value.id}}") Cancel
       nuxt-link(v-else :to="{name: 'reviews'}") Cancel

@@ -1,6 +1,9 @@
 <template lang="pug">
   .page
     .wrapper
+      .platforms
+        .platform(v-for="platform in $store.state.platforms")
+          .address Your deposit address for {{ platform.name }}: {{ $store.state.addresses[platform.id] }}
       table.shitcoins
         thead
           tr
@@ -8,7 +11,7 @@
             th Balance
             th Available
             th Platform
-            th FOMO Points
+            th Shittiness
         tbody
           tr.shitcoin(v-for="shitcoin in shitcoins")
             td
@@ -23,7 +26,10 @@
               .balance(v-if="$store.state.balances[shitcoin.id]") {{ $store.state.balances[shitcoin.id].available }}
             td(v-else colspan="2") log in to see balance
             td {{ shitcoin.platform }}
-            td Not yet rated
+            td
+              .rating(v-if="shitcoin.cached_rating > 0")
+                span(v-for="i in shitcoin.cached_rating") 💩
+              .rating(v-else) No reviews
 </template>
 
 <style lang="scss">

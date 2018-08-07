@@ -23,8 +23,6 @@
 
 <script lang="coffee">
 module.exports =
-  asyncData: ({app: {$axios}})->
-    platforms: await $axios.$get('/platforms')
   data: ->
     new_shitcoin:
       platform_id: ''

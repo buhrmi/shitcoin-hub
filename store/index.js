@@ -10,7 +10,9 @@ export default () => {
       user: null,
       authorization: null,
       accepted_terms_on: null,
-      balances: {}
+      balances: {},
+      platforms: {},
+      addresses: {}
     },
     actions: {
       async nuxtServerInit ({state, dispatch}, {req}) {
@@ -19,6 +21,7 @@ export default () => {
         if (!state.available_locales.includes(locale)) locale = 'en'
         await dispatch('setLocale', {locale})
         await dispatch('setAuthorization', 'Bearer ' + req.cookies.authorization)
+        state.platforms = await this.$axios.$get('/platforms')
       },
 
       async authorize_with_password({dispatch}, data) {
@@ -65,6 +68,7 @@ export default () => {
         if (authorization) {
           state.user = await this.$axios.$get('/me')
           state.balances = await this.$axios.$get('/balances')
+          state.addresses = await this.$axios.$get('/addresses')
         }
         else {
           state.user = null
