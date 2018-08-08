@@ -2,7 +2,7 @@
   .page.news
     .wrapper
       h1 Welcome to Shitcoin World
-      p Oh no! The dark Sodler is spreading FUD in Shitcoin World. Can you help your Poo become the greatest Hodler of all time and defeat the army of FUD once and for all?
+      p Oh no! The dark Sodler is spreading FUD in Shitcoin World. Can you help your Poo become the greatest Hodler of all time and defeat the army of FUD once and for all? And which shitcoin will become the shittiest shitcoin of all time?
       h1 What's new?
       .post(v-for="post in posts")
         .date {{ post.created_at }}
