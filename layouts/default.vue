@@ -27,6 +27,8 @@
             button Log in
         nuxt-link(to="/") Home
         nuxt-link(to="/shitcoins") Shitcoins
+        nuxt-link(to="/orders") Orders
+        nuxt-link(to="/poos/new") Poo Creator
         // nuxt-link(to="/submit") Submit
     .wrapper
       .disclaimer NOTE: This site is still under construction. Don't spread unjustified FUD. Token reviews are based on the opinions of the respective reviewers.
@@ -44,7 +46,7 @@
           | Problem? 
           a(href="mailto:support@shitcoinworld.com") support@shitcoinworld.com
           | <br>
-          a(href="https://github.com/shitcoinworld") Get the shitty source code on GitHub
+          // a(href="https://github.com/shitcoinworld") Get the shitty source code on GitHub
 </template>
 
 <script lang="coffee">
