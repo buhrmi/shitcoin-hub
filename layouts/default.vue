@@ -37,7 +37,7 @@
           // a(target="_blank" href="https://docs.google.com/document/d/18P6Y1LIAkbHJ6pbjrHmLRCNljgPkNRTNVcxD8UTVX-E/edit?usp=sharing") Whitepaper 
           // a(target="_blank" href="https://github.com/shitcoinworld/api") API 
           nuxt-link(to="/status") Status
-          nuxt-link(to="/about") About
+          // nuxt-link(to="/about") About
       
         p 
           | Copyright 2018 Shitcoin, Inc. All Rights Reserved. <br>
