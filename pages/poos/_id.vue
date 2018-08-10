@@ -5,6 +5,9 @@
         img(:src="poo.sd_image_url")
       .col
         h1 {{ poo.user.display_name }}'s Poo
+        p 
+          | Owner:  
+          nuxt-link(:to="{name: 'profiles-id', params: {id: poo.user.id}}") {{ poo.user.display_name }}
         p Level 1
         p Health: 65 / 65 (100%)
         p Items: -
