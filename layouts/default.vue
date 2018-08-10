@@ -190,6 +190,10 @@ button, .button {
     color: #fff;
     background: #449aef;
   }
+  &:disabled {
+    background: #eee;
+    color: #999;
+  }
 }
 .side_col {
   vertical-align: top;

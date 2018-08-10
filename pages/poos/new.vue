@@ -1,14 +1,16 @@
 <template lang="pug">
   .page.news
     .wrapper.flex-grid
-      .col.poo
-        .layer
-          img(:src="body.sd_image_url")
-        .layer
-          img(:src="face.sd_image_url")
-        .layer
-          img(:src="outfit.sd_image_url" v-if="outfit")
-      .col.parts
+      .col
+        .poo
+          .layer
+            img(:src="body.sd_image_url")
+          .layer
+            img(:src="face.sd_image_url")
+          .layer
+            img(:src="outfit.sd_image_url" v-if="outfit")
+        button(disabled) Create this Poo (Coming soon)
+      .col
         .part(v-for="part in bodies")
           img(:src="part.icon_url" @click="body = part")
         .part(v-for="part in faces")
@@ -36,19 +38,31 @@ module.exports =
     meta: [
       { hid: 'og:description', property: 'og:description', content: "Create your own Poo and start your shitcoin adventure in Shitcoin World." }
     ]
+  computed:
+    composition: ->
+      result = "#{body.id}-#{face.id}"
+      result += "-#{outfit.id}" if outfit
+      result
+  methods:
+    createPoo: ->
+      result = await this.$axios.$post('/poos', {composition})
 </script>
 
 <style lang="scss" scoped>
 .part {
   display: inline;
 }
+button {
+  cursor: not-allowed;
+}
 .poo {
   position: relative;
-  // &:after {
-  //   content: "";
-  //   display: block;
-  //   padding-bottom: 100%;
-  // }
+  // make it square aspect ratio
+  &:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
   .layer {
     width: 100%;
     position: absolute;
