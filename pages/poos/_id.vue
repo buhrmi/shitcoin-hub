@@ -23,9 +23,10 @@ module.exports =
     return {poo}
   head: ->
     title:
-      "#{this.poo.user.display_name}'s Poo on Shitcoin World"
+      "Shitcoin World presents: #{this.poo.user.display_name}'s Poo"
     meta: [
-      { hid: 'og:description', property: 'og:description', content: "Shitcoin World brings you #{this.poo.user.display_name}'s amazing creation. Create your own Poo on Shitcoin World and join the shitcoin adventure." }
+      { hid: 'og:image', property: 'og:image', content: this.poo.sd_image_url },
+      { hid: 'og:description', property: 'og:description', content: "Shitcoin World brings you #{this.poo.user.display_name}'s amazing creation. Create your own Poo on Shitcoin World and start your shitcoin empire." }
     ]
 </script>
 
