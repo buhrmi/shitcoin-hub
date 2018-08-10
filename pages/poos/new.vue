@@ -9,7 +9,7 @@
             img(:src="face.sd_image_url")
           .layer
             img(:src="outfit.sd_image_url" v-if="outfit")
-        button(disabled) Create this Poo (Coming soon)
+        button(:disabled="creating" @click="createPoo") Create this Poo
       .col
         .part(v-for="part in bodies")
           img(:src="part.icon_url" @click="body = part")
@@ -31,29 +31,27 @@ module.exports =
     body = bodies[0]
     face = faces[0]
     outfit = null
-    return {bodies, faces, outfits, body, face, outfit}
+    creating = false
+    return {bodies, faces, outfits, body, face, outfit, creating}
   head: ->
     title:
       "Shitcoin World Poo Creator"
     meta: [
       { hid: 'og:description', property: 'og:description', content: "Create your own Poo and start your shitcoin adventure in Shitcoin World." }
     ]
-  computed:
-    composition: ->
-      result = "#{body.id}-#{face.id}"
-      result += "-#{outfit.id}" if outfit
-      result
+  
   methods:
     createPoo: ->
+      this.creating = true
+      composition = "#{this.body.id}-#{this.face.id}"
+      composition += "-#{this.outfit.id}" if this.outfit
       result = await this.$axios.$post('/poos', {composition})
+      this.$router.push('/poos/' + result.id)
 </script>
 
 <style lang="scss" scoped>
 .part {
   display: inline;
-}
-button {
-  cursor: not-allowed;
 }
 .poo {
   position: relative;
@@ -70,15 +68,5 @@ button {
   img {
     width: 100%;
   }
-}
-
-.flex-grid {
-  display: flex;
-  // @media (max-width: 700px) {
-  //   display: block;
-  // }
-}
-.col {
-  flex: 1;
 }
 </style>

@@ -166,6 +166,15 @@ li, ul {
   float: right;
 }
 
+.flex-grid {
+  display: flex;
+  // @media (max-width: 700px) {
+  //   display: block;
+  // }
+}
+.col {
+  flex: 1;
+}
 button, .button {
   cursor: pointer;
   display: inline-block;
@@ -193,6 +202,7 @@ button, .button {
   &:disabled {
     background: #eee;
     color: #999;
+    cursor: not-allowed;
   }
 }
 .side_col {
