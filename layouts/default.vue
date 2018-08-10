@@ -27,7 +27,7 @@
             button Log in
         nuxt-link(to="/") Home
         nuxt-link(to="/shitcoins") Shitcoins
-        nuxt-link(to="/orders") Orders
+        // nuxt-link(to="/orders") Orders
         nuxt-link(to="/poos/new") Poo Creator
         // nuxt-link(to="/submit") Submit
     .wrapper

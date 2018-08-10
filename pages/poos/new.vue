@@ -1,14 +1,14 @@
 <template lang="pug">
   .page.news
-    .wrapper
-      .poo
+    .wrapper.flex-grid
+      .col.poo
         .layer
           img(:src="body.sd_image_url")
         .layer
           img(:src="face.sd_image_url")
         .layer
           img(:src="outfit.sd_image_url" v-if="outfit")
-      .parts
+      .col.parts
         .part(v-for="part in bodies")
           img(:src="part.icon_url" @click="body = part")
         .part(v-for="part in faces")
@@ -36,14 +36,13 @@ module.exports =
 .part {
   display: inline;
 }
-.parts {
-  margin-left: 50%;
-}
 .poo {
-  width: 50%;
-  float: left;
-  height: 750px;
   position: relative;
+  // &:after {
+  //   content: "";
+  //   display: block;
+  //   padding-bottom: 100%;
+  // }
   .layer {
     width: 100%;
     position: absolute;
@@ -51,5 +50,15 @@ module.exports =
   img {
     width: 100%;
   }
+}
+
+.flex-grid {
+  display: flex;
+  // @media (max-width: 700px) {
+  //   display: block;
+  // }
+}
+.col {
+  flex: 1;
 }
 </style>
