@@ -30,6 +30,12 @@ module.exports =
     face = faces[0]
     outfit = null
     return {bodies, faces, outfits, body, face, outfit}
+  head: ->
+    title:
+      "Shitcoin World Poo Creator"
+    meta: [
+      { hid: 'og:description', property: 'og:description', content: "Create your own Poo and start your shitcoin adventure in Shitcoin World." }
+    ]
 </script>
 
 <style lang="scss" scoped>
