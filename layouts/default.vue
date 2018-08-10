@@ -2,7 +2,7 @@
   .layout.default
     .modal_background(v-if="!$store.state.accepted_terms_on")
       .modal_window
-        p NOTE: This site is still under construction. Don't spread unjustified FUD. Token reviews are based on the opinions of the respective reviewers.
+        p NOTE: The game database will be reset before official launch. Until the official launch, all deposits of shitcoins will be considered a donation towards the development of the game.
         button(@click="$store.dispatch('acceptTerms')") OK, sure. Whatever, bro.
     .top_bar
       .wrapper
@@ -31,7 +31,7 @@
         nuxt-link(to="/poos/new") Poo Creator
         // nuxt-link(to="/submit") Submit
     .wrapper
-      .disclaimer NOTE: This site is still under construction. Don't spread unjustified FUD. Token reviews are based on the opinions of the respective reviewers.
+      .disclaimer NOTE: The game database will be reset before official launch. Until the official launch, all deposits of shitcoins will be considered a donation towards the development of the game.
     nuxt
     .footer
       .wrapper
