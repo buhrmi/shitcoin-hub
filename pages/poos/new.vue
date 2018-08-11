@@ -9,7 +9,8 @@
             img(:src="face.sd_image_url")
           .layer
             img(:src="outfit.sd_image_url" v-if="outfit")
-        button(:disabled="creating" @click="createPoo") Create this Poo
+        button(v-if="$store.state.user" :disabled="creating" @click="createPoo") Create this Poo
+        p(v-else) Log in to create this Poo
       .col
         .part(v-for="part in bodies")
           img(:src="part.icon_url" @click="body = part")
