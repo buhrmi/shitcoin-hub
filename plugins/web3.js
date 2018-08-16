@@ -3,7 +3,7 @@ export default function({ app }, inject) {
     // Client-side metamask
     window.addEventListener('load', setState)
     function setState() {
-      if (web3) {
+      if (typeof web3 !== 'undefined') {
         app.store.state.eth_address = web3.eth.accounts[0]
       }
       setTimeout(setState, 1000)
