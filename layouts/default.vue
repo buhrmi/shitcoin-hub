@@ -127,6 +127,9 @@ li, ul {
   position: relative;
   padding-bottom: $footer-height + 20px;
 }
+.no-padding {
+  padding: 0 !important;
+}
 .modal_background {
   width: 100vw;
   height: 100vh;
