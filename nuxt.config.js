@@ -5,7 +5,7 @@ module.exports = {
   plugins: [
     // Sets "state.authorization" as axios token
     '~/plugins/components.js',
-    '~/plugins/auth.js',
+    '~/plugins/axios.js',
     '~/plugins/filters.js',
     '~/plugins/monkey_patches.js',
     '~/plugins/web3.js',

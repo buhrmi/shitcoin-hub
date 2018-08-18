@@ -12,7 +12,7 @@ export default async ({store, app: { $axios }}) => {
     }
     $axios.interceptors.response.use(null, function(error) {
       if (error) {
-        store.$toast.error(error.response.data.error, {
+        store.$toast.error((error.response.data.message), {
           icon: 'exclamation-circle',
           action: {
             text: 'Dismiss',
