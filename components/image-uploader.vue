@@ -7,10 +7,11 @@
 module.exports =
   props: ['param', 'value', 'field', 'path']
   mounted: ->
-    this.$refs.dropzone.dropzone.on 'complete', (file) =>
-      this.$refs.dropzone.dropzone.removeFile(file)
-      newValue = await this.$axios.$get(this.path)
-      this.value[this.field + '_url'] = newValue[this.field + '_url']
+    if @$store.state.user
+      this.$refs.dropzone.dropzone.on 'complete', (file) =>
+        this.$refs.dropzone.dropzone.removeFile(file)
+        newValue = await this.$axios.$get(this.path)
+        this.value[this.field + '_url'] = newValue[this.field + '_url']
   computed:
     style: ->
       bgurl = this.value[this.field + '_url']

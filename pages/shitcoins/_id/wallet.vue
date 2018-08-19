@@ -6,9 +6,37 @@
         p Balance: {{ $store.state.balances[shitcoin.id].balance }}
         p In orders: {{ $store.state.balances[shitcoin.id].in_orders }}
         p Available: {{ $store.state.balances[shitcoin.id].available }}
-      .withdrawals
-        h1 Withdrawals
-        .withdrawal(v-for="withdrawal in withdrawals") {{ withdrawal }}
+      .history
+        h1 History
+        table
+          thead
+            tr
+              td Type
+              td Amount
+              td Date
+              td Status
+              td Notes
+          tbody
+            tr(v-for="change in history")
+              td {{ change.type }}
+
+              td(v-if="change.type == 'Deposit'") {{ change.amount }}
+              td(v-if="change.type == 'Withdrawal'") -{{ change.amount }}
+
+              td {{ change.created_at }}
+
+              td 
+                | {{ change.status }} 
+                a(:href="change.url" target="_blank") Check Transaction  
+
+              td(v-if="change.type == 'Deposit'")
+                
+              td(v-if="change.type == 'Withdrawal'")
+                .to To: {{ change.to_address }}
+                .error(v-if="change.status == 'error'")
+                  span {{change.error}}
+
+      .new_withdrawal(v-if="$store.state.user")
         h2 New Withdrawal
         .field
           label
@@ -25,17 +53,22 @@
 <script lang="coffee">
 module.exports =
   asyncData: ({app: {$axios}, params, error, store}) ->
-    [shitcoin] = await Promise.all [
-      $axios.$get("/shitcoins/#{params.id}")
+    [shitcoin, history] = await Promise.all [
+      $axios.$get("/shitcoins/#{params.id}"),
+      $axios.$get('/balance_history', params: {shitcoin_id: params.id})
     ]
-    withdrawals = await $axios.$get('/withdrawals', params: {shitcoin_id: params.id})
+    # [withdrawals, deposits] = await Promise.all [
+    #   $axios.$get('/withdrawals', params: {shitcoin_id: params.id}),
+    #   $axios.$get('/deposits', params: {shitcoin_id: params.id}),
+    # ]
+    
 
     return
       newWithdrawal:
         shitcoin_id: shitcoin.id
         to_address: null
         amount: null
-      withdrawals: withdrawals
+      history: history
       shitcoin: shitcoin
    methods:
      requestWithdrawal: ->
