@@ -2,9 +2,8 @@
   .page
     .wrapper
       h1 Shitcoin World Status
-      p Deposits: {{ status.deposits ? 'OK' : 'Not running' }}
-      p Withdrawals: {{ status.withdrawals ? 'OK' : 'Not running' }}
-      p Mailers: Not implemented
+      p Deposits: {{ status.deposits ? 'Seems OK' : 'Not running' }}
+      p Withdrawals: {{ status.withdrawals ? 'Seems OK' : 'Not running' }}
 </template>
 
 <script lang="coffee">
