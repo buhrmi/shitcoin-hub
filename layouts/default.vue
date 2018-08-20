@@ -2,7 +2,7 @@
   .layout.default
     .modal_background(v-if="!$store.state.accepted_terms_on")
       .modal_window
-        p NOTE: The game database will be reset before official launch. Until the official launch, all deposits of shitcoins will be considered a donation towards the development of the game.
+        p Please join our <a target="_blank" href="https://t.me/shitcoinworld">Telegram channel</a> to receive free <b>Original Shitcoins™</b>
         button(@click="$store.dispatch('acceptTerms')") OK, sure. Whatever, bro.
     .top_bar
       .wrapper
@@ -31,7 +31,7 @@
         nuxt-link(to="/poos/new") Poo Creator
         // nuxt-link(to="/submit") Submit
     .wrapper
-      .disclaimer NOTE: The game database will be reset before official launch. Until the official launch, all deposits of shitcoins will be considered a donation towards the development of the game.
+      .disclaimer Please join our <a target="_blank" href="https://t.me/shitcoinworld">Telegram channel</a> to receive free <b>Original Shitcoins™</b>
     nuxt
     .footer
       .wrapper
