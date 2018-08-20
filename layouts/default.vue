@@ -31,7 +31,7 @@
         nuxt-link(to="/poos/new") Poo Creator
         // nuxt-link(to="/submit") Submit
     .wrapper
-      .disclaimer Hello there, fellow wanderer. Thanks for stopping by. This project is very new and the community still is tiny. That means that your voice will definitely be heard. Please visit us in our <a target="_blank" href="https://t.me/shitcoinworld">Shitcoin World Telegram channel</a>.
+      .disclaimer Hello there, fellow wanderer. Thanks for stopping by. This project is very new and the community still is tiny. That means that your voice will definitely be heard. Please visit us in our <a target="_blank" href="https://t.me/shitcoinworld">Shitcoin World Telegram channel</a> to meet fellow shitcoiners and find out about the future of Shitcoin World.
     nuxt
     .footer
       .wrapper
