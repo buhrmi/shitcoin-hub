@@ -1,9 +1,9 @@
 <template lang="pug">
   .layout.default
-    .modal_background(v-if="!$store.state.accepted_terms_on")
-      .modal_window
-        p Please join our <a target="_blank" href="https://t.me/shitcoinworld">Telegram channel</a> to receive free <b>Original Shitcoins™</b>
-        button(@click="$store.dispatch('acceptTerms')") OK, sure. Whatever, bro.
+    //- .modal_background(v-if="!$store.state.accepted_terms_on")
+    //-   .modal_window
+    //-     p Please join our <a target="_blank" href="https://t.me/shitcoinworld">Telegram channel</a> to receive free <b>Original Shitcoins™</b>
+    //-     button(@click="$store.dispatch('acceptTerms')") OK, sure. Whatever, bro.
     .top_bar
       .wrapper
         select.locale(@change="$store.dispatch('setLocale', {locale})" v-model="locale")
@@ -31,7 +31,7 @@
         nuxt-link(to="/poos/new") Poo Creator
         // nuxt-link(to="/submit") Submit
     .wrapper
-      .disclaimer Please join our <a target="_blank" href="https://t.me/shitcoinworld">Telegram channel</a> to receive free <b>Original Shitcoins™</b>
+      .disclaimer Hello Shitcoiner. Thanks for stopping by. This project is very new and the community still is tiny. That means that your voice will definitely be heard. Please visit us in our <a target="_blank" href="https://t.me/shitcoinworld">Shitcoin World Telegram channel</a>.
     nuxt
     .footer
       .wrapper
