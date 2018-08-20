@@ -61,6 +61,10 @@ export default () => {
         await dispatch('setAuthorization', null)
       },
 
+      async receiveBalance(data) {
+        state.balances = data
+      },
+
       async setAuthorization({state, dispatch}, authorization) {
         state.authorization = authorization
         this.$axios.setToken(authorization)
