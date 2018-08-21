@@ -54,7 +54,7 @@ module.exports = {
     iconPack : 'fontawesome'
   },
   env: {
-    API_URL: process.env.API_URL,
+    API_URL_BROWSER: process.env.API_URL_BROWSER,
     TELEGRAM_BOT_ID: process.env.TELEGRAM_BOT_ID,
     TELEGRAM_PUBLIC_KEY: (process.env.TELEGRAM_PUBLIC_KEY || '').replace(/\\n/g,'\n')
   }

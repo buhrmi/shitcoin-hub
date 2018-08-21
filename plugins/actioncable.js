@@ -1,10 +1,8 @@
 import Vue from 'vue';
 import ActionCable from 'actioncable'
 
-const subscriptions = {}
-
 export default async ({store, app: { $axios }}) => {
-  const socket_url = process.env.SOCKET_URL || process.env.API_URL.replace('https', 'wss').replace('http', 'ws') + '/cable'
+  const socket_url = process.env.SOCKET_URL || process.env.API_URL_BROWSER.replace('https', 'wss').replace('http', 'ws') + '/cable'
   const cable = ActionCable.createConsumer(socket_url)
   window.cable = cable
   
