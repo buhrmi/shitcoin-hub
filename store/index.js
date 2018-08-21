@@ -20,7 +20,9 @@ export default () => {
         let locale = (req.cookies.locale || req.headers['accept-language'] || 'en').substr(0, 2)
         if (!state.available_locales.includes(locale)) locale = 'en'
         await dispatch('setLocale', {locale})
-        await dispatch('setAuthorization', 'Bearer ' + req.cookies.authorization)
+        if (req.cookies.authorization) {
+          await dispatch('setAuthorization', 'Bearer ' + req.cookies.authorization)
+        }
         state.platforms = await this.$axios.$get('/platforms')
       },
 
@@ -61,14 +63,13 @@ export default () => {
         await dispatch('setAuthorization', null)
       },
 
-      async receiveBalance(data) {
-        state.balances = data
+      async receiveBalance(store, data) {
+        store.state.balances = data
       },
 
       async setAuthorization({state, dispatch}, authorization) {
         state.authorization = authorization
         this.$axios.setToken(authorization)
-        
         if (authorization) {
           state.user = await this.$axios.$get('/me')
           state.balances = await this.$axios.$get('/balances')

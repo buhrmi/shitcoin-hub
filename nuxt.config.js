@@ -10,6 +10,7 @@ module.exports = {
     '~/plugins/monkey_patches.js',
     '~/plugins/web3.js',
     '~/plugins/i18n.js',
+    {src: '~/plugins/actioncable.js', ssr: false}
     // { src: '~/plugins/pusher.js', ssr: false }
   ],
   modules: [
@@ -53,6 +54,7 @@ module.exports = {
     iconPack : 'fontawesome'
   },
   env: {
+    API_URL: process.env.API_URL,
     TELEGRAM_BOT_ID: process.env.TELEGRAM_BOT_ID,
     TELEGRAM_PUBLIC_KEY: (process.env.TELEGRAM_PUBLIC_KEY || '').replace(/\\n/g,'\n')
   }
