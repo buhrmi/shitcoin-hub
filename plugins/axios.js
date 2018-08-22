@@ -14,12 +14,13 @@ export default async ({store, app: { $axios }}) => {
       if (error) {
         store.$toast.error((error.response.data.message), {
           icon: 'exclamation-circle',
+          duration: '5000',
           action: {
             text: 'Dismiss',
             onClick : (e, toastObject) => {
               toastObject.goAway(0);
             }
-        },
+          },
         })
       }
       return Promise.reject(error)

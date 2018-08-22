@@ -4,6 +4,7 @@
       .image
         image-uploader(v-model="shitcoin" field="logo" :path="`/shitcoins/${shitcoin.id}`" param="shitcoin[logo]")
       h1.name {{ shitcoin.name }}
+      p(v-if="price") Current price: {{ price }} {{ $store.state.quote_shitcoin.symbol }}
       .details(v-if="!editing")
         ul
           li 
@@ -33,16 +34,16 @@
             input(v-model="shitcoin.details.twitter")
         button(@click="save") {{ $t('save_changes') }}
     .nav_bar
-      nuxt-link(:class="{active: active == 'overview'}" :to="{name: 'shitcoins-id', params: {id: shitcoin.id}}") Overview
-      nuxt-link(:class="{active: active == 'wallet'}" :to="{name: 'shitcoins-id-wallet', params: {id: shitcoin.id}}") Wallet
-      nuxt-link(:class="{active: active == 'trade'}" :to="{name: 'shitcoins-id-orders', params: {id: shitcoin.id}}") Trade
+      nuxt-link(:class="{active: active == 'trade'}" :to="{name: 'shitcoins-id-trade', params: {id: shitcoin.id}}") Trade
+      nuxt-link(:class="{active: active == 'funding'}" :to="{name: 'shitcoins-id-funding', params: {id: shitcoin.id}}") Funding
+      nuxt-link(:class="{active: active == 'reviews'}" :to="{name: 'shitcoins-id-reviews', params: {id: shitcoin.id}}") Reviews
 </template>
 
 <script lang="coffee">
 module.exports =
   components:
     imageUploader: require('~/components/image-uploader').default
-  props: ['shitcoin', 'active']
+  props: ['shitcoin', 'active', 'price']
   data: ->
     editing: false
   mounted: ->

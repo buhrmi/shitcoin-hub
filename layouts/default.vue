@@ -12,7 +12,10 @@
 
         nuxt-link.brand(to="/")
           img.logo(src="~/assets/logo.png")
-          img.fontmark(src="~/assets/fontmark.png") 
+          img.fontmark(src="~/assets/fontmark.png")
+
+        span All prices are in {{ $store.state.quote_shitcoin.symbol }}. Your balance: {{ $store.getters.balance }} {{ $store.state.quote_shitcoin.symbol }}
+        
     .nav_bar
       .wrapper
         .user_nav.logged_in(v-if="$store.state.user")
@@ -266,6 +269,30 @@ button, .button {
   }
 }
 
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  .item {
+    flex-grow: 1;
+    border: 1px solid #f2f2f2;
+    padding: 3px;
+    h2 {
+      padding: 3px;
+      margin: -3px;
+      margin-bottom: 3px;
+      font-size: 16px;
+      background-color: #f2f2f2;
+    }
+  }
+  .item.my_oders {
+    flex-basis: 100%;
+  }
+}
+
+
+
+// TOOLTIPS
 .tooltip {
   display: block !important;
   z-index: 10000;

@@ -4,6 +4,8 @@ export default () => {
   return new Vuex.Store({
     state: {
       locale: 'en',
+      quote_id: 9,
+      quote_shitcoin: null,
       available_locales: ['en', 'ja'],
       translations: {},
       eth_address: null,
@@ -13,6 +15,11 @@ export default () => {
       balances: {},
       platforms: {},
       addresses: {}
+    },
+    getters: {
+      balance(state) {
+        return state.balances[state.quote_id] ? state.balances[state.quote_id].available : 0
+      }
     },
     actions: {
       async nuxtServerInit ({state, dispatch}, {req}) {
@@ -24,6 +31,7 @@ export default () => {
           await dispatch('setAuthorization', 'Bearer ' + req.cookies.authorization)
         }
         state.platforms = await this.$axios.$get('/platforms')
+        state.quote_shitcoin = await this.$axios.$get('/shitcoins/'+state.quote_id)
       },
 
       async authorize_with_password({dispatch}, data) {

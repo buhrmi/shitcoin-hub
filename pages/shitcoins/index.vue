@@ -21,11 +21,11 @@
         tbody
           tr.shitcoin(v-for="shitcoin in shitcoins")
             td
-              nuxt-link(:to="`/shitcoins/${shitcoin.param}`")
+              nuxt-link(:to="`/shitcoins/${shitcoin.param}/trade`")
                 .logo
                   img.logo_thumb(:src="shitcoin.logo_thumb" v-if="shitcoin.logo_thumb")
                   .placeholder(v-else)
-                | {{ shitcoin.name}}
+                | {{ shitcoin.name }}
             td
               .rating(v-if="shitcoin.cached_rating > 0")
                 span(v-for="i in shitcoin.cached_rating") 💩
