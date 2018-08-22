@@ -94,10 +94,6 @@ a {
     text-decoration: underline;
   }
 }
-p {
-  line-height: 1.5;
-  margin-bottom: 1em;
-}
 table {
   width: 100%;
 }

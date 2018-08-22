@@ -1,8 +1,9 @@
 <template lang="pug">
   .content
     .wrapper
-      shitcoin-header(:shitcoin="base_shitcoin" :price="book.price")
-      .container
+      shitcoin-header(:shitcoin="base_shitcoin" :price="book.price" active="trade")
+      p(v-if="$store.state.quote_id == base_shitcoin.id") Please select another shitcoin to trade.
+      .container(v-else)
         .item.order_book
           .side.bids
             h2 Bids
