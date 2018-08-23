@@ -10,6 +10,7 @@
             | Owner:  
             nuxt-link(:to="{name: 'profiles-id', params: {id: poo.user.id}}") {{ poo.user.display_name }}
           p Level 1
+          p Birthday: {{ poo.created_at }}
           p Value: 65 / 65 (100%)
           p Currently Hodling: Nothing
           p Current location: Unknown

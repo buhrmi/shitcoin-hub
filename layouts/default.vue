@@ -22,13 +22,13 @@
 
       span All prices are in {{ $store.state.quote_shitcoin.symbol }}. Your balance: {{ $store.getters.balance }} {{ $store.state.quote_shitcoin.symbol }}
         
-    .nav_bar
-      .wrapper
-        nuxt-link(to="/") Home
-        nuxt-link(to="/shitcoins") Shitcoins
-        // nuxt-link(to="/orders") Orders
-        nuxt-link(to="/poos/new") Poo Creator
-        // nuxt-link(to="/submit") Submit
+      .nav_bar
+        .wrapper
+          nuxt-link(to="/") Home
+          nuxt-link(to="/shitcoins") Shitcoins
+          // nuxt-link(to="/orders") Orders
+          nuxt-link(to="/poos/new") Poo Creator
+          // nuxt-link(to="/submit") Submit
     .wrapper
       .disclaimer Hello there, fellow hodler. Welcome to Shitcoin World. This game is still in development. If you have any questions or problems, please visit us in our <a target="_blank" href="https://t.me/shitcoinworld">Telegram channel</a>. We hope you will have an amazing time.
     nuxt
@@ -223,17 +223,25 @@ button, .button {
   display: inline-block;
 }
 
-
 .top_bar {
   padding: 16px;
+  padding-bottom: 0;
+  background-color: rgba(255,255,255,0.4);
+  box-shadow: 0 2px 8px -3px rgba(0,0,0,0.4);
+  margin-bottom: 30px;
   .user_area {
     float: right;
     text-align: right;
   }
+  .nav_bar {
+    margin-top: 10px;
+    border: none;
+  }
 }
-.nav_bar {
-  border-bottom: 1px solid #ddd;
+.nav_bar {  
   position: relative;
+  border-bottom: 1px solid #ddd;
+  // background-color: rgba(255,255,255,0.4);
   a {
     display: inline-block;
     padding: 5px 12px;
@@ -249,6 +257,7 @@ button, .button {
     border: 1px solid #ddd;
   }
 }
+
 .brand {
   font-size: 30px;
   .logo {
@@ -266,16 +275,21 @@ button, .button {
 .container {
   display: flex;
   flex-wrap: wrap;
+  margin: -6px;
   .item {
+    box-shadow: 0 2px 8px -3px rgba(0,0,0,0.4);
+    background-color: rgba(255,255,255,0.4);
     flex-grow: 1;
-    border: 1px solid #f2f2f2;
-    padding: 3px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    margin: 6px;
+    padding: 6px;
     h2 {
-      padding: 3px;
-      margin: -3px;
-      margin-bottom: 3px;
+      padding: 6px;
+      margin: -6px;
+      margin-bottom: 6px;
       font-size: 16px;
-      background-color: #f2f2f2;
+      background-color: #eee;
     }
   }
   .item.my_oders {
