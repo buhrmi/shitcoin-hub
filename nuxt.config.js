@@ -32,7 +32,7 @@ module.exports = {
     ],
   },
   head: {
-    title: 'Shitcoin World',
+    title: 'Shitcoin World',    
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -45,6 +45,7 @@ module.exports = {
       // {src: 'https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js'}
     ],
     link: [
+      { rel: 'icon', type: 'image/x-icon', href: 'favicon.png'},
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Sans' }
     ]
   },
