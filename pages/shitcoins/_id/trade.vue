@@ -91,7 +91,7 @@ module.exports =
       else
         0
     canBuy: ->
-      @$store.state.user
+      @$store.state.user && @newOrder.kind == 'limit'
     canSell: ->
       @$store.state.user
   subscriptions:

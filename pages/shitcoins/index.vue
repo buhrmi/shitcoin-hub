@@ -14,6 +14,7 @@
             thead
               tr
                 th Name
+                th Price ({{ $store.state.quote_shitcoin.symbol }})
                 th
                   | Rating 
                   //- span(v-tooltip="'The higher the Shittiness rating, the more powerful<br> your Poo will become when you feed it this Shitcoin.'") (?)
@@ -29,7 +30,8 @@
                       img.logo_thumb(:src="shitcoin.logo_thumb" v-if="shitcoin.logo_thumb")
                       .placeholder(v-else)
                     | {{ shitcoin.name }}
-                td
+                td {{ $store.state.prices[shitcoin.id] || 'N/A'}}
+                td 
                   .rating(v-if="shitcoin.cached_rating > 0")
                     span(v-for="i in shitcoin.cached_rating") 💩
                   .rating(v-else) No reviews

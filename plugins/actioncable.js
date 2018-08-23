@@ -9,22 +9,23 @@ export default async ({store, app: { $axios }}) => {
   // Reconnect if authorization changes
   store.watch(() => store.state.authorization, reconnect)
   reconnect()
+  
+  cable.subscriptions.create('BalancesChannel', {
+    received(data) {
+      store.state.balances = data
+    }
+  })
 
-  let balanceSub;
+  cable.subscriptions.create('TickerChannel', {
+    received(data) {
+      store.state.prices = data
+    }
+  })
+
   function reconnect() {
-    if (balanceSub) balanceSub.unsubscribe()
     cable.disconnect()
     cable.connect()
-
-    if (store.state.authorization) {
-      balanceSub = cable.subscriptions.create('BalancesChannel', {
-        received(data) {
-          store.dispatch('receiveBalance', data)
-        }
-      })
-    }
   }  
-
 }
 
 const plugin = {

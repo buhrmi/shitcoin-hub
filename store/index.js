@@ -13,6 +13,7 @@ export default () => {
       authorization: null,
       accepted_terms_on: null,
       balances: {},
+      prices: {},
       platforms: {},
       addresses: {}
     },
@@ -30,6 +31,7 @@ export default () => {
         if (req.cookies.authorization) {
           await dispatch('setAuthorization', 'Bearer ' + req.cookies.authorization)
         }
+        state.prices = await this.$axios.$get('/order_book/ticker?quote_id=' + state.quote_id)
         state.platforms = await this.$axios.$get('/platforms')
         state.quote_shitcoin = await this.$axios.$get('/shitcoins/'+state.quote_id)
       },
