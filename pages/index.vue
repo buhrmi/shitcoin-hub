@@ -1,9 +1,11 @@
 <template lang="pug">
   .page.news
     .wrapper
-      h1 Welcome to Shitcoin World
-      p Oh no! The dark Sodler is spreading FUD in Shitcoin World. Can you help your Poo become the greatest Hodler of all time and defeat the army of FUD once and for all? And which shitcoin will become the shittiest shitcoin of all time?
-      h1 What's new?
+      h1 Create a Poo and defeat the FUD
+      p An evil Sodler is infesting Shitcoin World with the FUD. Can you help your Poo defeat the army of FUD once and for all and become the greatest Hodler of all time?
+      h1 New Poos have arrived
+      poo(v-for="poo in poos" :key="poo.id" :poo="poo")
+      h1 Shitcoin News
       .post(v-for="post in posts")
         .date {{ post.created_at }}
         h2.title
@@ -17,7 +19,11 @@
 <script lang="coffee">
 module.exports =
   asyncData: ({app: {$axios}, params}) ->
-    posts: await $axios.$get('/posts')
+    [posts, poos] = await Promise.all [
+      await $axios.$get('/posts'),
+      await $axios.$get('/poos')
+    ]
+    return {posts, poos}
 </script>
 
 <style lang="scss" scoped>

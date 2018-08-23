@@ -41,8 +41,8 @@
 
 <script lang="coffee">
 module.exports =
-  components:
-    imageUploader: require('~/components/image-uploader').default
+  # components:
+  #   imageUploader: require('~/components/image-uploader').default
   props: ['shitcoin', 'active', 'price']
   data: ->
     editing: false

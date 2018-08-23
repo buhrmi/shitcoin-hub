@@ -26,9 +26,9 @@
 
 <script lang="coffee">
 module.exports =
-  components:
-    imageUploader: require('~/components/image-uploader').default
-    redactor: require('~/components/redactor').default
+  # components:
+    # imageUploader: require('~/components/image-uploader').default
+    # redactor: require('~/components/redactor').default
   data: ->
     edited_locale: this.$store.state.locale
     newProfile:

@@ -1,20 +1,21 @@
 <template lang="pug">
   .page
-    .wrapper.flex-grid
-      .col
-        img(:src="poo.sd_image_url")
-      .col
-        h1 {{ poo.user.display_name }}'s Poo
-        p 
-          | Owner:  
-          nuxt-link(:to="{name: 'profiles-id', params: {id: poo.user.id}}") {{ poo.user.display_name }}
-        p Level 1
-        p Health: 65 / 65 (100%)
-        p Items: -
-        p Current location: Unknown
-        button(disabled) Start new game
-        button(disabled) Feed
-        button(disabled) Sell
+    .wrapper
+      h1 {{ poo.name }}
+      .flex-grid
+        .col
+          img(:src="poo.sd_image_url")
+        .col
+          p 
+            | Owner:  
+            nuxt-link(:to="{name: 'profiles-id', params: {id: poo.user.id}}") {{ poo.user.display_name }}
+          p Level 1
+          p Value: 65 / 65 (100%)
+          p Currently Hodling: Nothing
+          p Current location: Unknown
+          button(disabled) Attack
+          button(disabled) Invite
+          button(disabled) Send Shitcoins
 </template>
 
 <script lang="coffee">

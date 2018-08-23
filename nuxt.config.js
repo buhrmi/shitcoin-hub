@@ -18,6 +18,9 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/toast',
   ],
+  css: [
+    '~/assets/styles/poo.scss'
+  ],
   build: {
     vendor: [
       '~/vendor/imperavi/redactor.min.css',

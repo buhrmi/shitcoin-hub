@@ -5,36 +5,32 @@
     //-     p Please join our <a target="_blank" href="https://t.me/shitcoinworld">Telegram channel</a> to receive free <b>Original Shitcoins™</b>
     //-     button(@click="$store.dispatch('acceptTerms')") OK, sure. Whatever, bro.
     .top_bar
-      .wrapper
-        select.locale(@change="$store.dispatch('setLocale', {locale})" v-model="locale")
-          option(value="en") English
-          option(value="ja") 日本語
+      .user_area.logged_in(v-if="$store.state.user")
+        // p ETH wallet address: {{ $store.state.eth_address }}
+        nuxt-link(to="/me") {{ $store.state.user.email }}
+        button(@click="$store.dispatch('logout')") Log out
+      .user_area.logged_out(v-else)
+        // button.login_with_telegram(@click="$store.dispatch('authorize_with_telegram')") Log In With Telegram
+        form(@submit.prevent="$store.dispatch('authorize_with_password', {email, password})")
+          input(v-model="email" placeholder="email" type="email")
+          input(v-model="password" placeholder="password" type="password")
+          button Log in
 
-        nuxt-link.brand(to="/")
-          img.logo(src="~/assets/logo.png")
-          img.fontmark(src="~/assets/fontmark.png")
+      nuxt-link.brand(to="/")
+        img.logo(src="~/assets/logo.png")
+        img.fontmark(src="~/assets/fontmark.png")
 
-        span All prices are in {{ $store.state.quote_shitcoin.symbol }}. Your balance: {{ $store.getters.balance }} {{ $store.state.quote_shitcoin.symbol }}
+      span All prices are in {{ $store.state.quote_shitcoin.symbol }}. Your balance: {{ $store.getters.balance }} {{ $store.state.quote_shitcoin.symbol }}
         
     .nav_bar
       .wrapper
-        .user_nav.logged_in(v-if="$store.state.user")
-          // p ETH wallet address: {{ $store.state.eth_address }}
-          nuxt-link(to="/me") {{ $store.state.user.email }}
-          button(@click="$store.dispatch('logout')") Log out
-        .user_nav.logged_out(v-else)
-          // button.login_with_telegram(@click="$store.dispatch('authorize_with_telegram')") Log In With Telegram
-          form(@submit.prevent="$store.dispatch('authorize_with_password', {email, password})")
-            input(v-model="email" placeholder="email" type="email")
-            input(v-model="password" placeholder="password" type="password")
-            button Log in
         nuxt-link(to="/") Home
         nuxt-link(to="/shitcoins") Shitcoins
         // nuxt-link(to="/orders") Orders
         nuxt-link(to="/poos/new") Poo Creator
         // nuxt-link(to="/submit") Submit
     .wrapper
-      .disclaimer Hello there, fellow wanderer. Thanks for stopping by. This project is very new and the community still is tiny. That means that your voice will definitely be heard. Please visit us in our <a target="_blank" href="https://t.me/shitcoinworld">Shitcoin World Telegram channel</a> to meet fellow shitcoiners and find out about the future of Shitcoin World.
+      .disclaimer Hello there, fellow hodler. Welcome to Shitcoin World. This game is still in development. If you have any questions or problems, please visit us in our <a target="_blank" href="https://t.me/shitcoinworld">Telegram channel</a>. We hope you will have an amazing time.
     nuxt
     .footer
       .wrapper
@@ -42,11 +38,14 @@
           // a(target="_blank" href="https://docs.google.com/document/d/18P6Y1LIAkbHJ6pbjrHmLRCNljgPkNRTNVcxD8UTVX-E/edit?usp=sharing") Whitepaper 
           // a(target="_blank" href="https://github.com/shitcoinworld/api") API 
           nuxt-link(to="/status") Status
+          //- select.locale(@change="$store.dispatch('setLocale', {locale})" v-model="locale")
+          //-   option(value="en") English
+          //-   option(value="ja") 日本語
           // nuxt-link(to="/about") About
       
         p 
           | Copyright 2018 Shitcoin, Inc. All Rights Reserved. <br>
-          | Problem? 
+          | Contact:
           a(href="mailto:support@shitcoinworld.com") support@shitcoinworld.com
           | <br>
           // a(href="https://github.com/shitcoinworld") Get the shitty source code on GitHub
@@ -68,6 +67,9 @@ html {
   font-family: 'Noto Sans', sans-serif;
   font-size: 15px;
   -webkit-font-smoothing: antialiased;
+  background-image: url("~/assets/bg.png");
+  background-position: 100% 0;
+  background-size: cover;
 }
 img {
   max-width: 100%;
@@ -155,12 +157,15 @@ li, ul {
 .footer {
   clear: both;
   width: 100%;
-  border-top: 1px solid #ddd;
+  color: white;
+  background: #272727;
   position: absolute;
   bottom: 0;
-  padding-top: 10px;
+  padding-top: 32px;
   height: $footer-height;
-  .links a {
+
+  a {
+    color: white;
     margin-left: 10px;
   }
 }
@@ -220,14 +225,10 @@ button, .button {
 
 
 .top_bar {
-  padding: 16px 0;
-  
+  padding: 16px;
   .user_area {
     float: right;
     text-align: right;
-  }
-  .locale {
-    float: right;
   }
 }
 .nav_bar {
@@ -241,10 +242,6 @@ button, .button {
       font-weight: bold;
       border-bottom: 3px solid #ddd;
     }
-  }
-  .user_nav {
-    position: absolute;
-    right: 0;
   }
   button {
     padding: 3px 10px;

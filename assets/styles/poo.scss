@@ -1,0 +1,29 @@
+.poo {
+  position: relative;
+  display: inline-block;
+  width: 192px;
+  // box-shadow: 0 3px 8px -3px rgba(63,48,35,.2);
+  // border: 1px solid #eee;
+  margin: 10px;
+  border-radius: 8px;
+  // background: #FED8CF;
+  // background: #F4FAFA;
+  // background: #eee;
+  // make it square aspect ratio
+  &:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+  .name {
+    position: absolute;
+    width: 100%;
+    padding: 8px;
+    // background-color: rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  .portrait {
+    width: 100%;
+    position: absolute;
+  }
+}
