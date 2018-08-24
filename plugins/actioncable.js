@@ -16,9 +16,10 @@ export default async ({store, app: { $axios }}) => {
     }
   })
 
+  // TODO: submit store.state.quote_id as parameter
   cable.subscriptions.create('TickerChannel', {
     received(data) {
-      store.state.prices = Object.assign(store.state.price, data)
+      store.state.prices = Object.assign({}, store.state.prices, data)
     }
   })
 
