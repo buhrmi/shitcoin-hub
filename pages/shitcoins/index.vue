@@ -17,7 +17,7 @@
                 th Price ({{ $store.state.quote_shitcoin.symbol }})
                 th
                   | Rating 
-                  //- span(v-tooltip="'The higher the Shittiness rating, the more powerful<br> your Poo will become when you feed it this Shitcoin.'") (?)
+                  //- span(v-tooltip="'The higher the Shittiness rating, the more powerful<br> your Hodler will become when you feed it this Shitcoin.'") (?)
                     
                 th Balance
                 th Available

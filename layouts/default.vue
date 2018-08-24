@@ -27,10 +27,10 @@
           nuxt-link(to="/") Home
           nuxt-link(to="/shitcoins") Shitcoins
           // nuxt-link(to="/orders") Orders
-          nuxt-link(to="/poos/new") Poo Creator
+          nuxt-link(to="/hodlers/new") Create new Hodler
           // nuxt-link(to="/submit") Submit
     .wrapper
-      .disclaimer Hello there, fellow hodler. Welcome to Shitcoin World. This game is still in development. If you have any questions or problems, please visit us in our <a target="_blank" href="https://t.me/shitcoinworld">Telegram channel</a>. We hope you will have an amazing time.
+      .disclaimer Hello there, fellow wanderer. Welcome to Shitcoin World. This game is still in development. If you have any questions or problems, please visit us in our <a target="_blank" href="https://t.me/shitcoinworld">Telegram channel</a>. We hope you will have an amazing time.
     nuxt
     .footer
       .wrapper

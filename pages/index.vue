@@ -1,11 +1,12 @@
 <template lang="pug">
   .page.news
     .wrapper
-      h1 Create a Poo and defeat the FUD
-      p An evil Sodler is infesting Shitcoin World with the FUD. Can you help your Poo defeat the army of FUD once and for all and become the greatest Hodler of all time?
-      h1 New Poos have arrived
-      poo(v-for="poo in poos" :key="poo.id" :poo="poo")
-      h1 Shitcoin News
+      h1 Step into Shitcoin Kingdom
+      h2 Create a Hodler, earn Shitcoins, and join the fight against the FUD
+      p An evil Sodler is infesting Shitcoin Kingdom with the FUD. Can you help your Hodler defeat the army of FUD once and for all and become the greatest Hodler of all time?
+      h1 Say hello to new Hodlers
+      hodler(v-for="hodler in hodlers" :key="hodler.id" :hodler="hodler")
+      h1 Hodl News
       .post(v-for="post in posts")
         .date {{ post.created_at }}
         h2.title
@@ -19,11 +20,11 @@
 <script lang="coffee">
 module.exports =
   asyncData: ({app: {$axios}, params}) ->
-    [posts, poos] = await Promise.all [
+    [posts, hodlers] = await Promise.all [
       await $axios.$get('/posts'),
-      await $axios.$get('/poos')
+      await $axios.$get('/hodlers')
     ]
-    return {posts, poos}
+    return {posts, hodlers}
 </script>
 
 <style lang="scss" scoped>
