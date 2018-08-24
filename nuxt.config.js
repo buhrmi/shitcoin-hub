@@ -45,7 +45,7 @@ module.exports = {
       // {src: 'https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js'}
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'favicon.png'},
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png'},
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Sans' }
     ]
   },

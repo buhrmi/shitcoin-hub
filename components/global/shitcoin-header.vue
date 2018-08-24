@@ -5,34 +5,34 @@
         image-uploader(v-model="shitcoin" field="logo" :path="`/shitcoins/${shitcoin.id}`" param="shitcoin[logo]")
       h1.name {{ shitcoin.name }}
       p Price: {{ $store.state.prices[shitcoin.id] || 'N/A' }} {{ $store.state.quote_shitcoin.symbol }}
-      .details(v-if="!editing")
-        ul
-          li 
-            | Platform: 
-            a(target="_blank" :href="shitcoin.explorer_url") {{ shitcoin.platform }}
-          li
-            span Website: {{ shitcoin.details.website }}
-          li
-            span Telegram: {{ shitcoin.details.telegram }}
-          li
-            span Twitter: {{ shitcoin.details.twitter }}
-          li
-            button(@click="edit" v-if="$store.state.user") Edit
-      .details(v-else)
-        ul
-          li
-            span Platform: 
-            | {{ shitcoin.platform }}
-          li
-            span Website: 
-            input(v-model="shitcoin.details.website")
-          li
-            span Telegram: 
-            input(v-model="shitcoin.details.telegram")
-          li
-            span Twitter: 
-            input(v-model="shitcoin.details.twitter")
-        button(@click="save") {{ $t('save_changes') }}
+      //- .details(v-if="!editing")
+      //-   ul
+      //-     li 
+      //-       | Platform: 
+      //-       a(target="_blank" :href="shitcoin.explorer_url") {{ shitcoin.platform }}
+      //-     li
+      //-       span Website: {{ shitcoin.details.website }}
+      //-     li
+      //-       span Telegram: {{ shitcoin.details.telegram }}
+      //-     li
+      //-       span Twitter: {{ shitcoin.details.twitter }}
+      //-     li
+      //-       button(@click="edit" v-if="$store.state.user") Edit
+      //- .details(v-else)
+      //-   ul
+      //-     li
+      //-       span Platform: 
+      //-       | {{ shitcoin.platform }}
+      //-     li
+      //-       span Website: 
+      //-       input(v-model="shitcoin.details.website")
+      //-     li
+      //-       span Telegram: 
+      //-       input(v-model="shitcoin.details.telegram")
+      //-     li
+      //-       span Twitter: 
+      //-       input(v-model="shitcoin.details.twitter")
+      //-   button(@click="save") {{ $t('save_changes') }}
     .nav_bar
       nuxt-link(:class="{active: active == 'trade'}" :to="{name: 'shitcoins-id-trade', params: {id: shitcoin.id}}") Trade
       nuxt-link(:class="{active: active == 'funding'}" :to="{name: 'shitcoins-id-funding', params: {id: shitcoin.id}}") Funding
