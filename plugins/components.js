@@ -1,19 +1,11 @@
 import Vue from 'vue'
-// import redactor from '~/components/redactor';
-// import shitcoinHeader from '~/components/shitcoin-header';
 import dropzone from 'nuxt-dropzone';
 import vtooltip from 'v-tooltip';
 
 Vue.use(vtooltip);
-// Vue.component('redactor', redactor);
 Vue.component('dropzone', dropzone);
-// Vue.component('shitcoin-header', shitcoinHeader)
 
-
-const requireComponent = require.context(
-  // The relative path of the components folder
-  '~/components/global'
-)
+const requireComponent = require.context('~/components/global', false, /\.vue/)
 
 requireComponent.keys().forEach(fileName => {
   // Get component config
