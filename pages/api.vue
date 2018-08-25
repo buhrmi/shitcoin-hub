@@ -8,18 +8,16 @@
         .container
           .item
             h2 <span class="code">/order_book/ticker</span>
-            p Can be used to get price quotes for shitcoins, given a platform ID and an optional token address.
-            h3 Params
-            ul
-              li platform_id (default: 61)
-              li address (optional)
+            p Can be used to get price quotes for shitcoins
             h3 Example
             p Get price (in ETC) for token with the contract address `0x123456` on Ethereum Classic:
             pre curl https://api.shitcoinworld.com/order_book/ticker?address=0x123456&amp;platform_id=61
             h3 Response
             pre
               | {
-              |   "13": "4.1156" // 13 is the internal ID of the shitcoin. 4.1156 is the price
+              |   "13": "4.1156", // 13 is the internal ID of the shitcoin. 4.1156 is the price
+              |   "11": "1.5115",
+              |   ...
               | }
             p
           
