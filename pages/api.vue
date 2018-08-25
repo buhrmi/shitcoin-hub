@@ -10,8 +10,8 @@
             h2 <span class="code">/order_book/ticker</span>
             p Can be used to get price quotes for shitcoins
             h3 Example
-            p Get price (in ETC) for token with the contract address `0x123456` on Ethereum Classic:
-            pre curl https://api.shitcoinworld.com/order_book/ticker?address=0x123456&amp;platform_id=61
+            p Get price (in ETC) for all shitcoins
+            pre curl https://api.shitcoinworld.com/order_book/ticker
             h3 Response
             pre
               | {
