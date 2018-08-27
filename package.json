@@ -4,6 +4,7 @@
     "@nuxtjs/font-awesome": "^1.0.3",
     "@nuxtjs/toast": "^3.0.1",
     "actioncable": "^5.2.1",
+    "big.js": "^5.1.2",
     "cookie-parser": "^1.4.3",
     "nuxt": "^1.4.2",
     "nuxt-dropzone": "^0.2.7",

@@ -3,45 +3,47 @@
     .wrapper
       shitcoin-header(:shitcoin="shitcoin")
       .container
+        .item.login(v-if="!$store.state.user")
+          h2 Log in
+          p Please log in to manage your account funding
         .item.balances(v-if="$store.state.balances[shitcoin.id]")
           h2 Balances
           p Balance: {{ $store.state.balances[shitcoin.id].balance }}
           p In orders: {{ $store.state.balances[shitcoin.id].in_orders }}
           p Available: {{ $store.state.balances[shitcoin.id].available }}
-        .item.history
-          .history
-            h2 History
-            table
-              thead
-                tr
-                  td Type
-                  td Amount
-                  td Date
-                  td Status
-                  td Notes
-              tbody
-                tr(v-for="change in history")
-                  td {{ change.type }}
+        .item.history(v-if="$store.state.user")
+          h2 History
+          table
+            thead
+              tr
+                td Type
+                td Amount
+                td Date
+                td Status
+                td Notes
+            tbody
+              tr(v-for="change in history")
+                td {{ change.type }}
 
-                  td(v-if="change.type == 'Deposit'") {{ change.amount }}
-                  td(v-if="change.type == 'Withdrawal'") -{{ change.amount }}
-                  
-                  td {{ change.created_at }}
+                td(v-if="change.type == 'Deposit'") {{ change.amount }}
+                td(v-if="change.type == 'Withdrawal'") -{{ change.amount }}
+                
+                td {{ change.created_at }}
 
-                  td(v-if="change.type == 'Deposit'")
-                    | {{ change.status }} 
-                    a(:href="change.url" target="_blank") Check Transaction  
-                  td(v-if="change.type == 'Withdrawal'")
-                    | {{ change.status }} 
-                    a(:href="change.url" target="_blank") Check Transaction  
-                  
-                  td(v-if="change.type == 'Deposit'")
-                  td(v-if="change.type == 'Withdrawal'")
-                    .to To: {{ change.to_address }}
-                    .error(v-if="change.status == 'error'")
-                      span {{change.error}}
+                td(v-if="change.type == 'Deposit'")
+                  | {{ change.status }} 
+                  a(:href="change.url" target="_blank") Check Transaction  
+                td(v-if="change.type == 'Withdrawal'")
+                  | {{ change.status }} 
+                  a(:href="change.url" target="_blank") Check Transaction  
+                
+                td(v-if="change.type == 'Deposit'")
+                td(v-if="change.type == 'Withdrawal'")
+                  .to To: {{ change.to_address }}
+                  .error(v-if="change.status == 'error'")
+                    span {{change.error}}
 
-        .item.deposit
+        .item.deposit(v-if="$store.state.user")
           h2 Deposit
           p Your deposit address: {{ $store.state.addresses[shitcoin.platform_id] }}
         .item.new_withdrawal(v-if="$store.state.user")
@@ -53,7 +55,13 @@
           .field
             label
               span Amount: 
-              input(v-model="newWithdrawal.amount")
+              input(v-model="newWithdrawal.amount" type="number")
+          .fees(v-if="shitcoin.user_transfer_fee")
+            p The network applies a flat transfer fee of {{ shitcoin.user_transfer_fee }} {{ shitcoin.symbol }}
+            p You will receive <b>{{ Big(newWithdrawal.amount || 0).minus(shitcoin.user_transfer_fee).toString() }} {{ shitcoin.symbol }}</b>.
+            p
+              | To receive {{ newWithdrawal.amount }}, please enter 
+              a(@click="newWithdrawal.amount = Big(newWithdrawal.amount || 0).add(shitcoin.user_transfer_fee).toString()") {{ Big(newWithdrawal.amount || 0).add(shitcoin.user_transfer_fee).toString() }}
           button(@click="requestWithdrawal") Submit
         
 </template>
@@ -75,7 +83,7 @@ module.exports =
       newWithdrawal:
         shitcoin_id: shitcoin.id
         to_address: null
-        amount: null
+        amount: 0
       history: history
       shitcoin: shitcoin
    methods:

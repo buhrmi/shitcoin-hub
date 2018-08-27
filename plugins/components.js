@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import dropzone from 'nuxt-dropzone';
 import vtooltip from 'v-tooltip';
+import Big from 'big.js';
 
 Vue.use(vtooltip);
 Vue.component('dropzone', dropzone);
+
+Vue.prototype.Big = Big
 
 const requireComponent = require.context('~/components/global', false, /\.vue/)
 
