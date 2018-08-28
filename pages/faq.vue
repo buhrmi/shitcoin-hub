@@ -2,6 +2,7 @@
   .page
     .wrapper
       h1 FAQ
+      p Frequently asked questions
       .container
         .item
           h2 What is Shitcoin World™?
@@ -25,6 +26,10 @@
           ul
             li Help your Hodler in the fight against the FUD.
             li Purchase them from other players on an exchange that supports them.
+      .container
+        .item
+          h2 Will I be able to sell a Hodler?
+          p Yes, you will be able to register a Hodler as an NFT and sell it on the <a href="https://opensea.io">Open Sea Marketplace</a>.
       .container
         .item
           h2 What is the value of an Original Shitcoin™?
