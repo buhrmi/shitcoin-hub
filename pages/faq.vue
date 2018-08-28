@@ -17,7 +17,7 @@
       .container
         .item
           h2 Where can I see how many Original Shitcoins™ have been issued in total?
-          p You can always find the current total supply here: <a href="https://etherhub.io/token/0x71d6cce7566297c85d6bb6ef6644d1a171efda60" target="_blank"> (look for the number next to "Total 💩 Tokens")
+          p You can always find the current total supply on <a href="https://etherhub.io/token/0x71d6cce7566297c85d6bb6ef6644d1a171efda60" target="_blank">etherhub.io</a> (look for the number next to "Total 💩 Tokens")
       .container
         .item
           h2 How can I get Original Shitcoins™?
