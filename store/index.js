@@ -14,6 +14,7 @@ export default () => {
       accepted_terms_on: null,
       balances: {},
       prices: {},
+      status: {},
       platforms: {},
       addresses: {}
     },
@@ -31,11 +32,12 @@ export default () => {
         if (req.cookies.authorization) {
           await dispatch('setAuthorization', 'Bearer ' + req.cookies.authorization)
         }
-        state.platforms = await this.$axios.$get('/platforms'),
+        state.platforms = await this.$axios.$get('/platforms')
+        state.status = await this.$axios.$get('/status')
         state.platforms.map((p) => {
           if (p.default) state.quote_id = p.native_shitcoin_id
         })
-        state.prices = await this.$axios.$get('/order_book/ticker?quote_id=' + state.quote_id),
+        state.prices = await this.$axios.$get('/order_book/ticker?quote_id=' + state.quote_id)
         state.quote_shitcoin = await this.$axios.$get('/shitcoins/'+state.quote_id)
       },
 

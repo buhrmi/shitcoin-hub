@@ -4,7 +4,7 @@
       .image
         image-uploader(v-model="shitcoin" field="logo" :path="`/shitcoins/${shitcoin.id}`" param="shitcoin[logo]")
       h1.name {{ shitcoin.name }}
-      p Price: {{ $store.state.prices[shitcoin.id] || '¯\_(ツ)_/¯' }} {{ $store.state.quote_shitcoin.symbol }}
+      p Price: {{ $store.state.prices[shitcoin.id] || '¯\\_(ツ)_/¯' }} {{ $store.state.quote_shitcoin.symbol }}
       //- .details(v-if="!editing")
       //-   ul
       //-     li 

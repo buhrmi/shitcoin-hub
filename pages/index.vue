@@ -2,9 +2,11 @@
   .page.news
     .wrapper
       .redactor-styles.no-padding
-        h1 Step into Shitcoin Kingdom
-        h2 Create a Hodler, earn Shitcoins, and join the fight against the FUD
-        p An evil Sodler is infesting Shitcoin Kingdom with the FUD. Can you help your Hodler defeat the army of FUD once and for all and become the greatest Hodler of all time?
+        h1 Welcome to Shitcoin Kingdom
+        h2 Create a Hodler, join the fight against the FUD and earn Original Shitcoins™
+        p The Sodler is infesting Shitcoin Kingdom with the FUD. Can you defeat his army of FUD once and for all and become the greatest Hodler of Shitcoin World?
+        p Total amount of Original Shitcoins™ earned: {{ $store.state.status.shitcoins_earned }} / {{ Number.parseFloat($store.state.status.shitcoins_supplied) }}
+        nuxt-link(to="/faq") Learn more about Original Shitcoins™
         h2 Say hello to new Hodlers
         hodler(v-for="hodler in hodlers" :key="hodler.id" :hodler="hodler")
         h1 Hodl News

@@ -34,23 +34,27 @@
     nuxt
     .footer
       .wrapper
-        .right.links
-          // a(target="_blank" href="https://docs.google.com/document/d/18P6Y1LIAkbHJ6pbjrHmLRCNljgPkNRTNVcxD8UTVX-E/edit?usp=sharing") Whitepaper 
-          // a(target="_blank" href="https://github.com/shitcoinworld/api") API 
-          nuxt-link(to="/faq") FAQ
-          nuxt-link(to="/api") API
-          nuxt-link(to="/status") Status
+        .container
+          .copyright
+            h3 Shitcoin World™
+            p Copyright 2018 Shitcoin, Inc. All Rights Reserved.
+            p Contact: <a href="mailto:support@shitcoinworld.com">support@shitcoinworld.com</a>
+          .status
+            h3 Status
+            p Deposits: {{ $store.state.status.deposits ? 'Seems OK' : 'Not running' }}
+            p Withdrawals: {{ $store.state.status.withdrawals ? 'Seems OK' : 'Not running' }}
+          .links
+            h3 More Poop
+            p 
+              nuxt-link(to="/faq") FAQ
+            p 
+              nuxt-link(to="/api") API
+          //- nuxt-link(to="/status") Status
           //- select.locale(@change="$store.dispatch('setLocale', {locale})" v-model="locale")
           //-   option(value="en") English
           //-   option(value="ja") 日本語
-          // nuxt-link(to="/about") About
+          //- nuxt-link(to="/about") About
       
-        p 
-          | Copyright 2018 Shitcoin, Inc. All Rights Reserved. <br>
-          | Contact:
-          a(href="mailto:support@shitcoinworld.com") support@shitcoinworld.com
-          | <br>
-          // a(href="https://github.com/shitcoinworld") Get the shitty source code on GitHub
 </template>
 
 <script lang="coffee">
@@ -63,61 +67,15 @@ export default
 
 
 <style lang="scss">
-$footer-height: 100px;
+$footer-height: 200px;
 
-html {
-  font-family: 'Noto Sans', sans-serif;
-  font-size: 15px;
-  -webkit-font-smoothing: antialiased;
-  background-image: url("~/assets/bg.png");
-  background-position: 100% 0;
-  background-size: cover;
-}
-img {
-  max-width: 100%;
-}
-* {
-  font-family: inherit;
-  font-size: inherit;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border-spacing: 0;
-}
-h1 {
-  font-size: 32px;
-}
-h2 {
-  font-size: 26px;
-}
-a {
-  color: #1a0dab;
-  // font-weight: bold;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-}
-table {
-  width: 100%;
-}
-th {
-  text-align: left;
-}
-td {
-  vertical-align: top;
-}
-li, ul {
-  list-style-position: inside;
-}
-.wrapper {
+
+.layout {
+  min-height: 100vh;
   position: relative;
-  max-width: 1070px;
-  margin: 0 auto;
-  @media screen and (max-width: 1090px) {
-    margin: 0 20px;
-  }
+  padding-bottom: $footer-height + 20px;
 }
+
 .disclaimer {
   margin: 24px 0;
   border: 1px solid burlywood;
@@ -125,37 +83,7 @@ li, ul {
   padding: 12px;
   background: #fafada;
 }
-.layout {
-  min-height: 100vh;
-  position: relative;
-  padding-bottom: $footer-height + 20px;
-}
-.no-padding {
-  padding: 0 !important;
-}
-.modal_background {
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  position: fixed;
-  background: rgba(16, 16, 18, .18);
-  z-index: 1000;
-  .modal_window {
-    position: absolute;
-    width: 600px;
-    min-width: 50vw;
-    max-width: 95vw;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    padding: 20px;
-    background: white;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, .07), 0 2px 15px rgba(80, 80, 80, .25);
-    border-radius: 3px;
-    color: #000;
-  }
-}
+
 .footer {
   clear: both;
   width: 100%;
@@ -163,7 +91,7 @@ li, ul {
   background: #272727;
   position: absolute;
   bottom: 0;
-  padding-top: 32px;
+  padding-top: 42px;
   height: $footer-height;
 
   a {
@@ -171,244 +99,5 @@ li, ul {
     margin-left: 10px;
   }
 }
-.right {
-  float: right;
-}
 
-.flex-grid {
-  display: flex;
-  // @media (max-width: 700px) {
-  //   display: block;
-  // }
-}
-.col {
-  flex: 1;
-}
-button, .button {
-  cursor: pointer;
-  display: inline-block;
-  box-sizing: border-box;
-  text-align: center;
-  padding: 10px 15px 9px 15px;
-  outline: 0;
-  border: none;
-  vertical-align: middle;
-  text-decoration: none;
-  zoom: 1;
-  position: relative;
-  color: rgba(0, 0, 0, .85);
-  border-radius: 2px;
-  background: rgba(255, 255, 255, .97);
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .22);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, .22);
-  margin-right: 5px;
-  margin-bottom: 4px;  
-  &.primary, &:hover {
-    outline: 0;
-    color: #fff;
-    background: #449aef;
-  }
-  &:disabled {
-    background: #eee;
-    color: #999;
-    cursor: not-allowed;
-  }
-}
-.side_col {
-  vertical-align: top;
-  width: 260px;
-  display: inline-block;
-}
-.main_col {
-  vertical-align: top;
-  width: calc(100% - 260px);
-  display: inline-block;
-}
-
-.top_bar {
-  padding: 16px;
-  padding-bottom: 0;
-  background-color: rgba(255,255,255,0.4);
-  box-shadow: 0 2px 8px -3px rgba(0,0,0,0.4);
-  margin-bottom: 30px;
-  .user_area {
-    float: right;
-    text-align: right;
-  }
-  .nav_bar {
-    margin-top: 10px;
-    border: none;
-  }
-}
-.nav_bar {  
-  position: relative;
-  border-bottom: 1px solid #ddd;
-  // background-color: rgba(255,255,255,0.4);
-  a {
-    display: inline-block;
-    padding: 5px 12px;
-    color: black;
-    &.active, &.nuxt-link-exact-active {
-      font-weight: bold;
-      border-bottom: 3px solid #ddd;
-    }
-  }
-  button {
-    padding: 3px 10px;
-    box-shadow: none;
-    border: 1px solid #ddd;
-  }
-}
-
-.brand {
-  font-size: 30px;
-  .logo {
-    vertical-align: middle;
-    height: 48px;
-  }
-  .fontmark {
-    vertical-align: middle;
-    height: 36px;
-    margin-left: 10px;
-  }
-}
-
-
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -6px;
-  .item {
-    box-shadow: 0 2px 8px -3px rgba(0,0,0,0.4);
-    background-color: rgba(255,255,255,0.4);
-    flex-grow: 1;
-    border: 1px solid #eee;
-    border-radius: 6px;
-    margin: 6px;
-    padding: 6px;
-    h2 {
-      padding: 6px;
-      margin: -6px;
-      margin-bottom: 6px;
-      font-size: 16px;
-      background-color: #eee;
-    }
-  }
-  .item.my_oders {
-    flex-basis: 100%;
-  }
-}
-
-
-
-// TOOLTIPS
-.tooltip {
-  display: block !important;
-  z-index: 10000;
-
-  .tooltip-inner {
-    background: black;
-    color: white;
-    border-radius: 16px;
-    padding: 5px 10px 4px;
-  }
-
-  .tooltip-arrow {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    position: absolute;
-    margin: 5px;
-    border-color: black;
-    z-index: 1;
-  }
-
-  &[x-placement^="top"] {
-    margin-bottom: 5px;
-
-    .tooltip-arrow {
-      border-width: 5px 5px 0 5px;
-      border-left-color: transparent !important;
-      border-right-color: transparent !important;
-      border-bottom-color: transparent !important;
-      bottom: -5px;
-      left: calc(50% - 5px);
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-
-  &[x-placement^="bottom"] {
-    margin-top: 5px;
-
-    .tooltip-arrow {
-      border-width: 0 5px 5px 5px;
-      border-left-color: transparent !important;
-      border-right-color: transparent !important;
-      border-top-color: transparent !important;
-      top: -5px;
-      left: calc(50% - 5px);
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-
-  &[x-placement^="right"] {
-    margin-left: 5px;
-
-    .tooltip-arrow {
-      border-width: 5px 5px 5px 0;
-      border-left-color: transparent !important;
-      border-top-color: transparent !important;
-      border-bottom-color: transparent !important;
-      left: -5px;
-      top: calc(50% - 5px);
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-
-  &[x-placement^="left"] {
-    margin-right: 5px;
-
-    .tooltip-arrow {
-      border-width: 5px 0 5px 5px;
-      border-top-color: transparent !important;
-      border-right-color: transparent !important;
-      border-bottom-color: transparent !important;
-      right: -5px;
-      top: calc(50% - 5px);
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-
-  &.popover {
-    $color: #f9f9f9;
-
-    .popover-inner {
-      background: $color;
-      color: black;
-      padding: 24px;
-      border-radius: 5px;
-      box-shadow: 0 5px 30px rgba(black, .1);
-    }
-
-    .popover-arrow {
-      border-color: $color;
-    }
-  }
-
-  &[aria-hidden='true'] {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity .15s, visibility .15s;
-  }
-
-  &[aria-hidden='false'] {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity .15s;
-  }
-}
 </style>

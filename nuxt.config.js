@@ -19,6 +19,7 @@ module.exports = {
     '@nuxtjs/toast',
   ],
   css: [
+    '~/assets/styles/globals.scss',
     '~/assets/styles/hodler.scss'
   ],
   build: {

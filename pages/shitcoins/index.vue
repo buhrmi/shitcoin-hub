@@ -30,7 +30,7 @@
                       img.logo_thumb(:src="shitcoin.logo_thumb" v-if="shitcoin.logo_thumb")
                       .placeholder(v-else)
                     | {{ shitcoin.name }}
-                td {{ $store.state.prices[shitcoin.id] || '¯\_(ツ)_/¯'}}
+                td {{ $store.state.prices[shitcoin.id] || '¯\\_(ツ)_/¯'}}
                 td 
                   .rating(v-if="shitcoin.cached_rating > 0")
                     span(v-for="i in shitcoin.cached_rating") 💩
