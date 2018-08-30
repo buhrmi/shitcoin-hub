@@ -10,7 +10,8 @@ module.exports = {
     '~/plugins/monkey_patches.js',
     '~/plugins/web3.js',
     '~/plugins/i18n.js',
-    {src: '~/plugins/actioncable.js', ssr: false}
+    { src: '~plugins/analytics.js', ssr: false },
+    { src: '~/plugins/actioncable.js', ssr: false }
     // { src: '~/plugins/pusher.js', ssr: false }
   ],
   modules: [

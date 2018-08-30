@@ -4,6 +4,28 @@
     //-   .modal_window
     //-     p Please join our <a target="_blank" href="https://t.me/shitcoinworld">Telegram channel</a> to receive free <b>Original Shitcoins™</b>
     //-     button(@click="$store.dispatch('acceptTerms')") OK, sure. Whatever, bro.
+    .modal_background(v-if="$store.state.showSignup")
+      .modal_window
+        .close_button(@click="$store.state.showSignup = false")
+          i.fa.fa-close
+        h2 Sign up
+        form(@submit.prevent="$store.dispatch('authorize_with_password', {email, password})")
+          table.form
+            tbody
+              tr.field
+                td.label
+                  label Email
+                td.input
+                  input(v-model="email" type="email")
+              tr.field
+                td.label
+                  label Password
+                td.input
+                  input(v-model="password" type="password")
+              tr.field
+                td.label
+                td.input
+                  button Sign up
     .top_bar
       .user_area.logged_in(v-if="$store.state.user")
         // p ETH wallet address: {{ $store.state.eth_address }}
@@ -14,8 +36,8 @@
         form(@submit.prevent="$store.dispatch('authorize_with_password', {email, password})")
           input(v-model="email" placeholder="email" type="email")
           input(v-model="password" placeholder="password" type="password")
-          button Log in
-
+          button Log in 
+        button(@click="$store.state.showSignup = true") Sign up
       nuxt-link.brand(to="/")
         img.logo(src="~/assets/logo.png")
         img.fontmark(src="~/assets/fontmark.png")
@@ -50,7 +72,7 @@
             p 
               nuxt-link(to="/api") API
           //- nuxt-link(to="/status") Status
-          //- select.locale(@change="$store.dispatch('setLocale', {locale})" v-model="locale")
+          //- select.locale(@change="$store.dispatch('setLocale', {locale})" v-model="$store.state.locale")
           //-   option(value="en") English
           //-   option(value="ja") 日本語
           //- nuxt-link(to="/about") About
@@ -62,7 +84,7 @@ export default
   data: ->
     email: null
     password: null
-    locale: this.$store.state.locale
+    showSignup: false
 </script>
 
 

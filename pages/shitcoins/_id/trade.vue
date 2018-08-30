@@ -4,7 +4,7 @@
       shitcoin-header(:shitcoin="base_shitcoin" :price="book.price" active="trade")
       p(v-if="$store.state.quote_id == base_shitcoin.id") Please select another shitcoin to trade.
       .container(v-else)
-        .item.order_book
+        .card.padded
           .side.bids
             h2 Bids
             table
@@ -25,7 +25,7 @@
                 tr.bid(v-for="ask in book.asks") 
                   td {{ ask.rate }}
                   td {{ ask.quantity }}
-        .item.new_order
+        .card.padded
           h2 New Order
           form(@submit.prevent="submitOrder")
             table.form
@@ -55,8 +55,8 @@
                     button(@click="newOrder.side = 'buy'" :disabled="!canBuy") BUY
                     button(@click="newOrder.side = 'sell'" :disabled="!canSell") SELL
                     p(v-if="!$store.state.user") Log in to trade
-        .item.my_oders
-          h2 Open Orders
+        .card.my_orders.padded
+          h2 My active Orders
           table.orders
             thead
               tr
@@ -144,8 +144,10 @@ module.exports =
 </script>
 
 <style lang="scss">
-
-.order_book .side {
+.card.my_orders {
+  flex-basis: 100%;
+}
+.side {
   width: 50%;
   display: inline-block;
   vertical-align: top;

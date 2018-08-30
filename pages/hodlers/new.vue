@@ -1,7 +1,7 @@
 <template lang="pug">
   .page.news
-    .wrapper.flex-grid
-      .col
+    .wrapper
+      .side
         .hodler
           .layer
             img(:src="body.sd_image_url")
@@ -9,14 +9,13 @@
             img(:src="face.sd_image_url")
           .layer
             img(:src="outfit.sd_image_url" v-if="outfit")
-        button(v-if="$store.state.user" :disabled="creating" @click="createHodler") Create this Hodler
-        p(v-else) Log in to create this Hodler
-      .col
-        .part(v-for="part in bodies")
+        button(:disabled="creating" @click="createHodler") Create this Hodler
+      .side
+        .part(:class="{active: body.id == part.id}" v-for="part in bodies")
           img(:src="part.icon_url" @click="body = part")
-        .part(v-for="part in faces")
+        .part(:class="{active: face.id == part.id}" v-for="part in faces")
           img(:src="part.icon_url" @click="face = part")
-        .part(v-for="part in outfits")
+        .part(:class="{active: outfit && outfit.id == part.id}" v-for="part in outfits")
           img(:src="part.icon_url" @click="outfit = part")
       
 </template>
@@ -43,20 +42,37 @@ module.exports =
   
   methods:
     createHodler: ->
-      this.creating = true
-      composition = "#{this.body.id}-#{this.face.id}"
-      composition += "-#{this.outfit.id}" if this.outfit
-      result = await this.$axios.$post('/hodlers', {composition})
-      this.$router.push('/hodlers/' + result.id)
+      if !this.$store.state.user
+        this.$store.state.showSignup = true
+      else
+        this.creating = true
+        composition = "#{this.body.id}-#{this.face.id}"
+        composition += "-#{this.outfit.id}" if this.outfit
+        result = await this.$axios.$post('/hodlers', {composition})
+        this.$router.push('/hodlers/' + result.id)
 </script>
 
 <style lang="scss" scoped>
+.side {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
 .part {
-  display: inline;
+  display: inline-block;
+  border-radius: 20px;
+  // border: 1px solid #eee;
+  &.active {
+    // box-shadow: 0px 2px 5px rgba(189, 151, 101, 0.4);
+    border: 2px solid rgba(189, 151, 101, 0.4);
+    
+    // border: 1px solid red;
+  }
 }
 .hodler {
   position: relative;
   // make it square aspect ratio
+  width: 100%;
   &:after {
     content: "";
     display: block;

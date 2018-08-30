@@ -3,15 +3,15 @@
     .wrapper
       shitcoin-header(:shitcoin="shitcoin")
       .container
-        .item.login(v-if="!$store.state.user")
+        .card.padded(v-if="!$store.state.user")
           h2 Log in
           p Please log in to manage your account funding
-        .item.balances(v-if="$store.state.balances[shitcoin.id]")
+        .card.padded(v-if="$store.state.balances[shitcoin.id]")
           h2 Balances
           p Balance: {{ $store.state.balances[shitcoin.id].balance }}
           p In orders: {{ $store.state.balances[shitcoin.id].in_orders }}
           p Available: {{ $store.state.balances[shitcoin.id].available }}
-        .item.history(v-if="$store.state.user")
+        .card.history.padded(v-if="$store.state.user")
           h2 History
           table
             thead
@@ -43,10 +43,10 @@
                   .error(v-if="change.status == 'error'")
                     span {{change.error}}
 
-        .item.deposit(v-if="$store.state.user")
+        .card.padded(v-if="$store.state.user")
           h2 Deposit
           p Your deposit address: {{ $store.state.addresses[shitcoin.platform_id] }}
-        .item.new_withdrawal(v-if="$store.state.user")
+        .card.padded(v-if="$store.state.user")
           h2 New Withdrawal
           .field
             label
@@ -83,12 +83,13 @@ module.exports =
       newWithdrawal:
         shitcoin_id: shitcoin.id
         to_address: null
-        amount: 0
+        amount: shitcoin.user_transfer_fee
       history: history
       shitcoin: shitcoin
    methods:
      requestWithdrawal: ->
        await this.$axios.$post('/withdrawals', withdrawal: this.newWithdrawal)
-       this.withdrawals = await $axios.$get('/withdrawals', params: {shitcoin_id: params.id})
+       this.$toast.success("Withdrawal submitted.")
+       this.history = await $axios.$get('/balance_history', params: {shitcoin_id: this.shitcoin.id})
 
 </script>

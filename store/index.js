@@ -12,6 +12,7 @@ export default () => {
       user: null,
       authorization: null,
       accepted_terms_on: null,
+      showSignup: false,
       balances: {},
       prices: {},
       status: {},
@@ -41,10 +42,11 @@ export default () => {
         state.quote_shitcoin = await this.$axios.$get('/shitcoins/'+state.quote_id)
       },
 
-      async authorize_with_password({dispatch}, data) {
+      async authorize_with_password({dispatch, state}, data) {
         // TODO: use different way of get an authorization string instead of just posting email address
         let authorizationToken = await this.$axios.$post('/authorization', data, {withCredentials: true})
         await dispatch('setAuthorization', 'Bearer ' + authorizationToken)
+        state.showSignup = false
       },
 
       async authorize_with_telegram() {

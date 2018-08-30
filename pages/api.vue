@@ -6,7 +6,7 @@
         p Shitcoin World provides some public API endpoints that might be of interest (or not).
         p The API base URL for all requests is <span class="code">{{ api_url }}</span>
         .container
-          .item
+          .card.padded
             h2 <span class="code">/order_book/ticker</span>
             p Can be used to get price quotes for shitcoins
             h3 Example
@@ -21,7 +21,7 @@
               | }
             p
           
-          .item
+          .card.padded
             h2 <span class="code">/shitcoins</span>
             p Get a list of all shitcoins and their internal IDs
             h3 Example
