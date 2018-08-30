@@ -17,7 +17,8 @@ export default () => {
       prices: {},
       status: {},
       platforms: {},
-      addresses: {}
+      addresses: {},
+      hodler: null
     },
     getters: {
       balance(state) {
@@ -32,6 +33,9 @@ export default () => {
         await dispatch('setLocale', {locale})
         if (req.cookies.authorization) {
           await dispatch('setAuthorization', 'Bearer ' + req.cookies.authorization)
+        }
+        if (req.cookies.hodler) {
+          state.hodler = await this.$axios.$get('/hodlers/'+req.cookies.hodler)
         }
         state.platforms = await this.$axios.$get('/platforms')
         state.status = await this.$axios.$get('/status')
@@ -62,6 +66,12 @@ export default () => {
           let authorizationToken = await this.$axios.$post('/authorization', {signature}, {withCredentials: true})
           dispatch('setAuthorization', 'Bearer ' + authorizationToken)
         })
+      },
+
+      async playWithHodler({state}, hodlerId) {
+        state.hodler = await this.$axios.$get('/hodlers/' + hodlerId)
+        document.cookie = "hodler="+hodlerId+";path=/"
+        this.app.router.push('/game')
       },
 
       async acceptTerms({state}) {

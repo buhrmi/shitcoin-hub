@@ -34,10 +34,11 @@
       .user_area.logged_out(v-else)
         // button.login_with_telegram(@click="$store.dispatch('authorize_with_telegram')") Log In With Telegram
         form(@submit.prevent="$store.dispatch('authorize_with_password', {email, password})")
-          input(v-model="email" placeholder="email" type="email")
-          input(v-model="password" placeholder="password" type="password")
-          button Log in 
+          //- input(v-model="email" placeholder="email" type="email")
+          //- input(v-model="password" placeholder="password" type="password")
         button(@click="$store.state.showSignup = true") Sign up
+        | or 
+        a(@click="$store.state.showSignup = true") Log in 
       nuxt-link.brand(to="/")
         img.logo(src="~/assets/logo.png")
         img.fontmark(src="~/assets/fontmark.png")
@@ -47,9 +48,9 @@
       .nav_bar
         .wrapper
           nuxt-link(to="/") Home
+          nuxt-link(to="/hodlers/my") My Hodlers
           nuxt-link(to="/shitcoins") Shitcoin Market
           // nuxt-link(to="/orders") Orders
-          nuxt-link(to="/hodlers/new") Create new Hodler
           // nuxt-link(to="/submit") Submit
     .wrapper
       .disclaimer Hello there, fellow wanderer. I see, you found your way into Shitcoin World. Please note that everything here is still under construction. Only the toughest adventures may proceed. Please join us in our <a target="_blank" href="https://t.me/shitcoinworld">Telegram channel</a> to chat.

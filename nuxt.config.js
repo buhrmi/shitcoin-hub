@@ -57,7 +57,14 @@ module.exports = {
   },
   toast: {
     position: 'top-center',
-    iconPack : 'fontawesome'
+    iconPack : 'fontawesome',
+    duration: '5000',
+    action: {
+      text: 'Dismiss',
+      onClick : (e, toastObject) => {
+        toastObject.goAway(0);
+      }
+    }
   },
   env: {
     API_URL_BROWSER: process.env.API_URL_BROWSER,

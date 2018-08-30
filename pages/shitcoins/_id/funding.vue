@@ -90,6 +90,6 @@ module.exports =
      requestWithdrawal: ->
        await this.$axios.$post('/withdrawals', withdrawal: this.newWithdrawal)
        this.$toast.success("Withdrawal submitted.")
-       this.history = await $axios.$get('/balance_history', params: {shitcoin_id: this.shitcoin.id})
+       this.history = await this.$axios.$get('/balance_history', params: {shitcoin_id: this.shitcoin.id})
 
 </script>
