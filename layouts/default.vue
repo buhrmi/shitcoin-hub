@@ -29,7 +29,7 @@
     .top_bar
       .user_area.logged_in(v-if="$store.state.user")
         //- p ETH wallet address: {{ $store.state.eth_address }}
-        nuxt-link(to="/me/") {{ $store.state.user.email }}
+        nuxt-link(to="/me") {{ $store.state.user.email }}
         button(@click="$store.dispatch('logout')") Log out
       .user_area.logged_out(v-else)
         //- button.login_with_telegram(@click="$store.dispatch('authorize_with_telegram')") Log In With Telegram
@@ -48,12 +48,15 @@
       .nav_bar
         .wrapper
           nuxt-link(to="/") Home
-          nuxt-link(to="/hodlers/my/") My Hodlers
-          nuxt-link(to="/shitcoins/") Shitcoin Market
+          nuxt-link(to="/hodlers/my") My Hodlers
+          nuxt-link(to="/shitcoins") Shitcoin Market
           //- nuxt-link(to="/orders") Orders
           //- nuxt-link(to="/submit") Submit
     .wrapper
-      .disclaimer Hello there, fellow wanderer. I see, you found your way into Shitcoin World. Please note that everything here is still under construction. Only the toughest adventures may proceed. Please join us in our <a target="_blank" href="https://t.me/shitcoinworld/">Telegram channel</a> to chat.
+      .disclaimer
+        span Hello there, fellow wanderer. I see, you found your way into Shitcoin World. Please note that everything here is still under construction. Only the toughest adventures may proceed. Please join us in our
+        a(target="_blank" href="https://t.me/shitcoinworld") Telegram channel
+        span to chat.
     nuxt
     .footer
       .wrapper
