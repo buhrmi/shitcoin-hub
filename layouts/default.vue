@@ -55,7 +55,7 @@
     .wrapper
       .disclaimer
         span Hello there, fellow wanderer. I see, you found your way into Shitcoin World. Please note that everything here is still under construction. Only the toughest adventures may proceed. Please join us in our
-        a(target="_blank" href="https://t.me/shitcoinworld") Telegram channel
+        a(target="_blank" href="https://t.me/shitcoinworld")  Telegram channel 
         span to chat.
     nuxt
     .footer
