@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import ActionCable from 'actioncable'
 
-export default async ({store, app: { $axios }}) => {
+export default async ({store, app}) => {
   const socket_url = process.env.SOCKET_URL || process.env.API_URL_BROWSER.replace('https', 'wss').replace('http', 'ws') + '/cable'
   const cable = ActionCable.createConsumer(socket_url)
   window.cable = cable
@@ -16,6 +16,31 @@ export default async ({store, app: { $axios }}) => {
     }
   })
 
+
+  // TODO: change in Orders that are updated between page load and subscription setup are not synced
+  // TODO: show toast when order updates
+  cable.subscriptions.create('OrdersChannel', {
+    received(order) {
+      if (order.cancelled_at) {
+        app.$toast.success("Order cancelled.")
+        store.state.open_orders.delete(order)
+      }
+      else if (order.filled_at) {
+        app.$toast.success("Order filled.")
+        store.state.open_orders.delete(order)
+      }
+      else {
+        if (order.quantity_filled > 0) {
+          app.$toast.success("Order partially filled.")
+        }
+        else {
+          app.$toast.show("Order submitted.")
+        }
+        store.state.open_orders.upsert(order)
+      }
+    }
+  })
+
   // TODO: submit store.state.quote_id as parameter
   cable.subscriptions.create('TickerChannel', {
     received(data) {
@@ -26,11 +51,13 @@ export default async ({store, app: { $axios }}) => {
   function reconnect() {
     cable.disconnect()
     cable.connect()
-  }  
+  }
+
+  Vue.use(plugin, cable)
 }
 
 const plugin = {
-  install(Vue, options) {
+  install(Vue, cable) {
     Vue.mixin({
       destroyed() {
         if (!this._subscriptions) return
@@ -66,4 +93,3 @@ const plugin = {
   }
 }
 
-Vue.use(plugin)

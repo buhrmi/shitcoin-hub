@@ -67,7 +67,7 @@
                 th Filled
                 th 
             tbody
-              tr.order(v-for="order in orders")
+              tr.order(v-for="order in open_orders")
                 td {{ order.created_at }}
                 td {{ order.side }} at {{ order.kind }}
                 td {{ order.quantity }}
@@ -94,6 +94,8 @@ module.exports =
       @$store.state.user && @newOrder.kind == 'limit'
     canSell: ->
       @$store.state.user
+    open_orders: ->
+      @$store.state.open_orders.filter((order) => order.base_shitcoin_id == @base_shitcoin.id)
   subscriptions:
     OrderbookChannel:
       params: ->
@@ -101,25 +103,11 @@ module.exports =
         quote_id: @$store.state.quote_id
       received: (book) ->
         @book = book
-    # TODO: somehow subscribe to order notification globally, even if component is not shown.
-    OrdersChannel:
-      params: ->
-        base_shitcoin_id: @base_shitcoin.id
-      received: (order) ->
-        if order.cancelled_at
-          @orders.delete(order)
-        else if order.filled_at
-          @orders.delete(order)
-        else
-          @orders.upsert(order)
-  watch:
-    '$store.state.user': ->
-       @orders = await this.$axios.$get('/orders', params: {base_shitcoin_id: this.base_shitcoin.id})
   asyncData: ({app: {$axios}, params, error, store}) ->
     base_id = params.id
-    [base_shitcoin, orders, book] = await Promise.all [
+    [base_shitcoin, book] = await Promise.all [
       $axios.$get("/shitcoins/#{base_id}"),
-      $axios.$get('/orders', params: {base_shitcoin_id: base_id})
+      
       $axios.$get('/order_book/depth', params: {base: base_id, quote: store.state.quote_id})
     ]
 
@@ -131,7 +119,6 @@ module.exports =
         side: 'sell'
         kind: 'limit'
       book: book
-      orders: orders
       base_shitcoin: base_shitcoin
    methods:
      cancelOrder: (id) ->

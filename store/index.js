@@ -14,6 +14,7 @@ export default () => {
       accepted_terms_on: null,
       showSignup: false,
       balances: {},
+      open_orders: [],
       prices: {},
       status: {},
       platforms: {},
@@ -101,6 +102,7 @@ export default () => {
           state.user = await this.$axios.$get('/me')
           state.balances = await this.$axios.$get('/balances')
           state.addresses = await this.$axios.$get('/addresses')
+          state.open_orders = await this.$axios.$get('/orders') // TODO: create a vuex plugin that syncs automatically
         }
         else {
           state.user = null
