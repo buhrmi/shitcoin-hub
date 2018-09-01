@@ -39,6 +39,6 @@
       .container
         .card.padded
           h2 How can I contact the Shitcoin Inc staff?
-          p The best way is to just write a message in our <a target="_blank" href="https://t.me/shitcoinworld">Telegram channel</a>.
+          p The best way is to just send us a message via email. Address is below.
 </template>
 
