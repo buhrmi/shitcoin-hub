@@ -44,7 +44,7 @@
         img.fontmark(src="~/assets/fontmark.png")
 
       span All prices are in {{ $store.state.quote_shitcoin.symbol }}. Your balance: {{ $store.getters.balance }} {{ $store.state.quote_shitcoin.symbol }}
-        
+   
       .nav_bar
         .wrapper
           nuxt-link(to="/") Home
@@ -54,9 +54,8 @@
           //- nuxt-link(to="/submit") Submit
     .wrapper
       .disclaimer
-        span Hello there, fellow wanderer. I see, you found your way into Shitcoin World. Please note that everything here is still under construction. Only the toughest adventures may proceed. Please join us in our
-        a(target="_blank" href="https://t.me/shitcoinworld") Telegram channel
-        span to chat.
+        span Hello there, fellow wanderer. I see, you found your way into Shitcoin World. Please note that everything here is still under construction. Only the toughest adventures may proceed. Please join us in our 
+        a(target="_blank" href="https://t.me/shitcoinworld") Telegram channel.
     nuxt
     .footer
       .wrapper
