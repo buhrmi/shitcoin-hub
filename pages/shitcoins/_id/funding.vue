@@ -46,6 +46,7 @@
         .card.padded(v-if="$store.state.user")
           h2 Deposit
           p Your deposit address: {{ $store.state.addresses[shitcoin.platform_id] }}
+          img(:src="`https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=${this.$store.state.addresses[shitcoin.platform_id]}&choe=UTF-8`")
         .card.padded(v-if="$store.state.user")
           h2 New Withdrawal
           .field
