@@ -11,6 +11,27 @@
           p Balance: {{ $store.state.balances[shitcoin.id].balance }}
           p In orders: {{ $store.state.balances[shitcoin.id].in_orders }}
           p Available: {{ $store.state.balances[shitcoin.id].available }}
+        .card.padded(v-if="$store.state.user")
+          h2 Deposit
+          p Your deposit address: {{ $store.state.addresses[shitcoin.platform_id] }}
+          img(:src="`https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=${this.$store.state.addresses[shitcoin.platform_id]}&choe=UTF-8`")
+        .card.padded(v-if="$store.state.user")
+          h2 New Withdrawal
+          .field
+            label
+              span Address: 
+              input(v-model="newWithdrawal.to_address")
+          .field
+            label
+              span Amount: 
+              input(v-model="newWithdrawal.amount" type="number")
+          .fees(v-if="shitcoin.user_transfer_fee")
+            p The network applies a flat transfer fee of {{ shitcoin.user_transfer_fee }} {{ shitcoin.symbol }}
+            p You will receive <b>{{ Big(newWithdrawal.amount || 0).minus(shitcoin.user_transfer_fee).toString() }} {{ shitcoin.symbol }}</b>.
+            p
+              | To receive {{ newWithdrawal.amount }}, please enter 
+              a(@click="newWithdrawal.amount = Big(newWithdrawal.amount || 0).add(shitcoin.user_transfer_fee).toString()") {{ Big(newWithdrawal.amount || 0).add(shitcoin.user_transfer_fee).toString() }}
+          button(@click="requestWithdrawal") Submit
         .card.history.padded(v-if="$store.state.user")
           h2 History
           table
@@ -42,28 +63,6 @@
                   .to To: {{ change.to_address }}
                   .error(v-if="change.status == 'error'")
                     span {{change.error}}
-
-        .card.padded(v-if="$store.state.user")
-          h2 Deposit
-          p Your deposit address: {{ $store.state.addresses[shitcoin.platform_id] }}
-          img(:src="`https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=${this.$store.state.addresses[shitcoin.platform_id]}&choe=UTF-8`")
-        .card.padded(v-if="$store.state.user")
-          h2 New Withdrawal
-          .field
-            label
-              span Address: 
-              input(v-model="newWithdrawal.to_address")
-          .field
-            label
-              span Amount: 
-              input(v-model="newWithdrawal.amount" type="number")
-          .fees(v-if="shitcoin.user_transfer_fee")
-            p The network applies a flat transfer fee of {{ shitcoin.user_transfer_fee }} {{ shitcoin.symbol }}
-            p You will receive <b>{{ Big(newWithdrawal.amount || 0).minus(shitcoin.user_transfer_fee).toString() }} {{ shitcoin.symbol }}</b>.
-            p
-              | To receive {{ newWithdrawal.amount }}, please enter 
-              a(@click="newWithdrawal.amount = Big(newWithdrawal.amount || 0).add(shitcoin.user_transfer_fee).toString()") {{ Big(newWithdrawal.amount || 0).add(shitcoin.user_transfer_fee).toString() }}
-          button(@click="requestWithdrawal") Submit
         
 </template>
 
