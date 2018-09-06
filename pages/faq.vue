@@ -30,12 +30,24 @@
             li Ask a friend to send you some
       .container
         .card.padded
+          h2 So, what's the roadmap?
+          p First we will continue work on the shitty browser-based game. If people enjoy it, we will collect the funds to develop a more awesome Shitcoin game with 3D graphics and stuff because why not.
+      .container
+        .card.padded
           h2 Will I be able to sell a Hodler?
           p Yes, you will be able to register a Hodler as an NFT and sell it on the <a href="https://opensea.io">Open Sea Marketplace</a>.
       .container
         .card.padded
           h2 Who holds the Shitcoin World™ trade mark?
           p The Shitcoin World™ trade mark is held by Shitcoin Inc.
+      .container
+        .card.padded
+          h2 What is Shitcoin Inc?
+          p Shitcoin Inc is registered in Japan as 株式会社シットコイン (Kabushiki Gaisha Shittocoin). Mr. Shitcoin is the only shareholder.
+      .container
+        .card.padded
+          h2 For real?
+          p ¯\_(ツ)_/¯
       .container
         .card.padded
           h2 How can I contact the Shitcoin Inc staff?
