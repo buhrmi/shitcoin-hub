@@ -3,21 +3,22 @@
     .details_bar
       .image
         image-uploader(v-model="shitcoin" field="logo" :path="`/shitcoins/${shitcoin.id}`" param="shitcoin[logo]")
-      h1.name {{ shitcoin.name }}
-      p Price: {{ $store.state.prices[shitcoin.id] || '¯\\_(ツ)_/¯' }} {{ $store.state.quote_shitcoin.symbol }}
+      .stats
+        p Price: {{ $store.state.prices[shitcoin.id] || '¯\\_(ツ)_/¯' }} {{ $store.state.quote_shitcoin.symbol }}
+        p 24h volume: ?
+      h1.name {{ shitcoin.name }} ({{ shitcoin.symbol }})
+      a(target="_blank" :href="shitcoin.explorer_url") Open in Block Explorer
       //- .details(v-if="!editing")
       //-   ul
-      //-     li 
-      //-       | Platform: 
-      //-       a(target="_blank" :href="shitcoin.explorer_url") {{ shitcoin.platform }}
-      //-     li
-      //-       span Website: {{ shitcoin.details.website }}
-      //-     li
-      //-       span Telegram: {{ shitcoin.details.telegram }}
-      //-     li
-      //-       span Twitter: {{ shitcoin.details.twitter }}
-      //-     li
-      //-       button(@click="edit" v-if="$store.state.user") Edit
+      //-     li  
+          //- li
+          //-   span Website: {{ shitcoin.details.website }}
+          //- li
+          //-   span Telegram: {{ shitcoin.details.telegram }}
+          //- li
+          //-   span Twitter: {{ shitcoin.details.twitter }}
+          //- li
+          //-   button(@click="edit" v-if="$store.state.user") Edit
       //- .details(v-else)
       //-   ul
       //-     li
@@ -85,6 +86,12 @@ module.exports =
 }
 .shitcoin_header {
   margin-bottom: 12px;
+  .name {
+    margin-bottom: 0;
+  }
+  .stats {
+    float: right;
+  }
 }
 .image-uploader {
   width: 96px;

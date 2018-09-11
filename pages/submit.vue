@@ -2,13 +2,14 @@
   .page
     .wrapper
       h2 Submit Shitcoin
+      p Here you can submit a token without having to deposit it.
       .create_asset(v-if="$store.state.user")
         form(@submit.prevent="createShitcoin")
           .field
             label Platform
             select(v-model="new_shitcoin.platform_id")
               option(value="") Unspecified
-              option(v-for="platform in platforms" :value="platform.id") {{ platform.name }}
+              option(v-for="platform in $store.state.platforms" :value="platform.id") {{ platform.name }}
           .field(v-if="new_shitcoin.platform_id")
             label Address
             input(v-model="new_shitcoin.address")
