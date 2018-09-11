@@ -3,25 +3,40 @@
     .wrapper
       .redactor-styles.no-padding
         h1 Shitcoin Maker™
+        p Shitcoin Maker will become the Shitcoin World ICO Platform
         form(:action="createUrl")
           table.form
             tbody
-              tr
-                th.field Name
+              tr.field
+                th.label Name
                 td.input
                   input(name="name" v-model="newCoin.name")
-              tr
-                th.field Symbol
+              tr.field
+                th.label Symbol
                 td.input
                   input(name="symbol" v-model="newCoin.symbol")
-              tr
-                th.field Decimals
+              tr.field
+                th.label Decimals
                 td.input
                   input(name="decimals" v-model="newCoin.decimals")
-              tr
-                th.field Total (Max) Supply
+              tr.field
+                th.label {{ newCoin.mintable ? 'Initial Supply' : 'Total (max) Supply'}}
                 td.input
                   input(name="initial_supply" v-model="newCoin.initialSupply")
+                  label
+                    input(type="checkbox" name="mintable" v-model="newCoin.mintable")
+                    |  Enable minting
+                    
+              tr.field(v-if="newCoin.mintable")
+                th.label Max supply
+                td.input
+                  input(name="max_supply" v-model="newCoin.maxSupply")
+              tr.field
+                th.label
+                td.input
+                  label
+                    input(type="checkbox" name="pausable" v-model="newCoin.pausable")
+                    |  Enable pausing
           button Download Contract
           p 
             | After downloading, open the file in  
@@ -45,7 +60,8 @@ module.exports =
         initialSupply: '10000000'
         mintable: false
         has_cap: false
-        maxSupply: '10000000'
+        pausable: false
+        maxSupply: '20000000'
   computed:
     createUrl: ->
       process.env.API_URL_BROWSER + '/shitcoins/contract'
