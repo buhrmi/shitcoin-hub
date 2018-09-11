@@ -2,12 +2,12 @@
   .page
     .wrapper
       .container
-        .card.padded
-          h2 Your personal deposit addresses
-          .deposits(v-if="$store.state.user")
-            .platform(v-for="platform in $store.state.platforms")
-              .address {{ platform.name }}: {{ $store.state.addresses[platform.id] }}
-          .deposits(v-else) Please log in to see your deposit addresses.
+        //- .card.padded
+        //-   h2 Your personal deposit addresses
+        //-   .deposits(v-if="$store.state.user")
+        //-     .platform(v-for="platform in $store.state.platforms")
+        //-       .address {{ platform.name }}: {{ $store.state.addresses[platform.id] }}
+        //-   .deposits(v-else) Please log in to see your deposit addresses.
         .card.padded
           h2 All Shitcoins
           table.shitcoins
