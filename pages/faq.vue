@@ -43,7 +43,7 @@
       .container
         .card.padded
           h2 What is Shitcoin Inc?
-          p Shitcoin Inc is registered in Japan as 株式会社シットコイン (Kabushiki Gaisha Shittocoin). Mr. Shitcoin is the only shareholder.
+          p Shitcoin Inc is a legal entity registered in Japan. DJ Shitcoin™ is the only shareholder.
       .container
         .card.padded
           h2 For real?
@@ -52,5 +52,9 @@
         .card.padded
           h2 How can I contact the Shitcoin Inc staff?
           p The best way is to just send us a message via email. Address is below.
+      .container
+        .card.padded
+          h2 How can I create my own Shitcoin?
+          p Just use our patent pending Shitcoin Maker™
 </template>
 

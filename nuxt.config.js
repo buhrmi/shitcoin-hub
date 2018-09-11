@@ -1,4 +1,5 @@
 require('dotenv').config()
+let fs = require('fs')
 
 module.exports = {
   serverMiddleware: [require('cookie-parser')()],

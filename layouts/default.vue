@@ -69,6 +69,8 @@
             p Withdrawals: {{ $store.state.status.withdrawals ? 'Seems OK' : 'Not running' }}
           .links
             h3 More Poop
+            p
+              nuxt-link(to="/create") Shitcoin Maker
             p 
               nuxt-link(to="/faq") FAQ
             p 
