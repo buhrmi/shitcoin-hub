@@ -1,13 +1,13 @@
 <template lang="pug">
   .page
     .wrapper
-      review-form(v-model="review")
+      benefit-form(v-model="benefit")
 </template>
 
 <script lang="coffee">
 module.exports =
   components:
-    reviewForm: require('~/components/review-form').default
+    benefitForm: require('~/components/benefit-form').default
   asyncData: ({app: {$axios}, params}) ->
-    review: await $axios.$get('/reviews/' + params.id)
+    benefit: await $axios.$get('/benefits/' + params.id)
 </script>

@@ -1,16 +1,16 @@
 <template lang="pug">
   .page
     .wrapper
-      review-form(v-model="review")
+      benefit-form(v-model="benefit")
 </template>
 
 <script lang="coffee">
 module.exports =
   components:
-    reviewForm: require('~/components/review-form').default
+    benefitForm: require('~/components/benefit-form').default
   
   asyncData: ({app: {$axios}, query}) ->
-    review:
+    benefit:
       shitcoin: await $axios.$get('/shitcoins/'+query.shitcoin_id)
       html:
         en: ''

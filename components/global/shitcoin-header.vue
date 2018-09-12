@@ -37,7 +37,7 @@
     .nav_bar
       nuxt-link(:class="{active: active == 'trade'}" :to="{name: 'shitcoins-id-trade', params: {id: shitcoin.id}}") Trade
       nuxt-link(:class="{active: active == 'funding'}" :to="{name: 'shitcoins-id-funding', params: {id: shitcoin.id}}") Funding
-      nuxt-link(:class="{active: active == 'reviews'}" :to="{name: 'shitcoins-id-reviews', params: {id: shitcoin.id}}") Reviews
+      nuxt-link(:class="{active: active == 'benefits'}" :to="{name: 'shitcoins-id-benefits', params: {id: shitcoin.id}}") Benefits
 </template>
 
 <script lang="coffee">
