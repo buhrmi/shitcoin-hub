@@ -3,7 +3,7 @@
     .wrapper
       .redactor-styles.no-padding
         h1 Shitcoin Maker™
-        p An ICO platform as easy as 1 2 3...
+        p Create and list your token in 3 easy steps
         .container
           .card.padded
             h2 Step 1: Create Token
@@ -43,23 +43,27 @@
                         |  Enable pausing
               button Download Contract
           .card.padded
-            h2 Step 2: Deposit Token
+            h2 Step 2: Deploy Token
             p 
-              | After downloading, open the file in  
+              | After downloading, open the contract in  
               a(target="_blank" href="http://remix.ethereum.org/") Remix
-              |  to deploy the contract to the network.
-            .deposit(v-if="$store.state.user")
-              p After you have deployed your contract, deposit some tokens in your personal deposit address.
-              p Your deposit address: {{ $store.state.addresses[1]}}
-              img(:src="`https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=${this.$store.state.addresses[1]}&choe=UTF-8`")
-            .signup(v-else)
-              p You need to sign up or log in to view your deposit address.
-              button(@click="$store.state.showSignup = true") Sign up
-              |  or 
-              a(@click="$store.state.showSignup = true") Log in
+              |  and deploy it to the network.
           .card.padded
-            h2 Step 3: Trade Token
-            p Waiting for deposit... Once your deposit has been confirmed, you will be automatically redirected to the trading view.
+            h2 Step 3: List Token
+            p Once you have deployed the contract on the network, please enter the details below.
+            form(@submit.prevent="createShitcoin")
+              table.form
+                tbody
+                  tr.field
+                    th.label Platform
+                    td.input
+                      select(v-model="newCoin.platform_id")
+                        option(v-for="platform in $store.state.platforms" :value="platform.id") {{ platform.name }}
+                    tr.field
+                      th.label Address
+                      td.input
+                        input(v-model="newCoin.address")          
+              button Submit
 </template>
 
 <script lang="coffee">
@@ -79,6 +83,12 @@ module.exports =
         has_cap: false
         pausable: false
         maxSupply: '20000000'
+        address: ''
+        platform_id: 1
+  methods:
+    createShitcoin: ->
+      newShitcoin = await this.$axios.$post('/shitcoins', {shitcoin: this.newCoin})
+      this.$router.push(name: 'shitcoins-id', params: {id: newShitcoin.param, edit: true})
   computed:
     createUrl: ->
       process.env.API_URL_BROWSER + '/shitcoins/contract'
