@@ -27,7 +27,7 @@
                 td.input
                   label
                     input(type="checkbox" v-model="liablilty_removed")
-                    |  I agree to NEVER invest more than what I can afford to lose, and to not hold Shitcoin Inc or its staff liable for any damages that might occur.
+                    |  I agree to NEVER invest more than what I can afford to lose.
               tr.field
                 td.label
                 td.input
