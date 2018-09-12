@@ -120,13 +120,19 @@ module.exports =
         kind: 'limit'
       book: book
       base_shitcoin: base_shitcoin
-   methods:
-     cancelOrder: (id) ->
-       this.$axios.$delete('/orders/'+id)
-     submitOrder: ->
-       this.newOrder.quote_shitcoin_id = this.$store.state.quote_id
-       this.$axios.$post('/orders', order: this.newOrder)
-       
+  methods:
+    cancelOrder: (id) ->
+      this.$axios.$delete('/orders/'+id)
+    submitOrder: ->
+      this.newOrder.quote_shitcoin_id = this.$store.state.quote_id
+      this.$axios.$post('/orders', order: this.newOrder)
+  head: ->
+    title:
+      "#{this.base_shitcoin.name} | Shitcoin World"
+    meta: [
+      { hid: 'og:image', property: 'og:image', content: this.base_shitcoin.logo_url },
+      { hid: 'og:description', property: 'og:description', content: "Rating: #{Array(this.base_shitcoin.cached_rating).join '⭐'}. Trade your #{this.base_shitcoin.name} on Shitcoin World and get amazing rewards." }
+    ]    
 
 </script>
 

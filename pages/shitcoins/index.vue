@@ -33,7 +33,7 @@
                 td {{ $store.state.prices[shitcoin.id] || '¯\\_(ツ)_/¯'}}
                 td 
                   .rating(v-if="shitcoin.cached_rating > 0")
-                    span(v-for="i in shitcoin.cached_rating") 💩
+                    span(v-for="i in shitcoin.cached_rating") ⭐
                   .rating(v-else) No benefits
                 td(v-if="$store.state.user")
                   .balance(v-if="$store.state.balances[shitcoin.id]") {{ $store.state.balances[shitcoin.id].balance }}

@@ -27,7 +27,7 @@ module.exports =
       "#{this.shitcoin.name} Benefits - Shitcoin World"
     meta: [
       { hid: 'og:image', property: 'og:image', content: this.shitcoin.logo_url },
-      { hid: 'og:description', property: 'og:description', content: "Shittiness rating: #{Array(shitcoin.cached_rating).join '💩'}. Get all your #{this.shitcoin.name} news and benefits on Shitcoin World" }
+      { hid: 'og:description', property: 'og:description', content: "Shittiness rating: #{Array(this.shitcoin.cached_rating).join '⭐'}. Get all your #{this.shitcoin.name} news and benefits on Shitcoin World" }
     ]
   asyncData: ({app: {$axios}, params, error, store}) ->
     [shitcoin, benefits] = await Promise.all [
