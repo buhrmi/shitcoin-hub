@@ -25,7 +25,13 @@
               tr.field
                 td.label
                 td.input
-                  button Sign up
+                  label
+                    input(type="checkbox" v-model="liablilty_removed")
+                    |  I agree to NEVER invest more than what I can afford to lose, and to not hold Shitcoin Inc or its staff liable for any damages that might occur.
+              tr.field
+                td.label
+                td.input
+                  button(:disabled="!liablilty_removed") Sign up
     .top_bar
       .user_area.logged_in(v-if="$store.state.user")
         //- p ETH wallet address: {{ $store.state.eth_address }}
@@ -86,6 +92,7 @@
 <script lang="coffee">
 export default
   data: ->
+    liablilty_removed: false
     email: null
     password: null
     showSignup: false
