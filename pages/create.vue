@@ -42,12 +42,14 @@
                         input(type="checkbox" name="pausable" v-model="newCoin.pausable")
                         |  Enable pausing
               button Download Contract
+        .container
           .card.padded
             h2 Step 2: Deploy Token
             p 
               | After downloading, open the contract in  
               a(target="_blank" href="http://remix.ethereum.org/") Remix
               |  and deploy it to the network.
+        .container
           .card.padded
             h2 Step 3: List Token
             p Once you have deployed the contract on the network, please enter the details below.
