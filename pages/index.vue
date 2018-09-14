@@ -4,7 +4,6 @@
       .section.welcome
         h1 Welcome to Shitcoin Kingdom
         h2 Create a Hodler, join the fight against the FUD and earn Original Shitcoins™
-        p The Sodler is infesting Shitcoin Kingdom with the FUD. Can you defeat his army of FUD once and for all and become the greatest Hodler of Shitcoin World?
         p Total amount of Original Shitcoins™ earned: {{ $store.state.status.shitcoins_earned }} / {{ Number.parseFloat($store.state.status.shitcoins_supplied) }}
         nuxt-link.button(to="/hodlers/new") Create a Hodler
         nuxt-link(to="/faq") or learn more about Original Shitcoins™

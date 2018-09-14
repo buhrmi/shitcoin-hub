@@ -71,9 +71,6 @@
 <script lang="coffee">
 module.exports =
   asyncData: ({app: {$axios}, params, error, store}) ->
-    [status] = await Promise.all [
-      $axios.$get("/status"),
-    ]
     return
       api_url: process.env.API_URL_BROWSER
       newCoin:
