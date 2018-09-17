@@ -87,7 +87,7 @@ module.exports =
   methods:
     createShitcoin: ->
       newShitcoin = await this.$axios.$post('/shitcoins', {shitcoin: this.newCoin})
-      this.$router.push(name: 'shitcoins-id', params: {id: newShitcoin.param, edit: true})
+      this.$router.push(name: 'shitcoins-id-funding', params: {id: newShitcoin.param})
   computed:
     createUrl: ->
       process.env.API_URL_BROWSER + '/shitcoins/contract'

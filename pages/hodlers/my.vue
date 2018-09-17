@@ -16,8 +16,9 @@
           h2 Create your first Hodler
           p You don't have a Hodler. Create one now!
           nuxt-link.button(to="/hodlers/new") Create a Hodler
-          | or 
-          a(@click="$store.state.showSignup = true") log in 
+          span(v-if="!$store.state.user")
+            | or 
+            a(@click="$store.state.showSignup = true") log in 
 </template>
 
 <script lang="coffee">
