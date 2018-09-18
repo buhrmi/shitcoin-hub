@@ -50,6 +50,15 @@
           p Just an idiot that nobody gives a shit about.
       .container
         .card.padded
+          h2 What about bots?
+          p Accounts suspected of automating the process of generating Original Shitcoins™ will be banned.
+      .container
+        .card.padded
+          h2 Who is liable in case this website or an associated wallets get hacked?
+          p Nobody. The risk lies with the investors. Shitcoin Inc guarantees that no funds will be misapropriated by its operators, but it can not guarantee 100% safety from hackers.
+          p However, in case of hacking, Shitcoin Inc will work together with local and international authorities to find and prosecute the perpretators.
+      .container
+        .card.padded
           h2 How can I contact the Shitcoin Inc staff?
           p Send an email to support@shitcoinworld.com
       .container
