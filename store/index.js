@@ -71,7 +71,7 @@ export default () => {
 
       async playWithHodler({state}, hodlerId) {
         state.hodler = await this.$axios.$get('/hodlers/' + hodlerId)
-        document.cookie = "hodler="+hodlerId+";path=/"
+        document.cookie = "hodler="+hodlerId+";path=/" + process.VUE_ENV == "production" ? ';domain=.shitcoinworld.com' : ''
         this.app.router.push('/game')
       },
 
