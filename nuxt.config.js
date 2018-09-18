@@ -1,5 +1,6 @@
 require('dotenv').config()
 let fs = require('fs')
+require('coffeescript')
 
 module.exports = {
   serverMiddleware: [require('cookie-parser')()],

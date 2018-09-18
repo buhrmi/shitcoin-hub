@@ -27,7 +27,7 @@
                 td.input
                   label
                     input(type="checkbox" v-model="liablilty_removed")
-                    |  I agree to NEVER invest more than what I can afford to lose.
+                    |  I accept the Terms &amp; Conditions (coming soon).
               tr.field
                 td.label
                 td.input

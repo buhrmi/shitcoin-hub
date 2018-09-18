@@ -3,8 +3,8 @@
     .wrapper
       .section.welcome
         h1 Welcome to Shitcoin Kingdom
-        h2 Create a Hodler, join the fight against the FUD and earn Original Shitcoins™
-        p Total amount of Original Shitcoins™ earned: {{ $store.state.status.shitcoins_earned }} / {{ Number.parseFloat($store.state.status.shitcoins_supplied) }}
+        h2 Create a Hodler, join the fight against the FUD and trade Shitcoins!
+        p Total amount of Original Shitcoins™ distributed: {{ $store.state.status.shitcoins_earned }}
         nuxt-link.button(to="/hodlers/new") Create a Hodler
         nuxt-link(to="/faq") or learn more about Original Shitcoins™
       .section
