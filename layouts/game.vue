@@ -19,7 +19,13 @@ updater = null
 module.exports =
   methods:
     attack: ->
-      this.$axios.$post('/battles', {battle: {target_id: 1}})
+      battle = {
+        attacker_id: this.$store.state.hodler.id,
+        target_id: this.$store.state.hodler.id,
+        attacker_type: 'Hodler',
+        target_type: 'Hodler'
+      }
+      this.$axios.$post('/battles', {battle})
     updateStats: ->
       # TODO: use Opalrb to compile ruby stats module into js, and use that to calculate stats
       this.$store.state.hodler.stats.remaining_downtime -= 1
