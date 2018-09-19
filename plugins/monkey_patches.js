@@ -46,3 +46,25 @@ Array.prototype.first = function(amount = 1) {
     return this.slice(0,amount)
   }
 }
+
+global.Time = {
+  get now() {
+    // TODO: use server time
+    return new Date().getTime() / 1000
+  }
+}
+
+if (process.env.VUE_ENV == "client") {
+  Object.defineProperty(Array.prototype, 'max', {
+    get () {
+      return Math.max.apply(Math, this);
+    }
+  })
+
+  Object.defineProperty(Array.prototype, 'min', {
+    get () {
+      return Math.min.apply(Math, this);
+    }
+  })
+
+}

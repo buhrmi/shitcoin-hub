@@ -1,4 +1,5 @@
 import Vuex from 'vuex'
+import Stats from '../stats'
 
 export default () => {
   return new Vuex.Store({
@@ -37,6 +38,7 @@ export default () => {
         }
         if (req.cookies.hodler) {
           state.hodler = await this.$axios.$get('/hodlers/'+req.cookies.hodler)
+          state.hodler.__proto__ = Stats
         }
         state.platforms = await this.$axios.$get('/platforms')
         state.status = await this.$axios.$get('/status')
@@ -45,6 +47,11 @@ export default () => {
         })
         state.prices = await this.$axios.$get('/order_book/ticker?quote_id=' + state.quote_id)
         state.quote_shitcoin = await this.$axios.$get('/shitcoins/'+state.quote_id)
+      },
+
+      nuxtClientInit({state}) {
+        if (state.hodler) state.hodler.__proto__ = Stats
+        window.hodler = state.hodler
       },
 
       async authorize_with_password({dispatch, state}, data) {
@@ -71,8 +78,14 @@ export default () => {
 
       async playWithHodler({state}, hodlerId) {
         state.hodler = await this.$axios.$get('/hodlers/' + hodlerId)
+        state.hodler.__proto__ = Stats
         document.cookie = "hodler="+hodlerId+";path=/"
         this.app.router.push('/game')
+      },
+
+      async updateHodler({state}, entity) {
+        state.hodler = Object.assign({}, state.hodler, entity)
+        state.hodler.__proto__ = Stats
       },
 
       async acceptTerms({state}) {
