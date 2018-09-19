@@ -9,8 +9,9 @@
         p ❤️ {{ Math.round($store.state.hodler.hp()) }} / {{ $store.state.hodler.maxhp() }}
     .nav_bar
       .wrapper
-        nuxt-link(to="/game") World
-        nuxt-link(to="/game/inventory") Inventory
+        nuxt-link(to="/game") Story
+        nuxt-link(to="/game/arena") Arena
+        nuxt-link(to="/game/equipment") Equipment
         nuxt-link(to="/game/messages") Messages
     .wrapper
       nuxt

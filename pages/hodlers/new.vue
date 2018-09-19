@@ -48,8 +48,8 @@ module.exports =
         this.creating = true
         composition = "#{this.body.id}-#{this.face.id}"
         composition += "-#{this.outfit.id}" if this.outfit
-        result = await this.$axios.$post('/hodlers', {composition})
-        this.$router.push('/hodlers/' + result.id)
+        result = await this.$axios.$post('/hodlers', {composition, name})
+        this.$store.dispatch('playWithHodler', result.id)
 </script>
 
 <style lang="scss" scoped>

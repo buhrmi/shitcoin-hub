@@ -1,8 +1,12 @@
 <template lang="pug">
 .page
   .wrapper
+    h2 Prologue
+    p 
+    p It was a beautiful day in Shitcoin Kingdom when monsters appeared seemingly out of nowhere and started to attack everybody.
+    
     .actions(v-if="$store.state.hodler.hp() > 0")
-      p A Level 1 Fuddler manifests itself in front of you. Killing it will yield Original Shitcoins.
+      p A Level 1 Fuddler manifests itself in front of you.
       button(@click="attack") Attack
     .actions(v-else)
       p You are dead.
