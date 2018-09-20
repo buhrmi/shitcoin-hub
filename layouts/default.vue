@@ -60,7 +60,7 @@
           //- nuxt-link(to="/submit") Submit
     .wrapper
       .disclaimer
-        span Hello there, fellow wanderer. I see, you found your way into Shitcoin World. Please note that everything here is still under construction. Only the toughest adventures may proceed.
+        span Hi there, fellow wanderer. I see, you found your way into Shitcoin World. Please note that everything here is still under construction. That means: MANY BUGS. Only the toughest hodlers should proceed.
     nuxt
     .footer
       .wrapper
