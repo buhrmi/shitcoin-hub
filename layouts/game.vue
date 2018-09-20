@@ -19,11 +19,6 @@
 
 <script lang="coffee">
 module.exports =
-  subscriptions:
-    GameChannel:
-      received: (entity) ->
-        if (entity.id == this.$store.state.hodler.id)
-          this.$store.dispatch('updateHodler', entity)
   mounted: ->
     clearInterval(this._updater)
     this._updater = setInterval((=> this.$forceUpdate()), 1000)

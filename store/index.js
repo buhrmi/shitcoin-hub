@@ -20,6 +20,7 @@ export default () => {
       status: {},
       platforms: {},
       addresses: {},
+      entities: [],
       hodler: null
     },
     getters: {
@@ -47,6 +48,7 @@ export default () => {
         })
         state.prices = await this.$axios.$get('/order_book/ticker?quote_id=' + state.quote_id)
         state.quote_shitcoin = await this.$axios.$get('/shitcoins/'+state.quote_id)
+        state.entities = await this.$axios.$get('/entities')
       },
 
       nuxtClientInit({state}) {
@@ -79,13 +81,24 @@ export default () => {
       async playWithHodler({state}, hodlerId) {
         state.hodler = await this.$axios.$get('/hodlers/' + hodlerId)
         state.hodler.__proto__ = Stats
-        document.cookie = "hodler="+hodlerId+";path=/"
+        document.cookie = "hodler="+hodlerId+";path=/" + (process.env.NODE_ENV == "production" ? ';domain=.shitcoinworld.com' : '')
         this.app.router.push('/game')
       },
 
-      async updateHodler({state}, entity) {
-        state.hodler = Object.assign({}, state.hodler, entity)
-        state.hodler.__proto__ = Stats
+      async updateEntity({state}, entity) {
+        if (state.hodler && entity.id == state.hodler.id) {
+          state.hodler = Object.assign({}, state.hodler, entity)
+          state.hodler.__proto__ = Stats
+        }
+        else {
+          if (entity.deleted) {
+            state.entities.delete(entity)
+          }
+          else {
+            console.log('upserting', entity)
+            state.entities.upsert(entity)
+          }
+        }
       },
 
       async acceptTerms({state}) {

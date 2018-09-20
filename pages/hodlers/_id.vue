@@ -6,11 +6,7 @@
         .hodler
           img(:src="hodler.sd_image_url")
         .item
-          p Level 1
           p Birthday: {{ hodler.created_at }}
-          p Currently Hodling: Nothing
-          p Original Shitcoins™ earned: 0
-          p Current location: Unknown
           .my_hodler_actions(v-if="$store.state.user && hodler.owner_id == $store.state.user.id")
             button(@click="$store.dispatch('playWithHodler', hodler.id)") Start Game
           .other_hodler(v-else)

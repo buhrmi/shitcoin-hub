@@ -3,13 +3,15 @@
   .wrapper
     h2 Prologue
     p 
-    p It was a beautiful day in Shitcoin Kingdom when monsters appeared seemingly out of nowhere and started to attack everybody.
-    
-    .actions(v-if="$store.state.hodler.hp() > 0")
-      p A Level 1 Fuddler manifests itself in front of you.
-      button(@click="attack") Attack
-    .actions(v-else)
-      p You are dead.
+    p It was a beautiful day in Shitcoin Kingdom when dangerous Fudsters appeared seemingly out of nowhere and started to attack everybody.
+    .entities
+      .entity(v-for="entity in $store.state.entities")
+        p {{ entity.name }}
+        button(:disabled="$store.state.hodler.hp() <= 0" @click="attack(entity.id, entity.type)") Attack  
+      .empty(v-if="$store.state.entities.length == 0")
+        p All Fudsters have been killed. Don't go away, they will respawn!
+    .actions(v-if="$store.state.hodler.hp() <= 0")
+      p You are dead. Tip: Only attack with full health.
       p Wait for resurrection ({{ Math.round(this.$store.state.hodler.remaining_downtime()) }} seconds remaining)
 </template>
 
@@ -17,12 +19,10 @@
 module.exports =
   layout: 'game'
   methods:
-    attack: ->
+    attack: (id, type)->
       battle = {
-        attacker_id: this.$store.state.hodler.id,
-        target_id: this.$store.state.hodler.id,
-        attacker_type: 'Hodler',
-        target_type: 'Hodler'
+        target_id: id,
+        target_type: type
       }
       this.$axios.$post('/battles', {battle})
   mounted: ->

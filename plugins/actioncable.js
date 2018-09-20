@@ -10,12 +10,18 @@ export default async ({store, app}) => {
   store.watch(() => store.state.authorization, reconnect)
   reconnect()
   
+  // GLOBAL SUBSCRIPTIONS
   cable.subscriptions.create('BalancesChannel', {
     received(data) {
       store.state.balances = data
     }
   })
 
+  cable.subscriptions.create('GameChannel', {
+    received(entity) {
+      store.dispatch('updateEntity', entity)
+    }
+  })
 
   // TODO: change in Orders that are updated between page load and subscription setup are not synced
   // TODO: show toast when order updates

@@ -1,14 +1,22 @@
 module.exports = Stats = function() {
-  var ATTRIBUTES = ["last_hp", "last_hp_changed_at"];
-
   // these attributes need to exist on the including class
+  var ATTRIBUTES = ["last_hp", "last_hp_changed_at", "exp"];
+
+  function exp_worth() {
+    return 50 + this.level() * 5
+  };
+
   // How many HP per second does this character regenerate?
   function regeneration_rate() {
-    return 1
+    return 4
   };
 
   function maxhp() {
-    return 60
+    return 30 + 4
+  };
+
+  function level() {
+    return Math.pow(exp, 0.5)
   };
 
   function alive() {
@@ -17,7 +25,7 @@ module.exports = Stats = function() {
 
   // Time in seconds till character starts regenerating again after hp hits 0
   function downtime() {
-    return 60
+    return 12
   };
 
   function start_regenerating_at() {
@@ -42,8 +50,10 @@ module.exports = Stats = function() {
 
   return {
     ATTRIBUTES: ATTRIBUTES,
+    exp_worth: exp_worth,
     regeneration_rate: regeneration_rate,
     maxhp: maxhp,
+    level: level,
     alive: alive,
     downtime: downtime,
     start_regenerating_at: start_regenerating_at,
