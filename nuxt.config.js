@@ -41,7 +41,7 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: "Welcome to Shitcoin World. Take part in the epic war between the Hodlers and the FUD. Which side will you fight on?" }
+      { hid: 'description', name: 'description', content: "The epic battle between the Hodlers and the FUD has begun. Can you become the greatest Hodler of all time and defeat the FUD once and for all?" }
     ],
     script: [
       // {src: 'https://js.pusher.com/4.1/pusher.min.js'},
