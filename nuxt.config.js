@@ -71,6 +71,7 @@ module.exports = {
   },
   env: {
     API_URL_BROWSER: process.env.API_URL_BROWSER,
+    GAME_URL: 'https://game.shitcoinworld.com',
     TELEGRAM_BOT_ID: process.env.TELEGRAM_BOT_ID,
     TELEGRAM_PUBLIC_KEY: (process.env.TELEGRAM_PUBLIC_KEY || '').replace(/\\n/g,'\n')
   }
