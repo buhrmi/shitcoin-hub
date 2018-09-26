@@ -79,8 +79,7 @@ export default () => {
       },
 
       async playWithHodler({state}, hodlerId) {
-        document.cookie = "hodler="+hodlerId+";path=/" + (process.env.NODE_ENV == "production" ? ';domain=.shitcoinworld.com' : '')
-        window.location = process.env.GAME_URL
+        window.location = process.env.GAME_URL + '?hodler=' + hodlerId
       },
 
       async updateEntity({state}, entity) {
